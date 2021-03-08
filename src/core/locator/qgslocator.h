@@ -31,7 +31,6 @@
 #include "qgsfeedback.h"
 #include "qgslocatorcontext.h"
 #include "qgssettingsentry.h"
-#include "qgssettingsgroupmap.h"
 
 
 /**
@@ -155,29 +154,20 @@ class CORE_EXPORT QgsLocator : public QObject
      */
     QStringList completionList() const {return mAutocompletionList;}
 
-    struct SettingsStructure
+    struct Settings
     {
-        struct LocatorFilter : public QgsSettingsGroup
+        struct LocatorFilterEnabled : public QgsSettingsEntryBool
         {
-          LocatorFilter( QgsSettingsGroup *parentGroup = nullptr )
-            : QgsSettingsGroup( "", parentGroup )
-            , enabled( "enabled", this, true, QObject::tr( "Enabled" ) )
-            , byDefault( "default", this, false, QObject::tr( "Default value" ) )
-            , prefix( "prefix", this, QString(), QObject::tr( "Locator filter prefix" ) )
-          {}
-
-          QgsSettingsEntryBool enabled;
-          QgsSettingsEntryBool byDefault;
-          QgsSettingsEntryString prefix;
+          LocatorFilterEnabled() : QgsSettingsEntryBool( "locator_filters/%1/enabled", QgsSettings::Core, true, QObject::tr( "Enabled" ) ) {}
         };
-
-        struct LocatorFilters : public QgsSettingsGroupMap<LocatorFilter>
+        struct LocatorFilterDefault : public QgsSettingsEntryBool
         {
-          LocatorFilters( QgsSettingsGroup *parent )
-            : QgsSettingsGroupMap( "locator_filters", parent, QObject::tr( "Locator filters settings" ) )
-          {}
+          LocatorFilterDefault() : QgsSettingsEntryBool( "locator_filters/%1/default", QgsSettings::Core, false, QObject::tr( "Default value" ) ) {}
         };
-        LocatorFilters locatorFilters;
+        struct LocatorFilterPrefix : public QgsSettingsEntryString
+        {
+          LocatorFilterPrefix() : QgsSettingsEntryString( "locator_filters/%1/prefix", QgsSettings::Core, QString(), QObject::tr( "Locator filter prefix" ) ) {}
+        };
     };
 
   signals:

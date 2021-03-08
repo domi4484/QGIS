@@ -309,6 +309,11 @@ void QgsSettings::setValue( const QString &key, const QVariant &value, const Qgs
   }
 }
 
+//void QgsSettings::setValue(const QgsSettingsEntry &key, const QVariant &value)
+//{
+//  key.setValue(value);
+//}
+
 // To lower case and clean the path
 QString QgsSettings::sanitizeKey( const QString &key ) const
 {

@@ -118,7 +118,7 @@ void QgsLayerTreeMapCanvasBridge::setCanvasLayers()
     {
       case QgsGui::UseCrsOfFirstLayerAdded:
       {
-        const bool planimetric = QgsApplication::settingsRegistryCore()->measure.planimetric.value<bool>();
+        const bool planimetric = QgsSettings().value( "measure/planimetric" ).toBool();
         // Only adjust ellipsoid to CRS if it's not set to planimetric
         QgsProject::instance()->setCrs( mFirstCRS, !planimetric );
         break;

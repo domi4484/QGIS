@@ -94,9 +94,9 @@ void QgsLocator::registerFilter( QgsLocatorFilter *filter )
   filter->setParent( this );
 
   // restore settings
-  bool enabled = QgsApplication::settingsRegistryCore()->locatorFilters[ filter->name() ].enabled.value<bool>();
-  bool byDefault = QgsApplication::settingsRegistryCore()->locatorFilters[ filter->name() ].byDefault.value<bool>();
-  QString prefix = QgsApplication::settingsRegistryCore()->locatorFilters[ filter->name() ].prefix.value<QString>();
+  bool enabled = QgsLocator::Settings::LocatorFilterEnabled().value<bool>( filter->name() );
+  bool byDefault = QgsLocator::Settings::LocatorFilterDefault().value<bool>( filter->name() );
+  QString prefix = QgsLocator::Settings::LocatorFilterPrefix().value<QString>( filter->name() );
   if ( prefix.isEmpty() )
   {
     prefix = filter->prefix();

@@ -614,6 +614,14 @@ should be canceled.
 .. versionadded:: 3.10
 %End
 
+    struct Settings
+    {
+        struct SearchPathForTemplates : public QgsSettingsEntryStringList
+        {
+          SearchPathForTemplates();
+        };
+    };
+
   public slots:
 
     void refresh();

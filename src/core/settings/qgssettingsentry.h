@@ -69,14 +69,13 @@ class CORE_EXPORT QgsSettingsEntry
     /**
      * Constructor for QgsSettingsEntry.
      *
-     * The \a key argument specifies the final part of the settings key.
-     * The \a parentGroup argument specifies a parent group which is used to rebuild
-     * the entiere settings key and to determine the settings section.
+     * The \a key argument specifies the key of the settings.
+     * The \a section argument specifies the section of the settings.
      * The \a default value argument specifies the default value for the settings entry.
      * The \a description argument specifies a description for the settings entry.
      */
-    QgsSettingsEntry( QString key = QString(),
-                      QgsSettingsGroup *settingsGroupParent = nullptr,
+    QgsSettingsEntry( QString key,
+                      QgsSettings::Section section,
                       QVariant defaultValue = QVariant(),
                       QString description = QString() );
 
@@ -86,9 +85,16 @@ class CORE_EXPORT QgsSettingsEntry
     virtual ~QgsSettingsEntry();
 
     /**
-     * Get settings entry key. The returned key is composed of this group key plus parent keys.
+     * Get settings entry key.
+     *
+     * The \a dynamicKeyPart argument specifies the dynamic part of the settings key.
      */
-    QString key() const;
+    QString key( const QString &dynamicKeyPart = QString() ) const;
+
+    /**
+     * Returns true if a part of the settings key is built dynamically.
+     */
+    bool hasDynamicKey() const;
 
     /**
      * Get settings section. The settings section of the parent group is returned if available.
@@ -98,7 +104,7 @@ class CORE_EXPORT QgsSettingsEntry
     /**
      * Set settings value.
      */
-    virtual bool setValue( const QVariant &value );
+    virtual bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() );
 
     /**
      * Get settings value.
@@ -107,14 +113,14 @@ class CORE_EXPORT QgsSettingsEntry
 
 #ifndef SIP_RUN
     template <class T>
-    T value() const
+    T value( const QString &dynamicKeyPart = QString() ) const
     {
-      QVariant variantValue = QgsSettings().value( mKey,
+      QVariant variantValue = QgsSettings().value( key( dynamicKeyPart ),
                               mDefaultValue,
                               mSection );
       if ( variantValue.canConvert<T>() == false )
         QgsDebugMsg( QObject::tr( "Can't convert setting '%1' to type '%2'" )
-                     .arg( mKey )
+                     .arg( key( dynamicKeyPart ) )
                      .arg( typeid( T ).name() ) );
 
       return variantValue.value<T>();
@@ -152,7 +158,6 @@ class CORE_EXPORT QgsSettingsEntry
   private:
 
     QString mKey;
-    QgsSettingsGroup *mSettingsGroupParent;
     QVariant mDefaultValue;
     QgsSettings::Section mSection;
     QString mDescription;
@@ -181,15 +186,15 @@ class CORE_EXPORT QgsSettingsEntryString : public QgsSettingsEntry
      * The \a maxLength argument specifies the maximal lenght of the string value.
      * By -1 the there is no limit
      */
-    QgsSettingsEntryString( const QString &key = QString(),
-                            QgsSettingsGroup *settingsGroupParent = nullptr,
+    QgsSettingsEntryString( const QString &key,
+                            QgsSettings::Section section,
                             const QString &defaultValue = QString(),
                             const QString &description = QString(),
                             int minLength = 0,
                             int maxLength = -1 );
 
     //! \copydoc QgsSettingsEntry::setValue
-    bool setValue( const QVariant &value ) override;
+    bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() ) override;
 
     //! \copydoc QgsSettingsEntry::settingsType
     virtual SettingsType settingsType() const override;
@@ -230,13 +235,13 @@ class CORE_EXPORT QgsSettingsEntryStringList : public QgsSettingsEntry
      * The \a default value argument specifies the default value for the settings entry.
      * The \a description argument specifies a description for the settings entry.
      */
-    QgsSettingsEntryStringList( const QString &key = QString(),
-                                QgsSettingsGroup *settingsGroupParent = nullptr,
+    QgsSettingsEntryStringList( const QString &key,
+                                QgsSettings::Section section,
                                 const QStringList &defaultValue = QStringList(),
                                 const QString &description = QString() );
 
     //! \copydoc QgsSettingsEntry::setValue
-    bool setValue( const QVariant &value ) override;
+    bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() ) override;
 
     //! \copydoc QgsSettingsEntry::settingsType
     virtual SettingsType settingsType() const override;
@@ -262,13 +267,13 @@ class CORE_EXPORT QgsSettingsEntryBool : public QgsSettingsEntry
      * The \a default value argument specifies the default value for the settings entry.
      * The \a description argument specifies a description for the settings entry.
      */
-    QgsSettingsEntryBool( const QString &key = QString(),
-                          QgsSettingsGroup *settingsGroupParent = nullptr,
+    QgsSettingsEntryBool( const QString &key,
+                          QgsSettings::Section section,
                           bool defaultValue = false,
                           const QString &description = QString() );
 
     //! \copydoc QgsSettingsEntry::setValue
-    bool setValue( const QVariant &value ) override;
+    bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() ) override;
 
     //! \copydoc QgsSettingsEntry::settingsType
     virtual SettingsType settingsType() const override;
@@ -296,15 +301,15 @@ class CORE_EXPORT QgsSettingsEntryInteger : public QgsSettingsEntry
      * The \a minValue argument specifies the minimal value.
      * The \a maxValue argument specifies the maximal value.
      */
-    QgsSettingsEntryInteger( const QString &key = QString(),
-                             QgsSettingsGroup *settingsGroupParent = nullptr,
+    QgsSettingsEntryInteger( const QString &key,
+                             QgsSettings::Section section,
                              qlonglong defaultValue = 0,
                              const QString &description = QString(),
                              qlonglong minValue = -__LONG_LONG_MAX__ + 1,
                              qlonglong maxValue = __LONG_LONG_MAX__ );
 
     //! \copydoc QgsSettingsEntry::setValue
-    bool setValue( const QVariant &value ) override;
+    bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() ) override;
 
     //! \copydoc QgsSettingsEntry::settingsType
     virtual SettingsType settingsType() const override;
@@ -347,8 +352,8 @@ class CORE_EXPORT QgsSettingsEntryDouble : public QgsSettingsEntry
      * The \a minValue argument specifies the minimal value.
      * The \a maxValue argument specifies the maximal value.
      */
-    QgsSettingsEntryDouble( const QString &key = QString(),
-                            QgsSettingsGroup *settingsGroupParent = nullptr,
+    QgsSettingsEntryDouble( const QString &key,
+                            QgsSettings::Section section,
                             double defaultValue = 0.0,
                             const QString &description = QString(),
                             double minValue = __DBL_MIN__,
@@ -356,7 +361,7 @@ class CORE_EXPORT QgsSettingsEntryDouble : public QgsSettingsEntry
                             double displayDecimals = 1 );
 
     //! \copydoc QgsSettingsEntry::setValue
-    bool setValue( const QVariant &value ) override;
+    bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() ) override;
 
     //! \copydoc QgsSettingsEntry::settingsType
     virtual SettingsType settingsType() const override;
@@ -425,7 +430,7 @@ class CORE_EXPORT QgsSettingsEntryEnum : public QgsSettingsEntry
     }
 
     //! \copydoc QgsSettingsEntry::setValue
-    bool setValue( const QVariant &value ) override;
+    bool setValue( const QVariant &value, const QString &dynamicKeyPart = QString() ) override;
 
     //! \copydoc QgsSettingsEntry::settingsType
     virtual SettingsType settingsType() const override;

@@ -659,18 +659,12 @@ class CORE_EXPORT QgsLayout : public QGraphicsScene, public QgsExpressionContext
      */
     bool accept( QgsStyleEntityVisitorInterface *visitor ) const;
 
-    struct SettingsStructure
+    struct Settings
     {
-        struct Layout : public QgsSettingsGroup
+        struct SearchPathForTemplates : public QgsSettingsEntryStringList
         {
-          Layout( QgsSettingsGroup *parent )
-            : QgsSettingsGroup( "layout", parent, QObject::tr( "Layout group description" ) )
-            , searchPathForTemplates( "searchPathsForTemplates", this, QStringList(), QObject::tr( "Search path for templates" ) )
-          {}
-
-          QgsSettingsEntryStringList searchPathForTemplates;
+          SearchPathForTemplates() : QgsSettingsEntryStringList( "layout/searchPathsForTemplates", QgsSettings::Core, QStringList(), QObject::tr( "Search path for templates" ) ) {}
         };
-        Layout layout;
     };
 
   public slots:

@@ -141,6 +141,22 @@ This list is updated when preparing the search
 .. versionadded:: 3.16
 %End
 
+    struct Settings
+    {
+        struct LocatorFilterEnabled : public QgsSettingsEntryBool
+        {
+          LocatorFilterEnabled();
+        };
+        struct LocatorFilterDefault : public QgsSettingsEntryBool
+        {
+          LocatorFilterDefault();
+        };
+        struct LocatorFilterPrefix : public QgsSettingsEntryString
+        {
+          LocatorFilterPrefix();
+        };
+    };
+
   signals:
 
     void foundResult( const QgsLocatorResult &result );

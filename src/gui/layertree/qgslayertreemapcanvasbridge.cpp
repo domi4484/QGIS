@@ -15,7 +15,6 @@
 
 #include "qgslayertreemapcanvasbridge.h"
 
-#include "qgsapplication.h"
 #include "qgslayertree.h"
 #include "qgslayertreeutils.h"
 #include "qgsmaplayer.h"
@@ -24,7 +23,6 @@
 #include "qgsmapoverviewcanvas.h"
 #include "qgsproject.h"
 #include "qgssettings.h"
-#include "qgssettingsregistrycore.h"
 #include "qgsgui.h"
 
 QgsLayerTreeMapCanvasBridge::QgsLayerTreeMapCanvasBridge( QgsLayerTree *root, QgsMapCanvas *canvas, QObject *parent )
@@ -118,7 +116,7 @@ void QgsLayerTreeMapCanvasBridge::setCanvasLayers()
     {
       case QgsGui::UseCrsOfFirstLayerAdded:
       {
-        const bool planimetric = QgsSettings().value( "measure/planimetric" ).toBool();
+        const bool planimetric = QgsSettings().value( QStringLiteral( "measure/planimetric" ), true, QgsSettings::Core ).toBool();
         // Only adjust ellipsoid to CRS if it's not set to planimetric
         QgsProject::instance()->setCrs( mFirstCRS, !planimetric );
         break;

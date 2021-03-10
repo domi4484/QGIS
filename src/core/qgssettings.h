@@ -207,9 +207,6 @@ class CORE_EXPORT QgsSettings : public QObject
      */
     void setValue( const QString &key, const QVariant &value, QgsSettings::Section section = QgsSettings::NoSection );
 
-//#include "qgssettingsentry.h"
-//    void setValue( const QgsSettingsEntry &key, const QVariant &value );
-
     /**
      * Returns the value for setting key. If the setting doesn't exist, it will be
      * searched in the Global Settings and if not found, returns defaultValue.

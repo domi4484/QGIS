@@ -54,7 +54,6 @@
 #include "qgsunittypes.h"
 #include "qgsclipboard.h"
 #include "qgssettings.h"
-#include "qgssettingsregistrycore.h"
 #include "qgsoptionswidgetfactory.h"
 #include "qgslocatorwidget.h"
 #include "qgslocatoroptionswidget.h"
@@ -592,7 +591,7 @@ QgsOptions::QgsOptions( QWidget *parent, Qt::WindowFlags fl, const QList<QgsOpti
   {
     mKeepBaseUnitCheckBox->setChecked( false );
   }
-  mPlanimetricMeasurementsComboBox->setChecked( mSettings->value( QStringLiteral( "measure/planimetric" ) ).toBool() );
+  mPlanimetricMeasurementsComboBox->setChecked( mSettings->value( QStringLiteral( "measure/planimetric" ), false, QgsSettings::Core ).toBool() );
 
   cmbIconSize->setCurrentIndex( cmbIconSize->findText( mSettings->value( QStringLiteral( "qgis/iconSize" ), QGIS_ICON_SIZE ).toString() ) );
 
@@ -1470,8 +1469,6 @@ void QgsOptions::saveOptions()
   {
     pathsList << mListComposerTemplatePaths->item( i )->text();
   }
-//  QgsApplication::settingsRegistryCore()->layout.searchPathForTemplates.setValue( pathsList );
-//  QgsSettings().setValue(QgsLayout::SettingsStructure::SearchPathForTemplates(), pathsList);
   QgsLayout::Settings::SearchPathForTemplates().setValue( pathsList );
 
   pathsList.clear();
@@ -1691,7 +1688,7 @@ void QgsOptions::saveOptions()
   mSettings->setValue( QStringLiteral( "/projections/promptWhenMultipleTransformsExist" ), mShowDatumTransformDialogCheckBox->isChecked(), QgsSettings::App );
 
   //measurement settings
-  mSettings->setValue( QStringLiteral( "/qgis/measure/planimetric" ), mPlanimetricMeasurementsComboBox->isChecked() );
+  mSettings->setValue( QStringLiteral( "measure/planimetric" ), mPlanimetricMeasurementsComboBox->isChecked(), QgsSettings::Core );
 
   QgsUnitTypes::DistanceUnit distanceUnit = static_cast< QgsUnitTypes::DistanceUnit >( mDistanceUnitsComboBox->currentData().toInt() );
   mSettings->setValue( QStringLiteral( "/qgis/measure/displayunits" ), QgsUnitTypes::encodeUnit( distanceUnit ) );

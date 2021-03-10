@@ -24,7 +24,7 @@
 #include "qgslayout.h"
 #include "qgslocator.h"
 
-#include <QMap>
+#include <QList>
 
 class QgsSettingsEntryStringList;
 
@@ -39,16 +39,11 @@ class CORE_EXPORT QgsSettingsRegistryCore
   public:
 
     QgsSettingsRegistryCore();
+    ~QgsSettingsRegistryCore();
 
   private:
 
-    QMap<QString, QgsSettingsEntry *> mSettingsEntries;
-
-    const QString LAYOUT_SEARCH_PATH_FOR_TEMPLATES = "layout/searchPathsForTemplates";
-
-    const QString LOCATOR_FILTER_ENABLED = "locator_filters/%1/enabled";
-    const QString LOCATOR_FILTER_DEFAULT = "locator_filters/%1/default";
-    const QString LOCATOR_FILTER_PREFIX = "locator_filters/%1/prefix";
+    QList<QgsSettingsEntry *> mSettingsEntries;
 
 };
 

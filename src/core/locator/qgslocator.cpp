@@ -16,7 +16,6 @@
  ***************************************************************************/
 
 #include "qgslocator.h"
-#include "qgssettingsregistrycore.h"
 #include <QtConcurrent>
 #include <functional>
 

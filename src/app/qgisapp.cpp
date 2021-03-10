@@ -74,7 +74,6 @@
 #include <mutex>
 
 #include "qgssettings.h"
-#include "qgssettingsregistrycore.h"
 #include "qgsnetworkaccessmanager.h"
 #include "qgsrelationmanager.h"
 #include "qgsapplication.h"
@@ -6506,7 +6505,7 @@ bool QgisApp::fileNew( bool promptToSaveFlag, bool forceBlank )
   // set project CRS
   const QgsCoordinateReferenceSystem srs = QgsCoordinateReferenceSystem( settings.value( QStringLiteral( "/projections/defaultProjectCrs" ), geoEpsgCrsAuthId(), QgsSettings::App ).toString() );
   // write the projections _proj string_ to project settings
-  const bool planimetric = QgsSettings().value( "measure/planimetric" ).toBool();
+  const bool planimetric = settings.value( QStringLiteral( "measure/planimetric" ), true, QgsSettings::Core ).toBool();
   prj->setCrs( srs, !planimetric ); // If the default ellipsoid is not planimetric, set it from the default crs
   if ( planimetric )
     prj->setEllipsoid( geoNone() );

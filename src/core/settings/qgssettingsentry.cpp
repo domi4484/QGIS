@@ -42,7 +42,8 @@ QString QgsSettingsEntry::key( const QString &dynamicKeyPart ) const
       return mKey;
     }
 
-    return mKey.arg( dynamicKeyPart );
+    QString completeKey = mKey;
+    return completeKey.replace( '%', dynamicKeyPart );
   }
   else
   {
@@ -55,7 +56,7 @@ QString QgsSettingsEntry::key( const QString &dynamicKeyPart ) const
 
 bool QgsSettingsEntry::hasDynamicKey() const
 {
-  return mKey.contains( "%1" );
+  return mKey.contains( '%' );
 }
 
 QgsSettings::Section QgsSettingsEntry::section()

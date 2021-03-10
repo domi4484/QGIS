@@ -219,7 +219,6 @@ Sets the value of setting key to value. If the key already exists, the previous 
 An optional Section argument can be used to set a value to a specific Section.
 %End
 
-
     SIP_PYOBJECT value( const QString &key, const QVariant &defaultValue = QVariant(),
                         SIP_PYOBJECT type = 0,
                         QgsSettings::Section section = QgsSettings::NoSection ) const / ReleaseGIL /;

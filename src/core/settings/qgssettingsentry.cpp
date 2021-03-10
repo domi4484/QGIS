@@ -15,7 +15,6 @@
 
 #include "qgssettingsentry.h"
 
-#include "qgssettingsgroup.h"
 #include "qgslogger.h"
 
 QgsSettingsEntry::QgsSettingsEntry( QString key,

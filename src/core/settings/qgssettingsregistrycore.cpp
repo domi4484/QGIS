@@ -1,5 +1,5 @@
 /***************************************************************************
-  qgssettingsregistrycore.h
+  qgssettingsregistrycore.cpp
   --------------------------------------
   Date                 : February 2021
   Copyright            : (C) 2021 by Damiano Lombardi
@@ -13,43 +13,17 @@
  *                                                                         *
  ***************************************************************************/
 
-
-#ifndef QGSSETTINGSREGISTRYCORE_H
-#define QGSSETTINGSREGISTRYCORE_H
-
-#include "qgis_core.h"
-#include "qgis_sip.h"
-#include "qgssettingsentry.h"
+#include "qgssettingsregistrycore.h"
 
 #include "qgslayout.h"
 #include "qgslocator.h"
 
-#include <QMap>
-
-class QgsSettingsEntryStringList;
-
-/**
- * \ingroup core
- * \class QgsSettingsRegistryCore
- *
- * \since QGIS 3.18
- */
-class CORE_EXPORT QgsSettingsRegistryCore
+QgsSettingsRegistryCore::QgsSettingsRegistryCore()
+  : mSettingsEntries()
 {
-  public:
+  mSettingsEntries.insert( LAYOUT_SEARCH_PATH_FOR_TEMPLATES, new QgsLayout::Settings::SearchPathForTemplates() );
 
-    QgsSettingsRegistryCore();
-
-  private:
-
-    QMap<QString, QgsSettingsEntry *> mSettingsEntries;
-
-    const QString LAYOUT_SEARCH_PATH_FOR_TEMPLATES = "layout/searchPathsForTemplates";
-
-    const QString LOCATOR_FILTER_ENABLED = "locator_filters/%1/enabled";
-    const QString LOCATOR_FILTER_DEFAULT = "locator_filters/%1/default";
-    const QString LOCATOR_FILTER_PREFIX = "locator_filters/%1/prefix";
-
-};
-
-#endif // QGSSETTINGSREGISTRYCORE_H
+  mSettingsEntries.insert( LOCATOR_FILTER_ENABLED, new QgsLocator::Settings::LocatorFilterEnabled() );
+  mSettingsEntries.insert( LOCATOR_FILTER_DEFAULT, new QgsLocator::Settings::LocatorFilterDefault() );
+  mSettingsEntries.insert( LOCATOR_FILTER_PREFIX, new QgsLocator::Settings::LocatorFilterPrefix() );
+}

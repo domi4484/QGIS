@@ -23,8 +23,6 @@
 #include "qgis_sip.h"
 #include "qgssettings.h"
 
-class QgsSettingsGroup;
-
 /**
  * \ingroup core
  * \class QgsSettingsEntry
@@ -413,11 +411,11 @@ class CORE_EXPORT QgsSettingsEntryEnum : public QgsSettingsEntry
      */
     template <class T>
     QgsSettingsEntryEnum( const QString &key,
-                          QgsSettingsGroup *settingsGroupParent,
+                          QgsSettings::Section *section,
                           const T &defaultValue,
                           const QString &description = QString() )
       : QgsSettingsEntry( key,
-                          settingsGroupParent,
+                          section,
                           defaultValue,
                           description )
     {

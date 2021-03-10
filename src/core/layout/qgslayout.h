@@ -24,7 +24,6 @@
 #include "qgslayoutguidecollection.h"
 #include "qgslayoutexporter.h"
 #include "qgsmasterlayoutinterface.h"
-#include "qgssettingsgroup.h"
 #include "qgssettingsentry.h"
 
 class QgsLayoutItemMap;

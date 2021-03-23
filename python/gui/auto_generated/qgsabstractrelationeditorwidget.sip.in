@@ -35,6 +35,14 @@ Base class to build new relation widgets.
 %End
   public:
 
+    enum Cardinality
+    {
+      ManyToOne,
+      ManyToOnePolymorphic,
+      ManyToMany,
+      ManyToManyPolymorphic,
+      UnknownCardinality
+    };
 
     QgsAbstractRelationEditorWidget( const QVariantMap &config, QWidget *parent /TransferThis/ = 0 );
 %Docstring
@@ -46,15 +54,28 @@ Constructor
 Sets the ``relation`` and the ``feature``
 %End
 
-    void setRelations( const QgsRelation &relation, const QgsRelation &nmrelation );
+    void setRelations( const QgsRelation &relation, const QgsRelation &nmRelation );
 %Docstring
 Sets the relation(s) for this widget
 If only one relation is set, it will act as a simple 1:N relation widget
 If both relations are set, it will act as an N:M relation widget
 inserting and deleting entries on the intermediate table as required.
+If nmRelation is valid the nmRelationPolymorphic get invalidated.
 
 :param relation: Relation referencing the edited table
-:param nmrelation: Optional reference from the referencing table to a 3rd N:M table
+:param nmRelation: Optional reference from the referencing table to a 3rd N:M table
+%End
+
+    void setRelations( const QgsRelation &relation, const QgsPolymorphicRelation &nmPolymorphicRelation );
+%Docstring
+Sets the relation(s) for this widget
+If only one relation is set, it will act as a simple 1:N relation widget
+If both relations are set, it will act as an N:M relation widget
+inserting and deleting entries on the intermediate table as required.
+If nmPolymorphicRelation is valid the nmRelation get invalidated.
+
+:param relation: Relation referencing the edited table
+:param nmPolymorphicRelation: Optional reference from the referencing table to a 3rd N:M table
 %End
 
     QgsRelation relation() const;
@@ -70,6 +91,16 @@ Returns the nm relation
 
 .. versionadded:: 3.18
 %End
+
+    QgsPolymorphicRelation nmPolymorphicRelation() const;
+%Docstring
+Returns the nm polymorphic relation
+
+.. versionadded:: 3.18
+%End
+
+
+    Cardinality cardinality() const;
 
     void setFeature( const QgsFeature &feature, bool update = true );
 %Docstring
@@ -326,8 +357,9 @@ Returns the relation for which this configuration widget applies
     virtual void setNmRelation( const QgsRelation &nmRelation );
 %Docstring
 Set the nm relation for this widget.
+If nmRelation is valid the nmRelationPolymorphic get invalidated.
 
-:param config: The nm relation
+:param nmRelation: The nm relation
 %End
 
     virtual QgsRelation nmRelation() const;
@@ -335,6 +367,21 @@ Set the nm relation for this widget.
 Returns the nm relation for which this configuration widget applies
 
 :return: The nm relation
+%End
+
+    virtual void setNmPolymorphicRelation( const QgsPolymorphicRelation &nmPolymorphicRelation );
+%Docstring
+Set the nm polymorphic relation for this widget.
+If nmPolymorphicRelation is valid the nmRelation get invalidated.
+
+:param nmPolymorphicRelation: The nm polymorphic relation
+%End
+
+    virtual QgsPolymorphicRelation nmPolymorphicRelation() const;
+%Docstring
+Returns the polymorphic relation for which this configuration widget applies
+
+:return: The polymorphic relation
 %End
 
 };

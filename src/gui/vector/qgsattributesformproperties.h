@@ -75,6 +75,7 @@ class GUI_EXPORT QgsAttributesFormProperties : public QWidget, public QgsExpress
       QString mRelationWidgetType;
       QVariantMap mRelationWidgetConfig;
       QVariant nmRelationId;
+      QVariant nmPolymorphicRelationId;
       bool forceSuppressFormPopup = false;
       QString label;
     };

@@ -108,7 +108,7 @@ void QgsAttributeWidgetRelationEditWidget::setRelationEditorConfiguration( const
 {
   //load the combo mRelationCardinalityCombo
   mRelationCardinalityCombo->clear();
-  setCardinalityCombo( tr( "Many to one relation" ) );
+  mRelationCardinalityCombo->addItem( tr( "Many to one relation" ), QVariant() );
 
   QgsRelation relation = QgsProject::instance()->relationManager()->relation( relationId );
   const QList<QgsRelation> relations = QgsProject::instance()->relationManager()->referencingRelations( relation.referencingLayer() );
@@ -120,8 +120,30 @@ void QgsAttributeWidgetRelationEditWidget::setRelationEditorConfiguration( const
       if ( !nmrel.fieldPairs().isEmpty() &&
            nmrel.fieldPairs().at( 0 ).referencingField() != relationFirstFieldPair.referencingField() )
       {
-        setCardinalityCombo( QStringLiteral( "%1 (%2)" ).arg( nmrel.referencedLayer()->name(), nmrel.fieldPairs().at( 0 ).referencedField() ), nmrel.id() );
+        mRelationCardinalityCombo->addItem( QStringLiteral( "%1 (%2)" ).arg( nmrel.referencedLayer()->name(), nmrel.fieldPairs().at( 0 ).referencedField() ), QVariant::fromValue( nmrel ) );
       }
+    }
+  }
+
+  // Add polymorphic relation if this layer is not the referenced layer
+  const QList<QgsPolymorphicRelation> polymorphicRelations = QgsProject::instance()->relationManager()->polymorphicRelations().values();
+  for ( const QgsPolymorphicRelation &polymorphicRelation : polymorphicRelations )
+  {
+    if ( relation.referencingLayer() == polymorphicRelation.referencingLayer() )
+    {
+      bool addPolymorphicRelation = true;
+      const QStringList referencedLayerIds = polymorphicRelation.referencedLayerIds();
+      for ( const QString &referencedLayerId : referencedLayerIds )
+      {
+        if ( referencedLayerId == relation.referencedLayer()->id() )
+        {
+          addPolymorphicRelation = false;
+          break;
+        }
+      }
+
+      if ( addPolymorphicRelation )
+        mRelationCardinalityCombo->addItem( QStringLiteral( "%1" ).arg( polymorphicRelation.name() ), QVariant::fromValue( polymorphicRelation ) );
     }
   }
 
@@ -160,7 +182,23 @@ QgsAttributesFormProperties::RelationEditorConfiguration QgsAttributeWidgetRelat
   QgsAttributesFormProperties::RelationEditorConfiguration relEdCfg;
   relEdCfg.mRelationWidgetType = mWidgetTypeComboBox->currentData().toString();
   relEdCfg.mRelationWidgetConfig = mConfigWidget->config();
-  relEdCfg.nmRelationId = mRelationCardinalityCombo->currentData();
+
+  if ( mRelationCardinalityCombo->currentData().canConvert<QgsRelation>() )
+  {
+    relEdCfg.nmRelationId = mRelationCardinalityCombo->currentData().value<QgsRelation>().id();
+    relEdCfg.nmPolymorphicRelationId = QVariant();
+  }
+  else if ( mRelationCardinalityCombo->currentData().canConvert<QgsPolymorphicRelation>() )
+  {
+    relEdCfg.nmRelationId = QVariant();
+    relEdCfg.nmPolymorphicRelationId = mRelationCardinalityCombo->currentData().value<QgsPolymorphicRelation>().id();
+  }
+  else
+  {
+    relEdCfg.nmRelationId = QVariant();
+    relEdCfg.nmPolymorphicRelationId = QVariant();
+  }
+
   relEdCfg.forceSuppressFormPopup = mRelationForceSuppressFormPopupCheckBox->isChecked();
   relEdCfg.label = mRelationLabelEdit->text();
   return relEdCfg;
@@ -174,13 +212,21 @@ void QgsAttributeWidgetRelationEditWidget::relationCardinalityComboCurrentIndexC
   if ( !mConfigWidget )
     return;
 
-  QgsRelation nmRelation = QgsProject::instance()->relationManager()->relation( mRelationCardinalityCombo->currentData().toString() );
-  mConfigWidget->setNmRelation( nmRelation );
-}
-
-void QgsAttributeWidgetRelationEditWidget::setCardinalityCombo( const QString &cardinalityComboItem, const QVariant &auserData )
-{
-  mRelationCardinalityCombo->addItem( cardinalityComboItem, auserData );
+  if ( mRelationCardinalityCombo->currentData().canConvert<QgsRelation>() )
+  {
+    mConfigWidget->setNmRelation( mRelationCardinalityCombo->currentData().value<QgsRelation>() );
+    mConfigWidget->setNmPolymorphicRelation( QgsPolymorphicRelation() );
+  }
+  else if ( mRelationCardinalityCombo->currentData().canConvert<QgsPolymorphicRelation>() )
+  {
+    mConfigWidget->setNmRelation( QgsRelation() );
+    mConfigWidget->setNmPolymorphicRelation( mRelationCardinalityCombo->currentData().value<QgsPolymorphicRelation>() );
+  }
+  else
+  {
+    mConfigWidget->setNmRelation( QgsRelation() );
+    mConfigWidget->setNmPolymorphicRelation( QgsPolymorphicRelation() );
+  }
 }
 
 void QgsAttributeWidgetRelationEditWidget::setNmRelationId( const QVariant &auserData )

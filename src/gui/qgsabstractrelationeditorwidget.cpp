@@ -55,11 +55,13 @@ void QgsAbstractRelationEditorWidget::setRelationFeature( const QgsRelation &rel
 
 void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation, const QgsRelation &nmrelation )
 {
-
   beforeSetRelations( relation, nmrelation );
 
   mRelation = relation;
   mNmRelation = nmrelation;
+
+  if ( mNmRelation.isValid() )
+    mNmPolymorphicRelation = QgsPolymorphicRelation();
 
   if ( !mRelation.isValid() )
   {
@@ -93,6 +95,67 @@ void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation,
 
   afterSetRelations();
   updateUi();
+}
+
+void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation, const QgsPolymorphicRelation &nmPolymorphicRelation )
+{
+  beforeSetRelations( relation, nmrelation );
+
+  mRelation = relation;
+  mNmRelation = nmrelation;
+
+  if ( mNmRelation.isValid() )
+    mNmPolymorphicRelation = QgsPolymorphicRelation();
+
+  if ( !mRelation.isValid() )
+  {
+    afterSetRelations();
+    return;
+  }
+
+  mLayerInSameTransactionGroup = false;
+
+  const auto transactionGroups = QgsProject::instance()->transactionGroups();
+  for ( auto it = transactionGroups.constBegin(); it != transactionGroups.constEnd(); ++it )
+  {
+    if ( mNmRelation.isValid() )
+    {
+      if ( it.value()->layers().contains( mRelation.referencedLayer() ) &&
+           it.value()->layers().contains( mRelation.referencingLayer() ) &&
+           it.value()->layers().contains( mNmRelation.referencedLayer() ) )
+        mLayerInSameTransactionGroup = true;
+    }
+    else
+    {
+      if ( it.value()->layers().contains( mRelation.referencedLayer() ) &&
+           it.value()->layers().contains( mRelation.referencingLayer() ) )
+        mLayerInSameTransactionGroup = true;
+    }
+  }
+
+  updateTitle();
+
+  setObjectName( QStringLiteral( "referenced/" ) + mRelation.name() );
+
+  afterSetRelations();
+  updateUi();
+}
+
+QgsAbstractRelationEditorWidget::Cardinality QgsAbstractRelationEditorWidget::cardinality() const
+{
+  if ( !mRelation.isValid() )
+    return UnknownCardinality;
+
+  if ( mNmRelation.isValid() && mNmPolymorphicRelation.isValid() )
+    return UnknownCardinality;
+
+  if ( mNmRelation.isValid() )
+    return ManyToMany;
+
+  if ( mNmPolymorphicRelation.isValid() )
+    return ManyToManyPolymorphic;
+
+  return ManyToOne;
 }
 
 void QgsAbstractRelationEditorWidget::setEditorContext( const QgsAttributeEditorContext &context )
@@ -659,6 +722,9 @@ QgsRelation QgsAbstractRelationEditorConfigWidget::relation() const
 void QgsAbstractRelationEditorConfigWidget::setNmRelation( const QgsRelation &nmRelation )
 {
   mNmRelation = nmRelation;
+
+  if ( mNmRelation.isValid() )
+    mNmPolymorphicRelation = QgsPolymorphicRelation();
 }
 
 QgsRelation QgsAbstractRelationEditorConfigWidget::nmRelation() const
@@ -666,6 +732,18 @@ QgsRelation QgsAbstractRelationEditorConfigWidget::nmRelation() const
   return mNmRelation;
 }
 
+void QgsAbstractRelationEditorConfigWidget::setNmPolymorphicRelation( const QgsPolymorphicRelation &nmPolymorphicRelation )
+{
+  mNmPolymorphicRelation = nmPolymorphicRelation;
+
+  if ( mNmPolymorphicRelation.isValid() )
+    mNmRelation = QgsRelation();
+}
+
+QgsPolymorphicRelation QgsAbstractRelationEditorConfigWidget::nmPolymorphicRelation() const
+{
+  return mNmPolymorphicRelation;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 

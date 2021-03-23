@@ -23,6 +23,7 @@
 
 #include "qgsattributeeditorcontext.h"
 #include "qgsrelation.h"
+#include "qgspolymorphicrelation.h"
 #include "qgis_sip.h"
 #include "qgis_gui.h"
 
@@ -58,6 +59,14 @@ class GUI_EXPORT QgsAbstractRelationEditorWidget : public QWidget
 
   public:
 
+    enum Cardinality
+    {
+      ManyToOne,
+      ManyToOnePolymorphic, // not implemented
+      ManyToMany,
+      ManyToManyPolymorphic,
+      UnknownCardinality
+    };
 
     /**
      * Constructor
@@ -74,11 +83,24 @@ class GUI_EXPORT QgsAbstractRelationEditorWidget : public QWidget
      * If only one relation is set, it will act as a simple 1:N relation widget
      * If both relations are set, it will act as an N:M relation widget
      * inserting and deleting entries on the intermediate table as required.
+     * If nmRelation is valid the nmRelationPolymorphic get invalidated.
      *
      * \param relation    Relation referencing the edited table
-     * \param nmrelation  Optional reference from the referencing table to a 3rd N:M table
+     * \param nmRelation  Optional reference from the referencing table to a 3rd N:M table
      */
-    void setRelations( const QgsRelation &relation, const QgsRelation &nmrelation );
+    void setRelations( const QgsRelation &relation, const QgsRelation &nmRelation );
+
+    /**
+     * Sets the relation(s) for this widget
+     * If only one relation is set, it will act as a simple 1:N relation widget
+     * If both relations are set, it will act as an N:M relation widget
+     * inserting and deleting entries on the intermediate table as required.
+     * If nmPolymorphicRelation is valid the nmRelation get invalidated.
+     *
+     * \param relation    Relation referencing the edited table
+     * \param nmPolymorphicRelation  Optional reference from the referencing table to a 3rd N:M table
+     */
+    void setRelations( const QgsRelation &relation, const QgsPolymorphicRelation &nmPolymorphicRelation );
 
     /**
      * Returns the relation
@@ -91,6 +113,15 @@ class GUI_EXPORT QgsAbstractRelationEditorWidget : public QWidget
      * \since QGIS 3.18
      */
     QgsRelation nmRelation() const {return mNmRelation;}
+
+    /**
+     * Returns the nm polymorphic relation
+     * \since QGIS 3.18
+     */
+    QgsPolymorphicRelation nmPolymorphicRelation() const {return mNmPolymorphicRelation;}
+
+
+    Cardinality cardinality() const;
 
     /**
      * Sets the \a feature being edited and updates the UI unless \a update is set to FALSE
@@ -226,6 +257,7 @@ class GUI_EXPORT QgsAbstractRelationEditorWidget : public QWidget
     QgsAttributeEditorContext mEditorContext;
     QgsRelation mRelation;
     QgsRelation mNmRelation;
+    QgsPolymorphicRelation mNmPolymorphicRelation;
     QgsFeature mFeature;
 
     bool mShowLabel = true;
@@ -353,8 +385,9 @@ class GUI_EXPORT QgsAbstractRelationEditorConfigWidget : public QWidget
 
     /**
      * \brief Set the nm relation for this widget.
+     * If nmRelation is valid the nmRelationPolymorphic get invalidated.
      *
-     * \param config The nm relation
+     * \param nmRelation The nm relation
      */
     virtual void setNmRelation( const QgsRelation &nmRelation );
 
@@ -365,10 +398,26 @@ class GUI_EXPORT QgsAbstractRelationEditorConfigWidget : public QWidget
      */
     virtual QgsRelation nmRelation() const;
 
+    /**
+     * \brief Set the nm polymorphic relation for this widget.
+     * If nmPolymorphicRelation is valid the nmRelation get invalidated.
+     *
+     * \param nmPolymorphicRelation The nm polymorphic relation
+     */
+    virtual void setNmPolymorphicRelation( const QgsPolymorphicRelation &nmPolymorphicRelation );
+
+    /**
+     * Returns the polymorphic relation for which this configuration widget applies
+     *
+     * \returns The polymorphic relation
+     */
+    virtual QgsPolymorphicRelation nmPolymorphicRelation() const;
+
   private:
     QgsVectorLayer *mLayer = nullptr;
     QgsRelation mRelation;
     QgsRelation mNmRelation;
+    QgsPolymorphicRelation mNmPolymorphicRelation;
 };
 
 

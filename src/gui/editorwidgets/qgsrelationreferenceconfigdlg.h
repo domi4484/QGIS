@@ -40,6 +40,19 @@ class GUI_EXPORT QgsRelationReferenceConfigDlg : public QgsEditorConfigWidget, p
     void setConfig( const QVariantMap &config ) override;
 
   private:
+
+    enum ComboRelationRole
+    {
+      ComboRelationRole_Id = Qt::UserRole,
+      ComboRelationRole_Type = Qt::UserRole + 1
+    };
+
+    enum RelationType
+    {
+      RelationType_Normal,
+      RelationType_Polymorphic
+    };
+
     void loadFields();
     void addFilterField( const QString &field );
     void addFilterField( QListWidgetItem *item );

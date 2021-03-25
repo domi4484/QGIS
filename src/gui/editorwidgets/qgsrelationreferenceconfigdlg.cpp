@@ -38,20 +38,27 @@ QgsRelationReferenceConfigDlg::QgsRelationReferenceConfigDlg( QgsVectorLayer *vl
   const auto constReferencingRelations = vl->referencingRelations( fieldIdx );
   for ( const QgsRelation &relation : constReferencingRelations )
   {
-    if ( relation.name().isEmpty() )
-      mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.id(), relation.referencedLayerId() ), relation.id() );
-    else
-      mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.name(), relation.referencedLayerId() ), relation.id() );
-
-    QStandardItemModel *model = qobject_cast<QStandardItemModel *>( mComboRelation->model() );
-    QStandardItem *item = model->item( model->rowCount() - 1 );
-    item->setFlags( relation.type() == QgsRelation::Generated
-                    ? item->flags() & ~Qt::ItemIsEnabled
-                    : item->flags() | Qt::ItemIsEnabled );
-
-    if ( auto *lReferencedLayer = relation.referencedLayer() )
+    if ( relation.type() == QgsRelation::Generated )
     {
-      mExpressionWidget->setField( lReferencedLayer->displayExpression() );
+      QgsPolymorphicRelation polymorphicRelation = relation.polymorphicRelation();
+
+      // Polymorphic relation already in combo box
+      if ( mComboRelation->findData( polymorphicRelation.id(), ComboRelationRole_Id ) >= 0 )
+        continue;
+
+      mComboRelation->addItem( polymorphicRelation.name(), QVariant::fromValue( polymorphicRelation ) );
+      int insertedItemIndex = mComboRelation->findData( polymorphicRelation.id(), ComboRelationRole_Id );
+      mComboRelation->setItemData( insertedItemIndex, RelationType_Polymorphic, ComboRelationRole_Type );
+    }
+    else
+    {
+      if ( relation.name().isEmpty() )
+        mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.id(), relation.referencedLayerId() ), QVariant::fromValue( relation ) );
+      else
+        mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.name(), relation.referencedLayerId() ), QVariant::fromValue( relation ) );
+
+      int insertedItemIndex = mComboRelation->findData( relation.id(), ComboRelationRole_Id );
+      mComboRelation->setItemData( insertedItemIndex, RelationType_Normal, ComboRelationRole_Type );
     }
   }
 
@@ -106,8 +113,19 @@ void QgsRelationReferenceConfigDlg::setConfig( const QVariantMap &config )
 
   if ( config.contains( QStringLiteral( "Relation" ) ) )
   {
-    mComboRelation->setCurrentIndex( mComboRelation->findData( config.value( QStringLiteral( "Relation" ) ).toString() ) );
-    relationChanged( mComboRelation->currentIndex() );
+    if ( !config.value( QStringLiteral( "Relation" ) ).toString().isEmpty() )
+    {
+      mComboRelation->setCurrentIndex( mComboRelation->findData( config.value( QStringLiteral( "Relation" ) ).toString() ) );
+      relationChanged( mComboRelation->currentIndex() );
+    }
+  }
+  else if ( config.contains( QStringLiteral( "PolymorphicRelation" ) ) )
+  {
+    if ( !config.value( QStringLiteral( "PolymorphicRelation" ) ).toString().isEmpty() )
+    {
+      mComboRelation->setCurrentIndex( mComboRelation->findData( config.value( QStringLiteral( "PolymorphicRelation" ) ).toString() ) );
+      relationChanged( mComboRelation->currentIndex() );
+    }
   }
 
   mCbxMapIdentification->setChecked( config.value( QStringLiteral( "MapIdentification" ), false ).toBool() );
@@ -130,16 +148,31 @@ void QgsRelationReferenceConfigDlg::setConfig( const QVariantMap &config )
 
 void QgsRelationReferenceConfigDlg::relationChanged( int idx )
 {
-  QString relName = mComboRelation->itemData( idx ).toString();
-  QgsRelation rel = QgsProject::instance()->relationManager()->relation( relName );
+  QString relationId = mComboRelation->itemData( idx, ComboRelationRole_Id ).toString();
+  RelationType relationType = static_cast<RelationType>( mComboRelation->itemData( idx, ComboRelationRole_Type ).toInt() );
 
-  mReferencedLayer = rel.referencedLayer();
-  mExpressionWidget->setLayer( mReferencedLayer ); // set even if 0
-  if ( mReferencedLayer )
+  switch ( relationType )
   {
-    mExpressionWidget->setField( mReferencedLayer->displayExpression() );
-    mCbxMapIdentification->setEnabled( mReferencedLayer->isSpatial() );
+    case RelationType_Normal:
+    {
+      QgsRelation rel = QgsProject::instance()->relationManager()->relation( relationId );
+
+      mReferencedLayer = rel.referencedLayer();
+      mExpressionWidget->setLayer( mReferencedLayer ); // set even if 0
+      if ( mReferencedLayer )
+      {
+        mExpressionWidget->setField( mReferencedLayer->displayExpression() );
+        mCbxMapIdentification->setEnabled( mReferencedLayer->isSpatial() );
+      }
+    }
+    break;
+    case RelationType_Polymorphic:
+    {
+
+    }
+    break;
   }
+
 
   loadFields();
 }
@@ -172,7 +205,17 @@ QVariantMap QgsRelationReferenceConfigDlg::config()
   myConfig.insert( QStringLiteral( "ShowOpenFormButton" ), mCbxShowOpenFormButton->isChecked() );
   myConfig.insert( QStringLiteral( "MapIdentification" ), mCbxMapIdentification->isEnabled() && mCbxMapIdentification->isChecked() );
   myConfig.insert( QStringLiteral( "ReadOnly" ), mCbxReadOnly->isChecked() );
-  myConfig.insert( QStringLiteral( "Relation" ), mComboRelation->currentData() );
+  if ( mComboRelation->currentData( ComboRelationRole_Type ) == RelationType_Normal )
+  {
+    myConfig.insert( QStringLiteral( "Relation" ), mComboRelation->currentData( ComboRelationRole_Id ) );
+    myConfig.insert( QStringLiteral( "PolymorphicRelation" ), QVariant() );
+  }
+  else
+  {
+    myConfig.insert( QStringLiteral( "Relation" ), QVariant() );
+    myConfig.insert( QStringLiteral( "PolymorphicRelation" ), mComboRelation->currentData( ComboRelationRole_Id ) );
+  }
+
   myConfig.insert( QStringLiteral( "AllowAddFeatures" ), mCbxAllowAddFeatures->isChecked() );
 
   if ( mFilterGroupBox->isChecked() )

@@ -145,7 +145,7 @@ class CORE_EXPORT QgsRelationManager : public QObject
     QMap<QString, QgsPolymorphicRelation> polymorphicRelations() const;
 
     /**
-     * Returns the list of relations associated with a polymorphic relation
+     * Returns the polymorphic relation associated with a polymorphic relation id
      */
     QgsPolymorphicRelation polymorphicRelation( const QString &polymorphicRelationId ) const;
 

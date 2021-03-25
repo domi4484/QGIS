@@ -197,7 +197,7 @@ class GUI_EXPORT QgsRelationEditorWidget : public QgsAbstractRelationEditorWidge
     virtual void updateUi() override;
     void beforeSetRelationFeature( const QgsRelation &newRelation, const QgsFeature &newFeature ) override;
     void afterSetRelationFeature() override;
-    void beforeSetRelations( const QgsRelation &newRelation, const QgsRelation &newNmRelation ) override;
+    void beforeSetRelations() override;
     void afterSetRelations() override;
 
   private slots:

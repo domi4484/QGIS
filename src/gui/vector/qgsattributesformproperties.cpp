@@ -422,6 +422,7 @@ QTreeWidgetItem *QgsAttributesFormProperties::loadAttributeEditorTreeItem( QgsAt
       relEdConfig.mRelationWidgetType = relationEditor->relationWidgetTypeId();
       relEdConfig.mRelationWidgetConfig = relationEditor->relationEditorConfiguration();
       relEdConfig.nmRelationId = relationEditor->nmRelationId();
+      relEdConfig.nmPolymorphicRelationId = relationEditor->nmPolymorphicRelationId();
       relEdConfig.forceSuppressFormPopup = relationEditor->forceSuppressFormPopup();
       relEdConfig.label = relationEditor->label();
       itemData.setRelationEditorConfiguration( relEdConfig );
@@ -671,6 +672,7 @@ QgsAttributeEditorElement *QgsAttributesFormProperties::createAttributeEditorWid
       relDef->setRelationWidgetTypeId( relationEditorConfig.mRelationWidgetType );
       relDef->setRelationEditorConfiguration( relationEditorConfig.mRelationWidgetConfig );
       relDef->setNmRelationId( relationEditorConfig.nmRelationId );
+      relDef->setNmPolymorphicRelationId( relationEditorConfig.nmPolymorphicRelationId );
       relDef->setForceSuppressFormPopup( relationEditorConfig.forceSuppressFormPopup );
       relDef->setLabel( relationEditorConfig.label );
       widgetDef = relDef;
@@ -892,6 +894,7 @@ void QgsAttributesFormProperties::apply()
         QVariantMap cfg;
 
         cfg[QStringLiteral( "nm-rel" )] = tabItemData.relationEditorConfiguration().nmRelationId;
+        cfg[QStringLiteral( "nm-polymorphic-rel" )] = tabItemData.relationEditorConfiguration().nmPolymorphicRelationId;
         cfg[QStringLiteral( "force-suppress-popup" )] = tabItemData.relationEditorConfiguration().forceSuppressFormPopup;
 
         editFormConfig.setWidgetConfig( tabItemData.name(), cfg );

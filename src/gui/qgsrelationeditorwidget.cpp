@@ -384,6 +384,30 @@ void QgsRelationEditorWidget::updateUi()
   {
     QgsFeatureRequest myRequest = mRelation.getRelatedFeaturesRequest( mFeature );
 
+    switch ( cardinality() )
+    {
+      case ManyToOne:
+      {
+        if ( !mRelation.referencingLayer() )
+        {
+          QgsLogger::warning( tr( "Referencing layer not set for relation '%1'." ).arg( mRelation.name() ) );
+          return;
+        }
+        initDualView( mRelation.referencingLayer(), myRequest );
+      }
+      break;
+      case ManyToMany:
+        break;
+      case ManyToManyPolymorphic:
+        break;
+      default:
+      {
+        QgsLogger::warning( tr( "Invalid cardinality." ) );
+        return;
+      }
+      break;
+    }
+
     if ( mNmRelation.isValid() )
     {
       QgsFeatureIterator it = mRelation.referencingLayer()->getFeatures( myRequest );
@@ -404,10 +428,7 @@ void QgsRelationEditorWidget::updateUi()
 
       initDualView( mNmRelation.referencedLayer(), nmRequest );
     }
-    else if ( mRelation.referencingLayer() )
-    {
-      initDualView( mRelation.referencingLayer(), myRequest );
-    }
+
   }
 }
 
@@ -560,11 +581,8 @@ void QgsRelationEditorWidget::afterSetRelationFeature()
   }
 }
 
-void QgsRelationEditorWidget::beforeSetRelations( const QgsRelation &newRelation, const QgsRelation &newNmRelation )
+void QgsRelationEditorWidget::beforeSetRelations()
 {
-  Q_UNUSED( newRelation );
-  Q_UNUSED( newNmRelation );
-
   if ( mRelation.isValid() )
   {
     disconnect( mRelation.referencingLayer(), &QgsVectorLayer::editingStarted, this, &QgsRelationEditorWidget::updateButtons );

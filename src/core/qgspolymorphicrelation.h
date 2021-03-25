@@ -258,7 +258,7 @@ class CORE_EXPORT QgsPolymorphicRelation
     /**
      * Sets a list of layer ids to be used as potential referenced layers
      */
-    void setReferencedLayerIds( const QStringList &childRelationIds );
+    void setReferencedLayerIds( const QStringList &referencedLayerIds );
 
     /**
      * Returns a list of layer ids to be used as potential referenced layers

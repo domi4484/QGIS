@@ -210,7 +210,7 @@ Sets the ``expression`` to identify the parent layer
 Returns the expression to identify the parent layer
 %End
 
-    void setReferencedLayerIds( const QStringList &childRelationIds );
+    void setReferencedLayerIds( const QStringList &referencedLayerIds );
 %Docstring
 Sets a list of layer ids to be used as potential referenced layers
 %End

@@ -117,6 +117,21 @@ If it's empty, then it's considered as a 1:M relationship.
 .. versionadded:: 3.16
 %End
 
+    QVariant nmPolymorphicRelationId() const;
+%Docstring
+Determines the polymorphic relation id of the second relation involved in an N:M relation.
+
+.. versionadded:: 3.18
+%End
+
+    void setNmPolymorphicRelationId( const QVariant &nmPolymorphicRelationId = QVariant() );
+%Docstring
+Sets ``nmPolymorphicRelationId`` for the relation id of the second relation involved in an N:M relation.
+If it's empty, then it's considered as a 1:M relationship.
+
+.. versionadded:: 3.18
+%End
+
     QString label() const;
 %Docstring
 Determines the label of this element

@@ -137,7 +137,7 @@ Returns all the polymorphic relations
 
     QgsPolymorphicRelation polymorphicRelation( const QString &polymorphicRelationId ) const;
 %Docstring
-Returns the list of relations associated with a polymorphic relation
+Returns the polymorphic relation associated with a polymorphic relation id
 %End
 
     void addPolymorphicRelation( const QgsPolymorphicRelation &polymorphicRelation );

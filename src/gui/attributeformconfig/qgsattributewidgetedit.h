@@ -75,7 +75,7 @@ class GUI_EXPORT QgsAttributeWidgetRelationEditWidget : public QWidget, private 
 
   private:
     void setCardinalityCombo( const QString &cardinalityComboItem, const QVariant &auserData = QVariant() );
-    void setNmRelationId( const QVariant &auserData = QVariant() );
+    void setCurrentRelationCardinalityCombo( const QVariant &auserData = QVariant() );
 
     QMetaObject::Connection mWidgetTypeComboBoxConnection;
     QgsAbstractRelationEditorConfigWidget *mConfigWidget = nullptr;

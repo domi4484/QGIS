@@ -109,6 +109,8 @@ void QgsAttributeWidgetRelationEditWidget::setRelationEditorConfiguration( const
   //load the combo mRelationCardinalityCombo
   mRelationCardinalityCombo->clear();
   mRelationCardinalityCombo->addItem( tr( "Many to one relation" ), QVariant() );
+  if ( !config.nmRelationId.isValid() && !config.nmPolymorphicRelationId.isValid() )
+    setCurrentRelationCardinalityCombo( QVariant() );
 
   QgsRelation relation = QgsProject::instance()->relationManager()->relation( relationId );
   const QList<QgsRelation> relations = QgsProject::instance()->relationManager()->referencingRelations( relation.referencingLayer() );
@@ -117,33 +119,27 @@ void QgsAttributeWidgetRelationEditWidget::setRelationEditorConfiguration( const
     const QgsRelation::FieldPair relationFirstFieldPair = relation.fieldPairs().at( 0 );
     for ( const QgsRelation &nmrel : relations )
     {
-      if ( !nmrel.fieldPairs().isEmpty() &&
-           nmrel.fieldPairs().at( 0 ).referencingField() != relationFirstFieldPair.referencingField() )
-      {
-        mRelationCardinalityCombo->addItem( QStringLiteral( "%1 (%2)" ).arg( nmrel.referencedLayer()->name(), nmrel.fieldPairs().at( 0 ).referencedField() ), QVariant::fromValue( nmrel ) );
-      }
-    }
-  }
+      if ( nmrel.fieldPairs().isEmpty() )
+        continue;
 
-  // Add polymorphic relation if this layer is not the referenced layer
-  const QList<QgsPolymorphicRelation> polymorphicRelations = QgsProject::instance()->relationManager()->polymorphicRelations().values();
-  for ( const QgsPolymorphicRelation &polymorphicRelation : polymorphicRelations )
-  {
-    if ( relation.referencingLayer() == polymorphicRelation.referencingLayer() )
-    {
-      bool addPolymorphicRelation = true;
-      const QStringList referencedLayerIds = polymorphicRelation.referencedLayerIds();
-      for ( const QString &referencedLayerId : referencedLayerIds )
+      if ( nmrel.fieldPairs().at( 0 ).referencingField() == relationFirstFieldPair.referencingField() )
+        continue;
+
+      if ( nmrel.polymorphicRelation().isValid() )
       {
-        if ( referencedLayerId == relation.referencedLayer()->id() )
+        if ( mRelationCardinalityCombo->findData( QVariant::fromValue( nmrel.polymorphicRelation() ) ) < 0 )
         {
-          addPolymorphicRelation = false;
-          break;
+          mRelationCardinalityCombo->addItem( QStringLiteral( "%1" ).arg( nmrel.polymorphicRelation().name() ), QVariant::fromValue( nmrel.polymorphicRelation() ) );
+          if ( config.nmPolymorphicRelationId == nmrel.polymorphicRelation().id() )
+            setCurrentRelationCardinalityCombo( QVariant::fromValue( nmrel.polymorphicRelation() ) );
         }
       }
-
-      if ( addPolymorphicRelation )
-        mRelationCardinalityCombo->addItem( QStringLiteral( "%1" ).arg( polymorphicRelation.name() ), QVariant::fromValue( polymorphicRelation ) );
+      else
+      {
+        mRelationCardinalityCombo->addItem( QStringLiteral( "%1 (%2)" ).arg( nmrel.referencedLayer()->name(), nmrel.fieldPairs().at( 0 ).referencedField() ), QVariant::fromValue( nmrel ) );
+        if ( config.nmRelationId == nmrel.id() )
+          setCurrentRelationCardinalityCombo( QVariant::fromValue( nmrel ) );
+      }
     }
   }
 
@@ -170,7 +166,6 @@ void QgsAttributeWidgetRelationEditWidget::setRelationEditorConfiguration( const
   } );
 
   mRelationCardinalityCombo->setToolTip( tr( "For a many to many (N:M) relation, the direct link has to be selected. The in-between table will be hidden." ) );
-  setNmRelationId( config.nmRelationId );
 
   mRelationLabelEdit->setText( config.label );
 
@@ -229,7 +224,7 @@ void QgsAttributeWidgetRelationEditWidget::relationCardinalityComboCurrentIndexC
   }
 }
 
-void QgsAttributeWidgetRelationEditWidget::setNmRelationId( const QVariant &auserData )
+void QgsAttributeWidgetRelationEditWidget::setCurrentRelationCardinalityCombo( const QVariant &auserData )
 {
   int idx = mRelationCardinalityCombo->findData( auserData );
 

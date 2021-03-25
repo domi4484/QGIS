@@ -38,10 +38,9 @@ Base class to build new relation widgets.
     enum Cardinality
     {
       ManyToOne,
-      ManyToOnePolymorphic,
       ManyToMany,
       ManyToManyPolymorphic,
-      UnknownCardinality
+      InvalidCardinality
     };
 
     QgsAbstractRelationEditorWidget( const QVariantMap &config, QWidget *parent /TransferThis/ = 0 );
@@ -281,7 +280,7 @@ A hook called right after :py:func:`~QgsAbstractRelationEditorWidget.setRelation
 Check :py:class:`QgsRealationEditorWidget` as an example.
 %End
 
-    virtual void beforeSetRelations( const QgsRelation &newRelation, const QgsRelation &newNmRelation );
+    virtual void beforeSetRelations();
 %Docstring
 A hook called right before :py:func:`~QgsAbstractRelationEditorWidget.setRelations` is executed. Used to manipulate UI once setting the relations is done.
 Check :py:class:`QgsRealationEditorWidget` as an example.

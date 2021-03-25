@@ -139,6 +139,19 @@ class CORE_EXPORT QgsAttributeEditorRelation : public QgsAttributeEditorElement
     void setNmRelationId( const QVariant &nmRelationId = QVariant() );
 
     /**
+     * Determines the polymorphic relation id of the second relation involved in an N:M relation.
+     * \since QGIS 3.18
+     */
+    QVariant nmPolymorphicRelationId() const;
+
+    /**
+     * Sets \a nmPolymorphicRelationId for the relation id of the second relation involved in an N:M relation.
+     * If it's empty, then it's considered as a 1:M relationship.
+     * \since QGIS 3.18
+     */
+    void setNmPolymorphicRelationId( const QVariant &nmPolymorphicRelationId = QVariant() );
+
+    /**
      * Determines the label of this element
      * \since QGIS 3.16
      */
@@ -186,6 +199,7 @@ class CORE_EXPORT QgsAttributeEditorRelation : public QgsAttributeEditorElement
     Buttons mButtons = Buttons( Button::AllButtons );
     bool mForceSuppressFormPopup = false;
     QVariant mNmRelationId;
+    QVariant mNmPolymorphicRelationId;
     QString mLabel;
     QString mRelationWidgetTypeId;
     QVariantMap mRelationEditorConfig;

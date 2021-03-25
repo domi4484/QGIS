@@ -30,6 +30,7 @@ QgsAttributeEditorElement *QgsAttributeEditorRelation::clone( QgsAttributeEditor
   element->mButtons = mButtons;
   element->mForceSuppressFormPopup = mForceSuppressFormPopup;
   element->mNmRelationId = mNmRelationId;
+  element->mNmPolymorphicRelationId = mNmPolymorphicRelationId;
   element->mLabel = mLabel;
   element->mRelationEditorConfig = mRelationEditorConfig;
 
@@ -41,6 +42,7 @@ void QgsAttributeEditorRelation::saveConfiguration( QDomElement &elem, QDomDocum
   elem.setAttribute( QStringLiteral( "relation" ), mRelation.id() );
   elem.setAttribute( QStringLiteral( "forceSuppressFormPopup" ), mForceSuppressFormPopup );
   elem.setAttribute( QStringLiteral( "nmRelationId" ), mNmRelationId.toString() );
+  elem.setAttribute( QStringLiteral( "nmPolymorphicRelationId" ), mNmPolymorphicRelationId.toString() );
   elem.setAttribute( QStringLiteral( "label" ), mLabel );
   elem.setAttribute( QStringLiteral( "relationWidgetTypeId" ), mRelationWidgetTypeId );
 
@@ -89,6 +91,11 @@ void QgsAttributeEditorRelation::loadConfiguration( const QDomElement &element, 
     setNmRelationId( element.attribute( QStringLiteral( "nmRelationId" ) ) );
   }
 
+  if ( element.hasAttribute( QStringLiteral( "nmPolymorphicRelationId" ) ) )
+  {
+    setNmPolymorphicRelationId( element.attribute( QStringLiteral( "nmPolymorphicRelationId" ) ) );
+  }
+
   if ( element.hasAttribute( "label" ) )
   {
     QString label = element.attribute( QStringLiteral( "label" ) );
@@ -116,14 +123,24 @@ bool QgsAttributeEditorRelation::forceSuppressFormPopup() const
   return mForceSuppressFormPopup;
 }
 
+QVariant QgsAttributeEditorRelation::nmRelationId() const
+{
+  return mNmRelationId;
+}
+
 void QgsAttributeEditorRelation::setNmRelationId( const QVariant &nmRelationId )
 {
   mNmRelationId = nmRelationId;
 }
 
-QVariant QgsAttributeEditorRelation::nmRelationId() const
+QVariant QgsAttributeEditorRelation::nmPolymorphicRelationId() const
 {
-  return mNmRelationId;
+  return mNmPolymorphicRelationId;
+}
+
+void QgsAttributeEditorRelation::setNmPolymorphicRelationId( const QVariant &nmPolymorphicRelationId )
+{
+  mNmPolymorphicRelationId = nmPolymorphicRelationId;
 }
 
 void QgsAttributeEditorRelation::setLabel( const QString &label )

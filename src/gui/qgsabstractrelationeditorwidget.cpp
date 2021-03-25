@@ -55,7 +55,7 @@ void QgsAbstractRelationEditorWidget::setRelationFeature( const QgsRelation &rel
 
 void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation, const QgsRelation &nmrelation )
 {
-  beforeSetRelations( relation, nmrelation );
+  beforeSetRelations();
 
   mRelation = relation;
   mNmRelation = nmrelation;
@@ -79,13 +79,19 @@ void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation,
       if ( it.value()->layers().contains( mRelation.referencedLayer() ) &&
            it.value()->layers().contains( mRelation.referencingLayer() ) &&
            it.value()->layers().contains( mNmRelation.referencedLayer() ) )
+      {
         mLayerInSameTransactionGroup = true;
+        break;
+      }
     }
     else
     {
       if ( it.value()->layers().contains( mRelation.referencedLayer() ) &&
            it.value()->layers().contains( mRelation.referencingLayer() ) )
+      {
         mLayerInSameTransactionGroup = true;
+        break;
+      }
     }
   }
 
@@ -99,13 +105,13 @@ void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation,
 
 void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation, const QgsPolymorphicRelation &nmPolymorphicRelation )
 {
-  beforeSetRelations( relation, nmrelation );
+  beforeSetRelations();
 
   mRelation = relation;
-  mNmRelation = nmrelation;
+  mNmPolymorphicRelation = nmPolymorphicRelation;
 
-  if ( mNmRelation.isValid() )
-    mNmPolymorphicRelation = QgsPolymorphicRelation();
+  if ( mNmPolymorphicRelation.isValid() )
+    mNmRelation = QgsRelation();
 
   if ( !mRelation.isValid() )
   {
@@ -118,18 +124,39 @@ void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation,
   const auto transactionGroups = QgsProject::instance()->transactionGroups();
   for ( auto it = transactionGroups.constBegin(); it != transactionGroups.constEnd(); ++it )
   {
-    if ( mNmRelation.isValid() )
+    if ( mNmPolymorphicRelation.isValid() )
     {
-      if ( it.value()->layers().contains( mRelation.referencedLayer() ) &&
-           it.value()->layers().contains( mRelation.referencingLayer() ) &&
-           it.value()->layers().contains( mNmRelation.referencedLayer() ) )
-        mLayerInSameTransactionGroup = true;
+      if ( !it.value()->layers().contains( mRelation.referencedLayer() ) )
+        continue;
+
+      if ( !it.value()->layers().contains( mRelation.referencingLayer() ) )
+        continue;
+
+      bool allLayersInTransaction = true;
+      const QStringList referencedLayerIds = mNmPolymorphicRelation.referencedLayerIds();
+      for ( const QString &layerId : referencedLayerIds )
+      {
+        QgsVectorLayer *layer = qobject_cast<QgsVectorLayer *>( QgsProject::instance()->mapLayers().value( layerId ) );
+        if ( !it.value()->layers().contains( layer ) )
+        {
+          allLayersInTransaction = false;
+          break;
+        }
+      }
+      if ( !allLayersInTransaction )
+        continue;
+
+      mLayerInSameTransactionGroup = true;
+      break;
     }
     else
     {
       if ( it.value()->layers().contains( mRelation.referencedLayer() ) &&
            it.value()->layers().contains( mRelation.referencingLayer() ) )
+      {
         mLayerInSameTransactionGroup = true;
+        break;
+      }
     }
   }
 
@@ -144,10 +171,10 @@ void QgsAbstractRelationEditorWidget::setRelations( const QgsRelation &relation,
 QgsAbstractRelationEditorWidget::Cardinality QgsAbstractRelationEditorWidget::cardinality() const
 {
   if ( !mRelation.isValid() )
-    return UnknownCardinality;
+    return InvalidCardinality;
 
   if ( mNmRelation.isValid() && mNmPolymorphicRelation.isValid() )
-    return UnknownCardinality;
+    return InvalidCardinality;
 
   if ( mNmRelation.isValid() )
     return ManyToMany;
@@ -180,9 +207,12 @@ void QgsAbstractRelationEditorWidget::setFeature( const QgsFeature &feature, boo
 
 void QgsAbstractRelationEditorWidget::setNmRelationId( const QVariant &nmRelationId )
 {
-  QgsRelation nmrelation = QgsProject::instance()->relationManager()->relation( nmRelationId.toString() );
-  beforeSetRelations( mRelation, nmrelation );
-  mNmRelation = nmrelation;
+  beforeSetRelations();
+  mNmRelation = QgsProject::instance()->relationManager()->relation( nmRelationId.toString() );
+
+  if ( mNmRelation.isValid() )
+    mNmPolymorphicRelation = QgsPolymorphicRelation();
+
   afterSetRelations();
   updateUi();
 }
@@ -276,58 +306,75 @@ void QgsAbstractRelationEditorWidget::addFeature( const QgsGeometry &geometry )
 
   const QgsVectorLayerTools *vlTools = mEditorContext.vectorLayerTools();
 
-  if ( mNmRelation.isValid() )
+  switch ( cardinality() )
   {
-    // only normal relations support m:n relation
-    Q_ASSERT( mNmRelation.type() == QgsRelation::Normal );
+    case ManyToOne:
+    {
+      QgsFields fields = mRelation.referencingLayer()->fields();
+      if ( mRelation.type() == QgsRelation::Generated )
+      {
+        QgsPolymorphicRelation polyRel = mRelation.polymorphicRelation();
+        keyAttrs.insert( fields.indexFromName( polyRel.referencedLayerField() ), polyRel.layerRepresentation( mRelation.referencedLayer() ) );
+      }
 
-    // n:m Relation: first let the user create a new feature on the other table
-    // and autocreate a new linking feature.
-    QgsFeature f;
-    if ( !vlTools->addFeature( mNmRelation.referencedLayer(), QgsAttributeMap(), geometry, &f ) )
+      const auto constFieldPairs = mRelation.fieldPairs();
+      for ( const QgsRelation::FieldPair &fieldPair : constFieldPairs )
+      {
+        keyAttrs.insert( fields.indexFromName( fieldPair.referencingField() ), mFeature.attribute( fieldPair.referencedField() ) );
+      }
+
+      if ( !vlTools->addFeature( mRelation.referencingLayer(), keyAttrs, geometry ) )
+        return;
+    }
+    break;
+    case ManyToMany:
+    {
+      // only normal relations support m:n relation
+      Q_ASSERT( mNmRelation.type() == QgsRelation::Normal );
+
+      // n:m Relation: first let the user create a new feature on the other table
+      // and autocreate a new linking feature.
+      QgsFeature f;
+      if ( !vlTools->addFeature( mNmRelation.referencedLayer(), QgsAttributeMap(), geometry, &f ) )
+        return;
+
+      // Fields of the linking table
+      const QgsFields fields = mRelation.referencingLayer()->fields();
+
+      // Expression context for the linking table
+      QgsExpressionContext context = mRelation.referencingLayer()->createExpressionContext();
+
+      QgsAttributeMap linkAttributes;
+      const auto constFieldPairs = mRelation.fieldPairs();
+      for ( const QgsRelation::FieldPair &fieldPair : constFieldPairs )
+      {
+        int index = fields.indexOf( fieldPair.first );
+        linkAttributes.insert( index,  mFeature.attribute( fieldPair.second ) );
+      }
+
+      const auto constNmFieldPairs = mNmRelation.fieldPairs();
+      for ( const QgsRelation::FieldPair &fieldPair : constNmFieldPairs )
+      {
+        int index = fields.indexOf( fieldPair.first );
+        linkAttributes.insert( index, f.attribute( fieldPair.second ) );
+      }
+      QgsFeature linkFeature = QgsVectorLayerUtils::createFeature( mRelation.referencingLayer(), QgsGeometry(), linkAttributes, &context );
+
+      mRelation.referencingLayer()->addFeature( linkFeature );
+    }
+    break;
+    case ManyToManyPolymorphic:
+    {
+      QgsLogger::warning( tr( "Adding features in a n:m polymorphic related table is not supported." ) );
       return;
-
-    // Fields of the linking table
-    const QgsFields fields = mRelation.referencingLayer()->fields();
-
-    // Expression context for the linking table
-    QgsExpressionContext context = mRelation.referencingLayer()->createExpressionContext();
-
-    QgsAttributeMap linkAttributes;
-    const auto constFieldPairs = mRelation.fieldPairs();
-    for ( const QgsRelation::FieldPair &fieldPair : constFieldPairs )
-    {
-      int index = fields.indexOf( fieldPair.first );
-      linkAttributes.insert( index,  mFeature.attribute( fieldPair.second ) );
     }
-
-    const auto constNmFieldPairs = mNmRelation.fieldPairs();
-    for ( const QgsRelation::FieldPair &fieldPair : constNmFieldPairs )
+    break;
+    default:
     {
-      int index = fields.indexOf( fieldPair.first );
-      linkAttributes.insert( index, f.attribute( fieldPair.second ) );
-    }
-    QgsFeature linkFeature = QgsVectorLayerUtils::createFeature( mRelation.referencingLayer(), QgsGeometry(), linkAttributes, &context );
-
-    mRelation.referencingLayer()->addFeature( linkFeature );
-  }
-  else
-  {
-    QgsFields fields = mRelation.referencingLayer()->fields();
-    if ( mRelation.type() == QgsRelation::Generated )
-    {
-      QgsPolymorphicRelation polyRel = mRelation.polymorphicRelation();
-      keyAttrs.insert( fields.indexFromName( polyRel.referencedLayerField() ), polyRel.layerRepresentation( mRelation.referencedLayer() ) );
-    }
-
-    const auto constFieldPairs = mRelation.fieldPairs();
-    for ( const QgsRelation::FieldPair &fieldPair : constFieldPairs )
-    {
-      keyAttrs.insert( fields.indexFromName( fieldPair.referencingField() ), mFeature.attribute( fieldPair.referencedField() ) );
-    }
-
-    if ( !vlTools->addFeature( mRelation.referencingLayer(), keyAttrs, geometry ) )
+      QgsLogger::warning( tr( "Invalid cardinality." ) );
       return;
+    }
+    break;
   }
 
   updateUi();
@@ -672,11 +719,8 @@ void QgsAbstractRelationEditorWidget::beforeSetRelationFeature( const QgsRelatio
 void QgsAbstractRelationEditorWidget::afterSetRelationFeature()
 {}
 
-void QgsAbstractRelationEditorWidget::beforeSetRelations( const QgsRelation &newRelation, const QgsRelation &newNmRelation )
-{
-  Q_UNUSED( newRelation )
-  Q_UNUSED( newNmRelation )
-}
+void QgsAbstractRelationEditorWidget::beforeSetRelations()
+{}
 
 void QgsAbstractRelationEditorWidget::afterSetRelations()
 {}

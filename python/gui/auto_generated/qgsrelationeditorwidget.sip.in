@@ -151,7 +151,7 @@ Sets the title of the root groupbox
 
     virtual void afterSetRelationFeature();
 
-    virtual void beforeSetRelations( const QgsRelation &newRelation, const QgsRelation &newNmRelation );
+    virtual void beforeSetRelations();
 
     virtual void afterSetRelations();
 

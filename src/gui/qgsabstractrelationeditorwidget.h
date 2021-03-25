@@ -62,11 +62,11 @@ class GUI_EXPORT QgsAbstractRelationEditorWidget : public QWidget
     enum Cardinality
     {
       ManyToOne,
-      ManyToOnePolymorphic, // not implemented
       ManyToMany,
       ManyToManyPolymorphic,
-      UnknownCardinality
+      InvalidCardinality
     };
+    Q_ENUM( Cardinality )
 
     /**
      * Constructor
@@ -313,7 +313,7 @@ class GUI_EXPORT QgsAbstractRelationEditorWidget : public QWidget
      * A hook called right before setRelations() is executed. Used to manipulate UI once setting the relations is done.
      * Check QgsRealationEditorWidget as an example.
      */
-    virtual void beforeSetRelations( const QgsRelation &newRelation, const QgsRelation &newNmRelation );
+    virtual void beforeSetRelations();
 
     /**
      * A hook called right after setRelations() is executed, but before updateUi() is called. Used to update the UI once setting the relations is done.

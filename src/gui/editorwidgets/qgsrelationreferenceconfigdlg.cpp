@@ -46,16 +46,16 @@ QgsRelationReferenceConfigDlg::QgsRelationReferenceConfigDlg( QgsVectorLayer *vl
       if ( mComboRelation->findData( polymorphicRelation.id(), ComboRelationRole_Id ) >= 0 )
         continue;
 
-      mComboRelation->addItem( polymorphicRelation.name(), QVariant::fromValue( polymorphicRelation ) );
+      mComboRelation->addItem( polymorphicRelation.name(), polymorphicRelation.id() );
       int insertedItemIndex = mComboRelation->findData( polymorphicRelation.id(), ComboRelationRole_Id );
       mComboRelation->setItemData( insertedItemIndex, RelationType_Polymorphic, ComboRelationRole_Type );
     }
     else
     {
       if ( relation.name().isEmpty() )
-        mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.id(), relation.referencedLayerId() ), QVariant::fromValue( relation ) );
+        mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.id(), relation.referencedLayerId() ), relation.id() );
       else
-        mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.name(), relation.referencedLayerId() ), QVariant::fromValue( relation ) );
+        mComboRelation->addItem( QStringLiteral( "%1 (%2)" ).arg( relation.name(), relation.referencedLayerId() ), relation.id() );
 
       int insertedItemIndex = mComboRelation->findData( relation.id(), ComboRelationRole_Id );
       mComboRelation->setItemData( insertedItemIndex, RelationType_Normal, ComboRelationRole_Type );

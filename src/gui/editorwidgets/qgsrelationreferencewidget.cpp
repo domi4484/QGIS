@@ -37,6 +37,7 @@
 #include "qgsrelationreferenceconfigdlg.h"
 #include "qgsvectorlayer.h"
 #include "qgsattributetablemodel.h"
+#include "qgsmaplayercombobox.h"
 #include "qgsmaptoolidentifyfeature.h"
 #include "qgsmaptooldigitizefeature.h"
 #include "qgsfeatureiterator.h"
@@ -86,6 +87,11 @@ QgsRelationReferenceWidget::QgsRelationReferenceWidget( QWidget *parent )
   mFilterContainer->setLayout( mFilterLayout );
   mChooserContainer->setLayout( chooserLayout );
   chooserLayout->addWidget( mFilterContainer );
+
+  mMapLayerComboBox = new QgsMapLayerComboBox();
+  mMapLayerComboBox->setEnabled( false );
+  mMapLayerComboBox->setVisible( false );
+  mChooserContainer->layout()->addWidget( mMapLayerComboBox );
 
   mComboBox = new QgsFeatureListComboBox();
   mChooserContainer->layout()->addWidget( mComboBox );
@@ -218,6 +224,48 @@ void QgsRelationReferenceWidget::setRelation( const QgsRelation &relation, bool 
   }
   else
   {
+    mInvalidLabel->show();
+  }
+
+  if ( mShown && isVisible() )
+  {
+    init();
+  }
+}
+
+void QgsRelationReferenceWidget::setPolymorphicRelation( const QgsPolymorphicRelation &polymorphicRelation, bool allowNullValue )
+{
+  mAllowNull = allowNullValue;
+  mRemoveFKButton->setVisible( allowNullValue && mReadOnlySelector );
+
+  if ( polymorphicRelation.isValid() )
+  {
+    mPolymorphicRelation = polymorphicRelation;
+
+    mMapLayerComboBox->clear();
+
+//    QList<QgsMapLayer *> layersToShow;
+//    const QVector<QgsVectorLayer *> layers = QgsProject::instance()->layers<QgsVectorLayer *>();
+//    for ( QgsMapLayer *vectorLayer : QgsProject::instance()->layers<QgsVectorLayer *>() )
+//    {
+//      if ( !vectorLayer || !vectorLayer->isValid() )
+//        continue;
+
+//      if ( mPolymorphicRelation.referencedLayerIds().contains( vectorLayer->id() ) )
+//        layersToShow << vectorLayer;
+//    }
+//    mMapLayerComboBox->setLayerAllowlist( layersToShow );
+
+    mMapLayerComboBox->setVisible( true );
+
+    // Make sure one relation is set
+    setRelation( mPolymorphicRelation.generateRelations().first(), allowNullValue );
+  }
+  else
+  {
+    mMapLayerComboBox->clear();
+    mMapLayerComboBox->setVisible( false );
+
     mInvalidLabel->show();
   }
 
@@ -756,6 +804,11 @@ void QgsRelationReferenceWidget::setAllowAddFeatures( bool allowAddFeatures )
 QgsRelation QgsRelationReferenceWidget::relation() const
 {
   return mRelation;
+}
+
+QgsPolymorphicRelation QgsRelationReferenceWidget::polymorphicRelation() const
+{
+  return mPolymorphicRelation;
 }
 
 void QgsRelationReferenceWidget::featureIdentified( const QgsFeature &feature )

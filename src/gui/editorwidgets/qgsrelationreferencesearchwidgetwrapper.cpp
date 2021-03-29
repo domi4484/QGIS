@@ -220,11 +220,28 @@ void QgsRelationReferenceSearchWidgetWrapper::initWidget( QWidget *editor )
     mWidget->setFilterExpression( config( QStringLiteral( "FilterExpression" ) ).toString() );
   }
 
-  QgsRelation relation = QgsProject::instance()->relationManager()->relation( config( QStringLiteral( "Relation" ) ).toString() );
-  // if no relation is given from the config, fetch one if there is only one available
-  if ( !relation.isValid() && !layer()->referencingRelations( mFieldIdx ).isEmpty() && layer()->referencingRelations( mFieldIdx ).count() == 1 )
-    relation = layer()->referencingRelations( mFieldIdx )[0];
-  mWidget->setRelation( relation, config( QStringLiteral( "AllowNULL" ) ).toBool() );
+  bool allowNull = config( QStringLiteral( "AllowNULL" ) ).toBool();
+
+  const QVariant relationId = config( QStringLiteral( "Relation" ) );
+  const QVariant polymorphicRelationId = config( QStringLiteral( "PolymorphicRelation" ) );
+
+  if ( polymorphicRelationId.isValid()
+       && !polymorphicRelationId.toString().isEmpty() )
+  {
+    QgsPolymorphicRelation polymorphicRelation;
+    polymorphicRelation = QgsProject::instance()->relationManager()->polymorphicRelation( polymorphicRelationId.toString() );
+
+    mWidget->setPolymorphicRelation( polymorphicRelation, allowNull );
+  }
+  else
+  {
+    QgsRelation relation; // invalid relation by default
+    if ( relationId.isValid() )
+      relation = QgsProject::instance()->relationManager()->relation( relationId.toString() );
+    if ( !relation.isValid() && !layer()->referencingRelations( mFieldIdx ).isEmpty() && layer()->referencingRelations( mFieldIdx ).count() == 1 )
+      relation = layer()->referencingRelations( mFieldIdx )[0];
+    mWidget->setRelation( relation, allowNull );
+  }
 
   mWidget->showIndeterminateState();
   connect( mWidget, &QgsRelationReferenceWidget::foreignKeysChanged, this, &QgsRelationReferenceSearchWidgetWrapper::onValuesChanged );

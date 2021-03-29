@@ -44,6 +44,8 @@ class QgsRelationReferenceWidget : QWidget
 
     void setRelation( const QgsRelation &relation, bool allowNullValue );
 
+    void setPolymorphicRelation( const QgsPolymorphicRelation &polymorphicRelation, bool allowNullValue );
+
     void setRelationEditable( bool editable );
 
  void setForeignKey( const QVariant &value ) /Deprecated/;
@@ -180,6 +182,13 @@ Determines if a button for adding new features should be shown.
 Returns the current relation, which might be invalid
 
 .. versionadded:: 3.10
+%End
+
+    QgsPolymorphicRelation polymorphicRelation() const;
+%Docstring
+Returns the current polymorphic relation, which might be invalid
+
+.. versionadded:: 3.18
 %End
 
     void setFormFeature( const QgsFeature &formFeature );

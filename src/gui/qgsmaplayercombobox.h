@@ -59,6 +59,12 @@ class GUI_EXPORT QgsMapLayerComboBox : public QComboBox
     //! returns the list of excepted layers
     QList<QgsMapLayer *> exceptedLayerList() const {return mProxyModel->exceptedLayerList();}
 
+    //! set a list of layers allowed to be listed
+    void setLayerAllowlist( const QList<QgsMapLayer *> &layerList ) { mProxyModel->setLayerAllowlist( layerList );}
+
+    //! returns the list of allowed layers
+    QList<QgsMapLayer *> layerAllowlist() const {return mProxyModel->layerAllowlist();}
+
     /**
      * Sets a list of data providers which should be excluded from the combobox.
      * \see excludedProviders()

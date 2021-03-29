@@ -67,37 +67,51 @@ void QgsRelationReferenceWidgetWrapper::initWidget( QWidget *editor )
   }
   mWidget->setAllowAddFeatures( config( QStringLiteral( "AllowAddFeatures" ), false ).toBool() );
 
-  const QVariant relationName = config( QStringLiteral( "Relation" ) );
-
   // Store relation data source and provider key
   mWidget->setReferencedLayerDataSource( config( QStringLiteral( "ReferencedLayerDataSource" ) ).toString() );
   mWidget->setReferencedLayerProviderKey( config( QStringLiteral( "ReferencedLayerProviderKey" ) ).toString() );
   mWidget->setReferencedLayerId( config( QStringLiteral( "ReferencedLayerId" ) ).toString() );
   mWidget->setReferencedLayerName( config( QStringLiteral( "ReferencedLayerName" ) ).toString() );
 
-  QgsRelation relation; // invalid relation by default
-  if ( relationName.isValid() )
-    relation = QgsProject::instance()->relationManager()->relation( relationName.toString() );
-  if ( !relation.isValid() && !layer()->referencingRelations( fieldIdx() ).isEmpty() )
-    relation = layer()->referencingRelations( fieldIdx() )[0];
+  bool allowNull = config( QStringLiteral( "AllowNULL" ) ).toBool();
 
-  // If this widget is already embedded by the same relation, reduce functionality
-  do
+  const QVariant relationId = config( QStringLiteral( "Relation" ) );
+  const QVariant polymorphicRelationId = config( QStringLiteral( "PolymorphicRelation" ) );
+
+  if ( polymorphicRelationId.isValid()
+       && !polymorphicRelationId.toString().isEmpty() )
   {
-    if ( ctx->relation().id() == relation.id() )
-    {
-      mWidget->setEmbedForm( false );
-      mWidget->setReadOnlySelector( true );
-      mWidget->setAllowMapIdentification( false );
-      mWidget->setOpenFormButtonVisible( false );
-      mWidget->setAllowAddFeatures( false );
-      break;
-    }
-    ctx = ctx->parentContext();
-  }
-  while ( ctx );
+    QgsPolymorphicRelation polymorphicRelation;
+    polymorphicRelation = QgsProject::instance()->relationManager()->polymorphicRelation( polymorphicRelationId.toString() );
 
-  mWidget->setRelation( relation, config( QStringLiteral( "AllowNULL" ) ).toBool() );
+    mWidget->setPolymorphicRelation( polymorphicRelation, allowNull );
+  }
+  else
+  {
+    QgsRelation relation; // invalid relation by default
+    if ( relationId.isValid() )
+      relation = QgsProject::instance()->relationManager()->relation( relationId.toString() );
+    if ( !relation.isValid() && !layer()->referencingRelations( fieldIdx() ).isEmpty() )
+      relation = layer()->referencingRelations( fieldIdx() )[0];
+
+    // If this widget is already embedded by the same relation, reduce functionality
+    do
+    {
+      if ( ctx->relation().id() == relation.id() )
+      {
+        mWidget->setEmbedForm( false );
+        mWidget->setReadOnlySelector( true );
+        mWidget->setAllowMapIdentification( false );
+        mWidget->setOpenFormButtonVisible( false );
+        mWidget->setAllowAddFeatures( false );
+        break;
+      }
+      ctx = ctx->parentContext();
+    }
+    while ( ctx );
+
+    mWidget->setRelation( relation, allowNull );
+  }
 
   connect( mWidget, &QgsRelationReferenceWidget::foreignKeysChanged, this, &QgsRelationReferenceWidgetWrapper::foreignKeysChanged );
 }
@@ -151,6 +165,13 @@ QVariantList QgsRelationReferenceWidgetWrapper::additionalFieldValues() const
     }
     return values;
   }
+  else if ( mWidget->polymorphicRelation().isValid() )
+  {
+    if ( mWidget->foreignKeys().isEmpty() )
+      return QVariantList() << QVariant();
+
+    return mWidget->foreignKeys();
+  }
   else
   {
     QVariantList values = mWidget->foreignKeys();
@@ -170,17 +191,26 @@ QVariantList QgsRelationReferenceWidgetWrapper::additionalFieldValues() const
 
 QStringList QgsRelationReferenceWidgetWrapper::additionalFields() const
 {
-  if ( !mWidget || !mWidget->relation().isValid() )
+  if ( !mWidget || ( !mWidget->relation().isValid() && !mWidget->polymorphicRelation().isValid() ) )
     return QStringList();
 
   QStringList fields;
-  const QList<QgsRelation::FieldPair> fieldPairs = mWidget->relation().fieldPairs();
-  for ( int i = 0; i < fieldPairs.count(); i++ )
-  {
-    if ( fieldPairs.at( i ).referencingField() == field().name() )
-      continue;
 
-    fields << fieldPairs.at( i ).referencingField();
+  // Polymorphic relations and compound keys are not supported at the same time
+  if ( mWidget->polymorphicRelation().isValid() )
+  {
+    fields << mWidget->polymorphicRelation().referencedLayerField();
+  }
+  else
+  {
+    const QList<QgsRelation::FieldPair> fieldPairs = mWidget->relation().fieldPairs();
+    for ( int i = 0; i < fieldPairs.count(); i++ )
+    {
+      if ( fieldPairs.at( i ).referencingField() == field().name() )
+        continue;
+
+      fields << fieldPairs.at( i ).referencingField();
+    }
   }
   return fields;
 }
@@ -192,20 +222,35 @@ void QgsRelationReferenceWidgetWrapper::updateValues( const QVariant &val, const
 
   mIndeterminateState = false;
 
-  QVariantList values = additionalValues;
-  const QList<QgsRelation::FieldPair> fieldPairs = mWidget->relation().fieldPairs();
-  for ( int i = 0; i < fieldPairs.count(); i++ )
-  {
-    if ( fieldPairs.at( i ).referencingField() == field().name() )
-    {
-      values.insert( i, val );
-      break;
-    }
-  }
-  Q_ASSERT( values.count() == fieldPairs.count() );
-
   mBlockChanges++;
-  mWidget->setForeignKeys( values );
+
+  // Polymorphic relations and compound keys are not supported at the same time
+  if ( mWidget->polymorphicRelation().isValid() )
+  {
+    // eval expression for getting layer
+
+//    mWidget->setRelation(  )
+    //    mWidget->setForeignKeys( QVariantList() << val );
+
+    qDebug() << "additionalValues:" << additionalValues;
+
+    mWidget->setForeignKeys( QVariantList() << val );
+  }
+  else
+  {
+    QVariantList values = additionalValues;
+    const QList<QgsRelation::FieldPair> fieldPairs = mWidget->relation().fieldPairs();
+    for ( int i = 0; i < fieldPairs.count(); i++ )
+    {
+      if ( fieldPairs.at( i ).referencingField() == field().name() )
+      {
+        values.insert( i, val );
+        break;
+      }
+    }
+    Q_ASSERT( values.count() == fieldPairs.count() );
+    mWidget->setForeignKeys( values );
+  }
   mWidget->setFormFeature( formFeature() );
   mBlockChanges--;
 }

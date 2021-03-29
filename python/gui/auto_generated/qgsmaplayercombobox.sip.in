@@ -50,6 +50,16 @@ except a list of layers not to be listed
 returns the list of excepted layers
 %End
 
+    void setLayerAllowlist( const QList<QgsMapLayer *> &layerList );
+%Docstring
+set a list of layers allowed to be listed
+%End
+
+    QList<QgsMapLayer *> layerAllowlist() const;
+%Docstring
+returns the list of allowed layers
+%End
+
     void setExcludedProviders( const QStringList &providers );
 %Docstring
 Sets a list of data providers which should be excluded from the combobox.

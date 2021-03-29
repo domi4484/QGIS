@@ -19,6 +19,7 @@
 #include "qgsattributeeditorcontext.h"
 #include "qgis_sip.h"
 #include "qgsfeature.h"
+#include "qgspolymorphicrelation.h"
 #include "qobjectuniqueptr.h"
 
 #include <QComboBox>
@@ -37,6 +38,7 @@ class QgsMapTool;
 class QgsMapToolIdentifyFeature;
 class QgsMapToolDigitizeFeature;
 class QgsMessageBarItem;
+class QgsMapLayerComboBox;
 class QgsFeatureListComboBox;
 class QgsCollapsibleGroupBox;
 class QLabel;
@@ -83,6 +85,8 @@ class GUI_EXPORT QgsRelationReferenceWidget : public QWidget
     ~QgsRelationReferenceWidget() override;
 
     void setRelation( const QgsRelation &relation, bool allowNullValue );
+
+    void setPolymorphicRelation( const QgsPolymorphicRelation &polymorphicRelation, bool allowNullValue );
 
     void setRelationEditable( bool editable );
 
@@ -199,6 +203,12 @@ class GUI_EXPORT QgsRelationReferenceWidget : public QWidget
      * \since QGIS 3.10
      */
     QgsRelation relation() const;
+
+    /**
+     * Returns the current polymorphic relation, which might be invalid
+     * \since QGIS 3.18
+     */
+    QgsPolymorphicRelation polymorphicRelation() const;
 
     /**
      * Set the current form feature (from the referencing layer)
@@ -322,6 +332,7 @@ class GUI_EXPORT QgsRelationReferenceWidget : public QWidget
     QgsAttributeForm *mReferencedAttributeForm = nullptr;
     QgsVectorLayer *mReferencedLayer = nullptr;
     QgsVectorLayer *mReferencingLayer = nullptr;
+    QgsMapLayerComboBox *mMapLayerComboBox = nullptr;
     QgsFeatureListComboBox *mComboBox = nullptr;
     QList<QComboBox *> mFilterComboBoxes;
     QString mFilterExpression;
@@ -332,6 +343,7 @@ class GUI_EXPORT QgsRelationReferenceWidget : public QWidget
     QStringList mFilterFields;
     QMap<QString, QMap<QString, QSet<QString> > > mFilterCache;
     bool mInitialized = false;
+    QgsPolymorphicRelation mPolymorphicRelation;
 
     // Q_PROPERTY
     bool mEmbedForm = false;

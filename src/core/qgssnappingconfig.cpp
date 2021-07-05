@@ -622,7 +622,7 @@ bool QgsSnappingConfig::removeLayers( const QList<QgsMapLayer *> &layers )
   for ( QgsMapLayer *ml : constLayers )
   {
     QgsVectorLayer *vl = qobject_cast<QgsVectorLayer *>( ml );
-    if ( vl )
+    if ( !vl )
     {
       mIndividualLayerSettings.remove( vl );
       changed = true;

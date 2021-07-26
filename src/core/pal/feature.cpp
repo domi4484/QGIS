@@ -998,6 +998,8 @@ std::size_t FeaturePart::createCandidatesAlongLineNearStraightSegments( std::vec
       else
         angle = std::atan2( candidateEndY - candidateStartY, candidateEndX - candidateStartX );
 
+      angle += 3.14 / 2.0;
+
       labelWidth = getLabelWidth( angle );
       labelHeight = getLabelHeight( angle );
       beta = angle + M_PI_2;

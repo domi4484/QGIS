@@ -340,6 +340,11 @@ double LabelPosition::getY( int i ) const
   return ( i >= 0 && i < 4 ? y[i] : -1 );
 }
 
+void LabelPosition::setAlpha( double setalpha )
+{
+  alpha = setalpha;
+}
+
 double LabelPosition::getAlpha() const
 {
   return alpha;

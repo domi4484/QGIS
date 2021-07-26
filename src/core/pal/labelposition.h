@@ -260,6 +260,8 @@ namespace pal
       double getWidth() const { return w; }
       double getHeight() const { return h; }
 
+      void setAlpha( double alpha );
+
       /**
        * Returns the angle to rotate text (in rad).
        */

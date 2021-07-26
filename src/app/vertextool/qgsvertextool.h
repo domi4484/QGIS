@@ -105,6 +105,8 @@ class APP_EXPORT QgsVertexTool : public QgsMapToolAdvancedDigitizing
     //! Update vertex editor to show feature from the given match
     void updateVertexEditor( QgsVectorLayer *layer, QgsFeatureId fid );
 
+
+
   private slots:
     //! update geometry of our feature
     void onCachedGeometryChanged( QgsFeatureId fid, const QgsGeometry &geom );

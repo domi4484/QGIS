@@ -537,17 +537,24 @@ bool QgsAttributeForm::updateDefaultValues( const int originIdx )
       if ( eww )
       {
         //do not update when when mMode is not AddFeatureMode and it's not applyOnUpdate
-        if ( mMode != QgsAttributeEditorContext::AddFeatureMode && !eww->field().defaultValueDefinition().applyOnUpdate() )
-        {
-          continue;
-        }
+//        if ( mMode != QgsAttributeEditorContext::AddFeatureMode && !eww->field().defaultValueDefinition().applyOnUpdate() )
+//        {
+//          continue;
+//        }
 
         //do not update when this widget is already updating (avoid recursions)
         if ( mAlreadyUpdatedFields.contains( eww->fieldIdx() ) )
           continue;
 
         QgsExpressionContext context = createExpressionContext( updatedFeature );
-        QString value = mLayer->defaultValue( eww->fieldIdx(), updatedFeature, &context ).toString();
+
+        QgsExpression exp( mLayer->expressionField( eww->fieldIdx() ) );
+        QVariant value = exp.evaluate( &context );
+
+//        QString value = mLayer->defaultValue( eww->fieldIdx(), updatedFeature, &context ).toString();
+
+
+
         eww->setValue( value );
       }
     }
@@ -2643,22 +2650,29 @@ void QgsAttributeForm::updateDefaultValueDependencies()
     QgsEditorWidgetWrapper *eww = qobject_cast<QgsEditorWidgetWrapper *>( ww );
     if ( eww )
     {
-      QgsExpression exp( eww->field().defaultValueDefinition().expression() );
-      const QSet<QString> referencedColumns = exp.referencedColumns();
-      for ( const QString &referencedColumn : referencedColumns )
+//      QgsExpression exp( eww->field().defaultValueDefinition().expression() );
+      QString expressionField = eww->layer()->expressionField( eww->fieldIdx() );
+      QgsExpression exp( expressionField );
+      if ( expressionField.isEmpty() == false )
       {
-        if ( referencedColumn == QgsFeatureRequest::ALL_ATTRIBUTES )
-        {
-          const QList<int> allAttributeIds( mLayer->fields().allAttributesList() );
+//        mDefaultValueDependencies.insertMulti( eww->fieldIdx(), eww );
 
-          for ( const int id : allAttributeIds )
-          {
-            mDefaultValueDependencies.insertMulti( id, eww );
-          }
-        }
-        else
+        const QSet<QString> referencedColumns = exp.referencedColumns();
+        for ( const QString &referencedColumn : referencedColumns )
         {
-          mDefaultValueDependencies.insertMulti( mLayer->fields().lookupField( referencedColumn ), eww );
+          if ( referencedColumn == QgsFeatureRequest::ALL_ATTRIBUTES )
+          {
+            const QList<int> allAttributeIds( mLayer->fields().allAttributesList() );
+
+            for ( const int id : allAttributeIds )
+            {
+              mDefaultValueDependencies.insertMulti( id, eww );
+            }
+          }
+          else
+          {
+            mDefaultValueDependencies.insertMulti( mLayer->fields().lookupField( referencedColumn ), eww );
+          }
         }
       }
     }

@@ -482,6 +482,9 @@ if(WITH_CORE)
     set(HAVE_3D TRUE)  # used in qgsconfig.h
   endif()
 
+  find_package(Qt5WebEngine REQUIRED)
+  find_package(Qt5WebEngineWidgets REQUIRED)
+
   # get the Qt plugins directory
   get_target_property(QMAKE_EXECUTABLE ${QT_VERSION_BASE}::qmake LOCATION)
 
@@ -506,6 +509,8 @@ if(WITH_CORE)
   if(WITH_QTWEBKIT)
     set(OPTIONAL_QTWEBKIT ${Qt5WebKitWidgets_LIBRARIES})
   endif()
+
+  set(OPTIONAL_QTWEBENGINE ${Qt5WebEngineWidgets_LIBRARIES})
 
   # search for QScintilla2 (C++ lib)
   if (WITH_GUI)

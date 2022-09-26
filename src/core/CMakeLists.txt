@@ -2294,6 +2294,7 @@ target_link_libraries(qgis_core
   ${QT_VERSION_BASE}::Sql
   ${QT_VERSION_BASE}::Concurrent
   ${OPTIONAL_QTWEBKIT}
+  ${OPTIONAL_QTWEBENGINE}
   ${QCA_LIBRARY}
   ${QTKEYCHAIN_LIBRARY}
   ${PROJ_LIBRARY}

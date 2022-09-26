@@ -553,6 +553,7 @@ target_link_libraries(qgis_app
   ${QT_VERSION_BASE}::Sql
   ${QT_VERSION_BASE}::UiTools
   ${OPTIONAL_QTWEBKIT}
+  ${OPTIONAL_QTWEBENGINE}
   #should only be needed for win
   ${QT_QTMAIN_LIBRARY}
   ${QGIS_RC_LIBS}

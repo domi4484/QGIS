@@ -10069,6 +10069,24 @@ void QgisApp::mergeSelectedFeatures()
     bool isDefaultValue = vl->fields().fieldOrigin( i ) == QgsFields::OriginProvider &&
                           vl->dataProvider() &&
                           vl->dataProvider()->defaultValueClause( vl->fields().fieldOriginIndex( i ) ) == val;
+    bool isPrimaryKey =  vl->fields().fieldOrigin( i ) == QgsFields::OriginProvider &&
+                         vl->dataProvider() &&
+                         vl->dataProvider()->pkAttributeIndexes().contains( vl->fields().fieldOriginIndex( i ) );
+
+    if ( isPrimaryKey && !isDefaultValue )
+    {
+      const QgsField pkField { vl->fields().field( i ) };
+      QgsFeatureRequest request;
+      request.setFlags( QgsFeatureRequest::Flag::NoGeometry );
+      request.setSubsetOfAttributes( QStringList() << pkField.name(), vl->fields( ) );
+      request.setFilterExpression( QgsExpression::createFieldEqualityExpression( pkField.name(), val, pkField.type( ) ) );
+      QgsFeature f;
+      QgsFeatureIterator featureIterator = vl->getFeatures( request );
+      if ( featureIterator.nextFeature( f ) )
+      {
+        mergeFeatureId = f.id( );
+      }
+    }
 
     // convert to destination data type
     if ( !isDefaultValue && !vl->fields().at( i ).convertCompatible( val, &errorMessage ) )

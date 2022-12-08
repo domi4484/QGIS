@@ -611,7 +611,7 @@ void QgsModelDesignerDialog::zoomIn()
   mView->setTransformationAnchor( QGraphicsView::NoAnchor );
   QPointF point = mView->mapToScene( QPoint( mView->viewport()->width() / 2.0, mView->viewport()->height() / 2 ) );
   QgsSettings settings;
-  const double factor = settings.value( QStringLiteral( "/qgis/zoom_favor" ), 2.0 ).toDouble();
+  const double factor = QgsModelDesignerDialog::settingsZoomFavor.value();
   mView->scale( factor, factor );
   mView->centerOn( point );
 }
@@ -621,7 +621,7 @@ void QgsModelDesignerDialog::zoomOut()
   mView->setTransformationAnchor( QGraphicsView::NoAnchor );
   QPointF point = mView->mapToScene( QPoint( mView->viewport()->width() / 2.0, mView->viewport()->height() / 2 ) );
   QgsSettings settings;
-  const double factor = 1.0 / settings.value( QStringLiteral( "/qgis/zoom_favor" ), 2.0 ).toDouble();
+  const double factor = 1.0 / QgsModelDesignerDialog::settingsZoomFavor.value();
   mView->scale( factor, factor );
   mView->centerOn( point );
 }

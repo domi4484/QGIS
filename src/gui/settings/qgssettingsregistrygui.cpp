@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsmodeldesignerdialog.h"
 #include "qgscolorwidgets.h"
 #include "qgsmaptoolidentify.h"
 #include "qgsmapcanvas.h"
@@ -25,6 +26,7 @@
 QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   : QgsSettingsRegistry()
 {
+  addSettingsEntry( &QgsModelDesignerDialog::settingsZoomFavor );
   addSettingsEntry( &settingsZoomFactor );
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );

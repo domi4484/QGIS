@@ -17,6 +17,7 @@
 #define QGSMODELDESIGNERDIALOG_H
 
 #include "qgis.h"
+#include "qgssettingsentryimpl.h"
 #include "qgis_gui.h"
 #include "ui_qgsmodeldesignerdialogbase.h"
 
@@ -58,6 +59,7 @@ class GUI_EXPORT QgsModelDesignerDialog : public QMainWindow, public Ui::QgsMode
     Q_OBJECT
   public:
 
+    static const inline QgsSettingsEntryDouble settingsZoomFavor = QgsSettingsEntryDouble( QStringLiteral( "/zoom_favor" ), QgsSettings::Prefix::QGIS, 2.0 ) SIP_SKIP;
     QgsModelDesignerDialog( QWidget *parent SIP_TRANSFERTHIS = nullptr, Qt::WindowFlags flags = Qt::WindowFlags() );
     ~QgsModelDesignerDialog() override;
 

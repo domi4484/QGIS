@@ -17,6 +17,7 @@
 #include <QMessageBox>
 
 #include "qgsvectorlayersavestyledialog.h"
+#include "qgssettingsregistrygui.h"
 #include "qgsvectorlayer.h"
 #include "qgssettings.h"
 #include "qgshelp.h"
@@ -69,7 +70,7 @@ QgsVectorLayerSaveStyleDialog::QgsVectorLayerSaveStyleDialog( QgsVectorLayer *la
 
   // fill style categories
   mModel = new QgsMapLayerStyleCategoriesModel( mLayer->type(), this );
-  const QgsMapLayer::StyleCategories lastStyleCategories = settings.flagValue( QStringLiteral( "style/lastStyleCategories" ), QgsMapLayer::AllStyleCategories );
+  const QgsMapLayer::StyleCategories lastStyleCategories = QgsSettingsRegistryGui::settingsStyleLastStyleCategories.value();
   mModel->setCategories( lastStyleCategories );
   mStyleCategoriesListView->setModel( mModel );
 
@@ -102,7 +103,7 @@ void QgsVectorLayerSaveStyleDialog::populateStyleComboBox()
 
 void QgsVectorLayerSaveStyleDialog::accept()
 {
-  QgsSettings().setFlagValue( QStringLiteral( "style/lastStyleCategories" ), styleCategories() );
+  QgsSettingsRegistryGui::settingsStyleLastStyleCategories.setValue( styleCategories() );
   QDialog::accept();
 }
 

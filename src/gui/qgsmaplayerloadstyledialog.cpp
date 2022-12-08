@@ -17,6 +17,7 @@
 #include <QVector>
 
 #include "qgsmaplayerloadstyledialog.h"
+#include "qgssettingsregistrygui.h"
 #include "qgslogger.h"
 #include "qgssettings.h"
 #include "qgsvectorlayerproperties.h"
@@ -92,7 +93,7 @@ QgsMapLayerLoadStyleDialog::QgsMapLayerLoadStyleDialog( QgsMapLayer *layer, QWid
 
   // fill style categories
   mModel = new QgsMapLayerStyleCategoriesModel( mLayer->type(), this );
-  const QgsMapLayer::StyleCategories lastStyleCategories = settings.flagValue( QStringLiteral( "style/lastStyleCategories" ), QgsMapLayer::AllStyleCategories );
+  const QgsMapLayer::StyleCategories lastStyleCategories = QgsSettingsRegistryGui::settingsStyleLastStyleCategories.value();
   mModel->setCategories( lastStyleCategories );
   mStyleCategoriesListView->setModel( mModel );
 
@@ -290,7 +291,7 @@ void QgsMapLayerLoadStyleDialog::selectionChanged( QTableWidget *styleTable )
 void QgsMapLayerLoadStyleDialog::accept()
 {
   QgsSettings settings;
-  settings.setFlagValue( QStringLiteral( "style/lastStyleCategories" ), styleCategories() );
+  QgsSettingsRegistryGui::settingsStyleLastStyleCategories.setValue( styleCategories() );
   settings.setValue( QStringLiteral( "style/lastLoadStyleTypeSelection" ), currentStyleType() );
   QDialog::accept();
 }

@@ -25,6 +25,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
+  addSettingsEntry( &settingsStyleLastStyleCategories );
 
   QgsApplication::settingsRegistryCore()->addSubRegistry( this );
 }

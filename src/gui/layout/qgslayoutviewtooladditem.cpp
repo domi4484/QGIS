@@ -17,6 +17,7 @@
 #include "qgsapplication.h"
 #include "qgslayoutview.h"
 #include "qgslayout.h"
+#include "qgssettingsregistrygui.h"
 #include "qgslayoutitemregistry.h"
 #include "qgslayoutviewmouseevent.h"
 #include "qgslogger.h"
@@ -143,7 +144,7 @@ void QgsLayoutViewToolAddItem::layoutReleaseEvent( QgsLayoutViewMouseEvent *even
     QgsSettings settings;
     settings.setValue( QStringLiteral( "LayoutDesigner/lastItemWidth" ), item->sizeWithUnits().width() );
     settings.setValue( QStringLiteral( "LayoutDesigner/lastItemHeight" ), item->sizeWithUnits().height() );
-    settings.setEnumValue( QStringLiteral( "LayoutDesigner/lastSizeUnit" ), item->sizeWithUnits().units() );
+    QgsSettingsRegistryGui::settingsLayoutDesignerLastSizeUnit.setValue( item->sizeWithUnits().units() );
   }
 
   QgsGui::layoutItemGuiRegistry()->newItemAddedToLayout( mItemMetadataId, item, mCustomProperties );

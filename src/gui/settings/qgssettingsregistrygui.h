@@ -51,6 +51,7 @@ class GUI_EXPORT QgsSettingsRegistryGui : public QgsSettingsRegistry
     //! Check for plugin updates automatically on startup
     static const inline QgsSettingsEntryBool settingsAutomaticallyCheckForPluginUpdates = QgsSettingsEntryBool( QStringLiteral( "automatically-check-for-updates" ), QgsSettings::Prefix::PLUGINS, true, QStringLiteral( "Automatically check for plugin updates on startup" ) );
 
+    static const inline QgsSettingsEntryEnumFlag settingsLayoutDesignerLastSizeUnit = QgsSettingsEntryEnumFlag( QStringLiteral( "lastSizeUnit" ), QgsSettings::Prefix::LAYOUTDESIGNER, QgsUnitTypes::LayoutMillimeters );
     static const inline QgsSettingsEntryEnumFlag settingsStyleLastStyleCategories = QgsSettingsEntryEnumFlag( QStringLiteral( "lastStyleCategories" ), QgsSettings::Prefix::STYLE, QgsMapLayer::AllStyleCategories );
 #endif
 

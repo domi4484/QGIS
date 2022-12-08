@@ -17,6 +17,7 @@
 #include "qgssettings.h"
 #include "qgslayout.h"
 #include "qgslayoutpagecollection.h"
+#include "qgssettingsregistrygui.h"
 #include "qgshelp.h"
 #include "qgsgui.h"
 
@@ -45,7 +46,7 @@ QgsLayoutItemPropertiesDialog::QgsLayoutItemPropertiesDialog( QWidget *parent, Q
   QgsSettings settings;
   const double lastWidth = settings.value( QStringLiteral( "LayoutDesigner/lastItemWidth" ), QStringLiteral( "50" ) ).toDouble();
   const double lastHeight = settings.value( QStringLiteral( "LayoutDesigner/lastItemHeight" ), QStringLiteral( "50" ) ).toDouble();
-  const QgsUnitTypes::LayoutUnit lastSizeUnit = settings.enumValue( QStringLiteral( "LayoutDesigner/lastSizeUnit" ), QgsUnitTypes::LayoutMillimeters );
+  const QgsUnitTypes::LayoutUnit lastSizeUnit = QgsSettingsRegistryGui::settingsLayoutDesignerLastSizeUnit.value();
   setItemSize( QgsLayoutSize( lastWidth, lastHeight, lastSizeUnit ) );
 
   mPosUnitsComboBox->linkToWidget( mXPosSpin );

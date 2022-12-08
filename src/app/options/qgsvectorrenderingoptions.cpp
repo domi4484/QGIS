@@ -40,7 +40,7 @@ QgsVectorRenderingOptionsWidget::QgsVectorRenderingOptionsWidget( QWidget *paren
   //segmentation tolerance type
   mToleranceTypeComboBox->addItem( tr( "Maximum Angle" ), QgsAbstractGeometry::MaximumAngle );
   mToleranceTypeComboBox->addItem( tr( "Maximum Difference" ), QgsAbstractGeometry::MaximumDifference );
-  QgsAbstractGeometry::SegmentationToleranceType toleranceType = settings.enumValue( QStringLiteral( "/qgis/segmentationToleranceType" ), QgsAbstractGeometry::MaximumAngle );
+  QgsAbstractGeometry::SegmentationToleranceType toleranceType = QgsMapCanvas::settingsSegmentationToleranceType.value();
   int toleranceTypeIndex = mToleranceTypeComboBox->findData( toleranceType );
   if ( toleranceTypeIndex != -1 )
   {
@@ -87,7 +87,7 @@ void QgsVectorRenderingOptionsWidget::apply()
 
   //curve segmentation
   QgsAbstractGeometry::SegmentationToleranceType segmentationType = ( QgsAbstractGeometry::SegmentationToleranceType )mToleranceTypeComboBox->currentData().toInt();
-  settings.setEnumValue( QStringLiteral( "/qgis/segmentationToleranceType" ), segmentationType );
+  QgsMapCanvas::settingsSegmentationToleranceType.setValue( segmentationType );
   double segmentationTolerance = mSegmentationToleranceSpinBox->value();
   if ( segmentationType == QgsAbstractGeometry::MaximumAngle )
   {

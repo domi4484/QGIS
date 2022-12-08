@@ -17,6 +17,7 @@
 
 #ifndef QGSMAPCANVAS_H
 #define QGSMAPCANVAS_H
+#include "qgssettingsentryimpl.h"
 
 #include "qgsconfig.h"
 #include "qgis_sip.h"
@@ -104,6 +105,7 @@ class GUI_EXPORT QgsMapCanvas : public QGraphicsView, public QgsExpressionContex
 
   public:
 
+    static const inline QgsSettingsEntryEnumFlag settingsSegmentationToleranceType = QgsSettingsEntryEnumFlag( QStringLiteral( "segmentationToleranceType" ), QgsSettings::Prefix::QGIS, QgsAbstractGeometry::MaximumAngle ) SIP_SKIP;
     //! Constructor
     QgsMapCanvas( QWidget *parent SIP_TRANSFERTHIS = nullptr );
 

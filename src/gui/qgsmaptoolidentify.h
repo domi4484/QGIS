@@ -17,6 +17,7 @@
 #define QGSMAPTOOLIDENTIFY_H
 
 #include "qgsfeature.h"
+#include "qgssettingsentryimpl.h"
 #include "qgsfields.h"
 #include "qgsidentifycontext.h"
 #include "qgsmaptool.h"
@@ -56,6 +57,7 @@ class GUI_EXPORT QgsMapToolIdentify : public QgsMapTool
 
   public:
 
+    static const inline QgsSettingsEntryEnumFlag settingsMapIdentifyMode = QgsSettingsEntryEnumFlag( QStringLiteral( "identifyMode" ), QgsSettings::Prefix::MAP, ActiveLayer ) SIP_SKIP;
     enum IdentifyMode
     {
       DefaultQgsSetting = -1,

@@ -14769,7 +14769,7 @@ void QgisApp::activateDeactivateLayerRelatedActions( QgsMapLayer *layer )
     }
   }
 
-  bool identifyModeIsActiveLayer = QgsSettings().enumValue( QStringLiteral( "/Map/identifyMode" ), QgsMapToolIdentify::ActiveLayer ) == QgsMapToolIdentify::ActiveLayer;
+  bool identifyModeIsActiveLayer = QgsMapToolIdentify::settingsMapIdentifyMode.value() == QgsMapToolIdentify::ActiveLayer;
 
   if ( !layer )
   {

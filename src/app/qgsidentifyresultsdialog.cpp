@@ -388,7 +388,7 @@ QgsIdentifyResultsDialog::QgsIdentifyResultsDialog( QgsMapCanvas *canvas, QWidge
   }
 
   // retrieve mode before on_cmbIdentifyMode_currentIndexChanged resets it on addItem
-  const QgsMapToolIdentify::IdentifyMode identifyMode = mySettings.enumValue( QStringLiteral( "Map/identifyMode" ), QgsMapToolIdentify::ActiveLayer );
+  const QgsMapToolIdentify::IdentifyMode identifyMode = QgsMapToolIdentify::settingsMapIdentifyMode.value();
 
   cmbIdentifyMode->addItem( tr( "Current Layer" ), QgsMapToolIdentify::ActiveLayer );
   cmbIdentifyMode->addItem( tr( "Top Down, Stop at First" ), QgsMapToolIdentify::TopDownStopAtFirst );

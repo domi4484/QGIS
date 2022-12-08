@@ -125,7 +125,7 @@ void QgsMapToolIdentifyAction::identifyFromGeometry()
   identifyMenu()->setShowFeatureActions( extendedMenu );
   IdentifyMode mode = extendedMenu ? LayerSelection : DefaultQgsSetting;
   if ( mode == DefaultQgsSetting )
-    mode = QgsSettings().enumValue( QStringLiteral( "Map/identifyMode" ), ActiveLayer );
+    mode = QgsMapToolIdentify::settingsMapIdentifyMode.value();
   QList<QgsMapLayer *> layerList;
   if ( mode == ActiveLayer )
   {

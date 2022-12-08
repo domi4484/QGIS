@@ -122,7 +122,7 @@ QList<QgsMapToolIdentify::IdentifyResult> QgsMapToolIdentify::identify( const Qg
   if ( mode == DefaultQgsSetting )
   {
     QgsSettings settings;
-    mode = settings.enumValue( QStringLiteral( "Map/identifyMode" ), ActiveLayer );
+    mode = QgsMapToolIdentify::settingsMapIdentifyMode.value();
   }
 
   if ( mode == LayerSelection )

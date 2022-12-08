@@ -2396,8 +2396,7 @@ void QgsIdentifyResultsDialog::printCurrentItem()
 
 void QgsIdentifyResultsDialog::cmbIdentifyMode_currentIndexChanged( int index )
 {
-  QgsSettings settings;
-  settings.setValue( QStringLiteral( "Map/identifyMode" ), cmbIdentifyMode->itemData( index ).toInt() );
+  QgsMapToolIdentify::settingsMapIdentifyMode.setValue( cmbIdentifyMode->itemData( index ).toInt() );
 }
 
 void QgsIdentifyResultsDialog::cmbViewMode_currentIndexChanged( int index )

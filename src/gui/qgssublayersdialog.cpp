@@ -17,6 +17,7 @@
 #include "qgslogger.h"
 #include "qgssettings.h"
 #include "qgsgui.h"
+#include "qgssettingsregistrygui.h"
 #include "qgsproviderregistry.h"
 
 #include <QTableWidgetItem>
@@ -183,7 +184,7 @@ void QgsSublayersDialog::populateLayerTable( const QgsSublayersDialog::LayerDefi
 int QgsSublayersDialog::exec()
 {
   QgsSettings settings;
-  const Qgis::SublayerPromptMode promptLayers = settings.enumValue( QStringLiteral( "qgis/promptForSublayers" ), Qgis::SublayerPromptMode::AlwaysAsk );
+  const Qgis::SublayerPromptMode promptLayers = QgsSettingsRegistryGui::settingsPromptForSublayers.value();
 
   // make sure three are sublayers to choose
   if ( layersTable->topLevelItemCount() == 0 )

@@ -17,6 +17,7 @@
 
 #include "qgsconfig.h"
 #include "qgsmaplayer.h"
+#include "qgssettingsregistrygui.h"
 #include "qgsmeshlayer.h"
 #include "qgsproject.h"
 #include "qgsprojecttimesettings.h"
@@ -598,7 +599,7 @@ QgsAppLayerHandling::SublayerHandling QgsAppLayerHandling::shouldAskUserForSubla
     return SublayerHandling::AskUser;
 
   QgsSettings settings;
-  const Qgis::SublayerPromptMode promptLayers = settings.enumValue( QStringLiteral( "qgis/promptForSublayers" ), Qgis::SublayerPromptMode::AlwaysAsk );
+  const Qgis::SublayerPromptMode promptLayers = QgsSettingsRegistryGui::settingsPromptForSublayers.value();
 
   switch ( promptLayers )
   {

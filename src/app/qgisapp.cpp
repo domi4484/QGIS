@@ -17,6 +17,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "qgssettingsregistrygui.h"
 #include <QObject>
 #include <QAction>
 #include <QApplication>
@@ -2685,7 +2686,7 @@ void QgisApp::applyDefaultSettingsToCanvas( QgsMapCanvas *canvas )
 {
   QgsSettings settings;
   canvas->enableAntiAliasing( settings.value( QStringLiteral( "qgis/enable_anti_aliasing" ), true ).toBool() );
-  double zoomFactor = settings.value( QStringLiteral( "qgis/zoom_factor" ), 2 ).toDouble();
+  double zoomFactor = QgsSettingsRegistryGui::settingsZoomFactor.value();
   canvas->setWheelFactor( zoomFactor );
   canvas->setCachingEnabled( settings.value( QStringLiteral( "qgis/enable_render_caching" ), true ).toBool() );
   canvas->setParallelRenderingEnabled( settings.value( QStringLiteral( "qgis/parallel_rendering" ), true ).toBool() );

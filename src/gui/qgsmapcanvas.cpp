@@ -205,7 +205,7 @@ QgsMapCanvas::QgsMapCanvas( QWidget *parent )
   mSettings.setSegmentationTolerance( segmentationTolerance );
   mSettings.setSegmentationToleranceType( toleranceType );
 
-  mWheelZoomFactor = settings.value( QStringLiteral( "qgis/zoom_factor" ), 2 ).toDouble();
+  mWheelZoomFactor = QgsSettingsRegistryGui::settingsZoomFactor.value();
 
   QSize s = viewport()->size();
   mSettings.setOutputSize( s );

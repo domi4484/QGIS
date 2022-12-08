@@ -17,6 +17,7 @@
  ***************************************************************************/
 
 #include "qgselevationprofilecanvas.h"
+#include "qgssettingsregistrygui.h"
 #include "qgsmaplayerlistutils_p.h"
 #include "qgsplotcanvasitem.h"
 #include "qgsprofilerequest.h"
@@ -554,7 +555,7 @@ void QgsElevationProfileCanvas::wheelZoom( QWheelEvent *event )
 {
   //get mouse wheel zoom behavior settings
   QgsSettings settings;
-  double zoomFactor = settings.value( QStringLiteral( "qgis/zoom_factor" ), 2 ).toDouble();
+  double zoomFactor = QgsSettingsRegistryGui::settingsZoomFactor.value();
 
   // "Normal" mouse have an angle delta of 120, precision mouses provide data faster, in smaller steps
   zoomFactor = 1.0 + ( zoomFactor - 1.0 ) / 120.0 * std::fabs( event->angleDelta().y() );

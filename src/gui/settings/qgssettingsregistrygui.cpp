@@ -25,6 +25,7 @@
 QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   : QgsSettingsRegistry()
 {
+  addSettingsEntry( &settingsZoomFactor );
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );

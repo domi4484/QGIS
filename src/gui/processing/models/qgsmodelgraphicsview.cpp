@@ -17,6 +17,7 @@
 #include "qgssettings.h"
 #include "qgsmodelviewtool.h"
 #include "qgsmodelviewmouseevent.h"
+#include "qgssettingsregistrygui.h"
 #include "qgsmodelviewtooltemporarykeypan.h"
 #include "qgsmodelviewtooltemporarymousepan.h"
 #include "qgsmodelviewtooltemporarykeyzoom.h"
@@ -127,7 +128,7 @@ void QgsModelGraphicsView::wheelZoom( QWheelEvent *event )
 {
   //get mouse wheel zoom behavior settings
   QgsSettings settings;
-  double zoomFactor = settings.value( QStringLiteral( "qgis/zoom_factor" ), 2 ).toDouble();
+  double zoomFactor = QgsSettingsRegistryGui::settingsZoomFactor.value();
 
   // "Normal" mouse have an angle delta of 120, precision mouses provide data faster, in smaller steps
   zoomFactor = 1.0 + ( zoomFactor - 1.0 ) / 120.0 * std::fabs( event->angleDelta().y() );

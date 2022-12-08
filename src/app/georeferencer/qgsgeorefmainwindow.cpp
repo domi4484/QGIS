@@ -17,6 +17,7 @@
 #include <QClipboard>
 #include <QFileDialog>
 #include <QFileInfo>
+#include "qgssettingsregistrygui.h"
 #include <QMessageBox>
 #include <QMouseEvent>
 #include <QPainter>
@@ -1114,7 +1115,7 @@ void QgsGeoreferencerMainWindow::createMapCanvas()
            this, &QgsGeoreferencerMainWindow::releasePoint );
 
   QgsSettings s;
-  double zoomFactor = s.value( QStringLiteral( "/qgis/zoom_factor" ), 2 ).toDouble();
+  double zoomFactor = QgsSettingsRegistryGui::settingsZoomFactor.value();
   mCanvas->setWheelFactor( zoomFactor );
 
   mExtentsChangedRecursionGuard = false;

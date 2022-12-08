@@ -1685,7 +1685,7 @@ void QgsOptions::saveOptions()
   mSettings->setValue( QStringLiteral( "/qgis/default_measure_color_green" ), myColor.green() );
   mSettings->setValue( QStringLiteral( "/qgis/default_measure_color_blue" ), myColor.blue() );
 
-  mSettings->setValue( QStringLiteral( "/qgis/zoom_factor" ), zoomFactorValue() );
+  QgsSettingsRegistryGui::settingsZoomFactor.setValue( zoomFactorValue() );
 
   //digitizing
   QgsSettingsRegistryCore::settingsDigitizingLineWidth.setValue( mLineWidthSpinBox->value() );
@@ -2723,13 +2723,13 @@ double QgsOptions::zoomFactorValue()
 void QgsOptions::setZoomFactorValue()
 {
   // Set the percent value for zoom factor spin box. This function is for converting the decimal zoom factor value in the qgis setting to the percent zoom factor value.
-  if ( mSettings->value( QStringLiteral( "/qgis/zoom_factor" ), 2 ).toDouble() <= 1.01 )
+  if ( QgsSettingsRegistryGui::settingsZoomFactor.value() <= 1.01 )
   {
     spinZoomFactor->setValue( spinZoomFactor->minimum() );
   }
   else
   {
-    int percentValue = mSettings->value( QStringLiteral( "/qgis/zoom_factor" ), 2 ).toDouble() * 100;
+    int percentValue = QgsSettingsRegistryGui::settingsZoomFactor.value() * 100;
     spinZoomFactor->setValue( percentValue );
   }
 }

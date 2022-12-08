@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgscolorwidgets.h"
 #include "qgsmaptoolidentify.h"
 #include "qgsmapcanvas.h"
 
@@ -25,6 +26,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   : QgsSettingsRegistry()
 {
   addSettingsEntry( &settingsRespectScreenDPI );
+  addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );

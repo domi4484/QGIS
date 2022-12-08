@@ -17,6 +17,7 @@
 #define QGSCOLORWIDGETS_H
 
 #include <QWidgetAction>
+#include "qgssettingsentryimpl.h"
 #include <QWidget>
 #include "qgis_gui.h"
 #include "qgis_sip.h"

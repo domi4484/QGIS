@@ -17,6 +17,7 @@
 #define QGSMAPTOOL_H
 
 #include "qgsconfig.h"
+#include "qgssettingsentryimpl.h"
 #include "qgis.h"
 
 #include <QCursor>
@@ -102,6 +103,8 @@ class GUI_EXPORT QgsMapTool : public QObject
     Q_OBJECT
 
   public:
+
+    static const inline QgsSettingsEntryDouble settingsMapSearchRadiusMM = QgsSettingsEntryDouble( QStringLiteral( "searchRadiusMM" ), QgsSettings::Prefix::MAP, Qgis::DEFAULT_SEARCH_RADIUS_MM ) SIP_SKIP;
 
     /**
      * Enumeration of flags that adjust the way the map tool operates

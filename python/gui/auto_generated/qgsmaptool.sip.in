@@ -67,6 +67,7 @@ implemented as map tools.
 %End
   public:
 
+
     enum Flag
     {
       Transient,

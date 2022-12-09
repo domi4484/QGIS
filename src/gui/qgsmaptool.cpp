@@ -220,7 +220,7 @@ QgsMapCanvas *QgsMapTool::canvas() const
 double QgsMapTool::searchRadiusMM()
 {
   const QgsSettings settings;
-  const double radius = settings.value( QStringLiteral( "Map/searchRadiusMM" ), Qgis::DEFAULT_SEARCH_RADIUS_MM ).toDouble();
+  const double radius = QgsMapTool::settingsMapSearchRadiusMM.value();
 
   if ( radius > 0 )
   {

@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsmaptool.h"
 #include "qgsmodeldesignerdialog.h"
 #include "qgscolorwidgets.h"
 #include "qgsmaptoolidentify.h"
@@ -30,6 +31,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &settingsZoomFactor );
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );
+  addSettingsEntry( &QgsMapTool::settingsMapSearchRadiusMM );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );

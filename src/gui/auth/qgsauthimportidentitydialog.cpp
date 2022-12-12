@@ -440,7 +440,7 @@ void QgsAuthImportIdentityDialog::fileFound( bool found, QWidget *widget )
 QString QgsAuthImportIdentityDialog::getOpenFileName( const QString &title, const QString &extfilter )
 {
   QgsSettings settings;
-  const QString recentdir = settings.value( QStringLiteral( "UI/lastAuthImportBundleOpenFileDir" ), QDir::homePath() ).toString();
+  const QString recentdir = QgsAuthImportIdentityDialog::settingsLastAuthImportBundleOpenFileDir.value();
   QString f = QFileDialog::getOpenFileName( this, title, recentdir, extfilter );
 
   // return dialog focus on Mac

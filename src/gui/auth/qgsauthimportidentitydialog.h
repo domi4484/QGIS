@@ -17,6 +17,7 @@
 #ifndef QGSAUTHIMPORTIDENTITYDIALOG_H
 #define QGSAUTHIMPORTIDENTITYDIALOG_H
 
+#include "qgssettingsentryimpl.h"
 #include <QDialog>
 #include "qgis_sip.h"
 #include "ui_qgsauthimportidentitydialog.h"
@@ -37,6 +38,7 @@ class GUI_EXPORT QgsAuthImportIdentityDialog : public QDialog, private Ui::QgsAu
 
   public:
     //! Type of identity being imported
+    static const inline QgsSettingsEntryString settingsLastAuthImportBundleOpenFileDir = QgsSettingsEntryString( QStringLiteral( "lastAuthImportBundleOpenFileDir" ), QgsSettings::Prefix::UI, QDir::homePath() ) SIP_SKIP;
     enum IdentityType
     {
       CertIdentity = 0,

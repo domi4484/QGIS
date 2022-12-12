@@ -761,7 +761,7 @@ QColor QgsCodeEditor::color( QgsCodeEditorColorScheme::ColorRole role )
   const QgsSettings settings;
   if ( !settings.value( QStringLiteral( "codeEditor/overrideColors" ), false, QgsSettings::Gui ).toBool() )
   {
-    const QString theme = settings.value( QStringLiteral( "codeEditor/colorScheme" ), QString(), QgsSettings::Gui ).toString();
+    const QString theme = QgsCodeEditor::settingsCodeEditorColorScheme.value();
     return defaultColor( role, theme );
   }
   else

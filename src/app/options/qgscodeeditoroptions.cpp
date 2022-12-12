@@ -104,7 +104,7 @@ QgsCodeEditorOptionsWidget::QgsCodeEditorOptionsWidget( QWidget *parent )
   QgsSettings settings;
   if ( !settings.value( QStringLiteral( "codeEditor/overrideColors" ), false, QgsSettings::Gui ).toBool() )
   {
-    const QString theme = settings.value( QStringLiteral( "codeEditor/colorScheme" ), QString(), QgsSettings::Gui ).toString();
+    const QString theme = QgsCodeEditor::settingsCodeEditorColorScheme.value();
     mColorSchemeComboBox->setCurrentIndex( mColorSchemeComboBox->findData( theme ) );
   }
   else
@@ -309,7 +309,7 @@ void QgsCodeEditorOptionsWidget::apply()
   settings.setValue( QStringLiteral( "codeEditor/overrideColors" ), customTheme, QgsSettings::Gui );
   if ( !customTheme )
   {
-    settings.setValue( QStringLiteral( "codeEditor/colorScheme" ), theme, QgsSettings::Gui );
+    QgsCodeEditor::settingsCodeEditorColorScheme.setValue( theme );
   }
   for ( auto it = mColorButtonMap.constBegin(); it != mColorButtonMap.constEnd(); ++it )
   {

@@ -96,6 +96,7 @@ class GUI_EXPORT QgsCodeEditor : public QsciScintilla
 
   public:
 
+    static const inline QgsSettingsEntryString settingsCodeEditorColorScheme = QgsSettingsEntryString( QStringLiteral( "colorScheme" ), QgsSettings::Prefix::GUI_CODEEDITOR, QString() ) SIP_SKIP;
     static const inline QgsSettingsEntryInteger settingsCodeEditorFontsize = QgsSettingsEntryInteger( QStringLiteral( "fontsize" ), QgsSettings::Prefix::GUI_CODEEDITOR, 0 ) SIP_SKIP;
 
     /**

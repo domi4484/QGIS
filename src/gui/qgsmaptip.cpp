@@ -17,6 +17,7 @@
 #include "qgsmapcanvas.h"
 #include "qgsmaptool.h"
 #include "qgsvectorlayer.h"
+#include "qgssettingsregistrycore.h"
 #include "qgsrasterlayer.h"
 #include "qgsexpression.h"
 #include "qgslogger.h"
@@ -365,7 +366,7 @@ void QgsMapTip::applyFontSettings()
 {
   const QgsSettings settings;
   const QFont defaultFont = qApp->font();
-  mFontSize = settings.value( QStringLiteral( "/qgis/stylesheet/fontPointSize" ), defaultFont.pointSize() ).toInt();
+  mFontSize = QgsSettingsRegistryCore::settingsQgisStylesheetFontPointSize.value();
   mFontFamily = settings.value( QStringLiteral( "/qgis/stylesheet/fontFamily" ), defaultFont.family() ).toString();
 }
 

@@ -17,6 +17,7 @@
  ***************************************************************************/
 
 #include "qgsamsprovider.h"
+#include "qgssettingsregistrycore.h"
 #include "qgsarcgisrestutils.h"
 #include "qgsdatasourceuri.h"
 #include "qgslogger.h"
@@ -147,7 +148,7 @@ void QgsAmsLegendFetcher::handleFinished()
 
     QgsSettings settings;
     QFont font = qApp->font();
-    int fontSize = settings.value( QStringLiteral( "/qgis/stylesheet/fontPointSize" ), font.pointSize() ).toInt();
+    int fontSize = QgsSettingsRegistryCore::settingsQgisStylesheetFontPointSize.value();
     font.setPointSize( fontSize );
     QString fontFamily = settings.value( QStringLiteral( "/qgis/stylesheet/fontFamily" ), font.family() ).toString();
     font.setFamily( fontFamily );

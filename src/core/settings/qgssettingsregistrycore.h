@@ -176,6 +176,7 @@ class CORE_EXPORT QgsSettingsRegistryCore : public QgsSettingsRegistry
 
     //! Settings entry enable WMS tile prefetching.
     static const inline QgsSettingsEntryBool settingsEnableWMSTilePrefetching = QgsSettingsEntryBool( QStringLiteral( "enable_wms_tile_prefetch" ), QgsSettings::Prefix::WMS, false, QStringLiteral( "Whether to include WMS layers when rendering tiles adjacent to the visible map area" ) );
+    static const inline QgsSettingsEntryInteger settingsQgisStylesheetFontPointSize = QgsSettingsEntryInteger( QStringLiteral( "fontPointSize" ), QgsSettings::Prefix::QGIS_STYLESHEET, 10 );
 #endif
 
 };

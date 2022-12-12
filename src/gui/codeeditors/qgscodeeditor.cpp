@@ -17,6 +17,7 @@
 #include "qgsapplication.h"
 #include "qgscodeeditor.h"
 #include "qgssettings.h"
+#include "qgssettingsregistrycore.h"
 #include "qgssymbollayerutils.h"
 #include "qgsgui.h"
 #include "qgscodeeditorcolorschemeregistry.h"
@@ -291,7 +292,7 @@ QFont QgsCodeEditor::lexerFont() const
     font.setPointSize( mFontSize );
   else
   {
-    const int fontSize = settings.value( QStringLiteral( "qgis/stylesheet/fontPointSize" ), 10 ).toInt();
+    const int fontSize = QgsSettingsRegistryCore::settingsQgisStylesheetFontPointSize.value();
     font.setPointSize( fontSize );
   }
 #endif
@@ -812,7 +813,7 @@ QFont QgsCodeEditor::getMonospaceFont()
     font.setPointSize( fontSize );
   else
   {
-    const int fontSize = settings.value( QStringLiteral( "qgis/stylesheet/fontPointSize" ), 10 ).toInt();
+    const int fontSize = QgsSettingsRegistryCore::settingsQgisStylesheetFontPointSize.value();
     font.setPointSize( fontSize );
   }
 #endif

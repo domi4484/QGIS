@@ -129,6 +129,8 @@ QgsSettingsRegistryCore::QgsSettingsRegistryCore()
   addSettingsEntry( &QgsGpsConnection::settingsGpsTimeStampSpecification );
   addSettingsEntry( &QgsGpsConnection::settingsGpsTimeStampTimeZone );
   addSettingsEntry( &QgsGpsConnection::settingsGpsTimeStampOffsetFromUtc );
+
+  addSettingsEntry( &settingsQgisStylesheetFontPointSize );
 }
 
 QgsSettingsRegistryCore::~QgsSettingsRegistryCore()

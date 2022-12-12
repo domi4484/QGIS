@@ -51,6 +51,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
+  addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogActiveTab );
   addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogActiveComponent );
   addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogSampleRadius );
   addSettingsEntry( &QgsMapCanvas::settingsSegmentationToleranceType );

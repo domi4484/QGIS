@@ -39,6 +39,7 @@ class GUI_EXPORT QgsCompoundColorWidget : public QgsPanelWidget, private Ui::Qgs
 
   public:
 
+    static const inline QgsSettingsEntryInteger settingsWindowsColorDialogActiveTab = QgsSettingsEntryInteger( QStringLiteral( "activeTab" ), QgsSettings::Prefix::WINDOWS_COLORDIALOG, 0 ) SIP_SKIP;
     static const inline QgsSettingsEntryInteger settingsWindowsColorDialogActiveComponent = QgsSettingsEntryInteger( QStringLiteral( "activeComponent" ), QgsSettings::Prefix::WINDOWS_COLORDIALOG, 2 ) SIP_SKIP;
     static const inline QgsSettingsEntryInteger settingsWindowsColorDialogSampleRadius = QgsSettingsEntryInteger( QStringLiteral( "sampleRadius" ), QgsSettings::Prefix::WINDOWS_COLORDIALOG, 1 ) SIP_SKIP;
     static const inline QgsSettingsEntryInteger settingsWindowsColorDialogActiveScheme = QgsSettingsEntryInteger( QStringLiteral( "activeScheme" ), QgsSettings::Prefix::WINDOWS_COLORDIALOG, 0 ) SIP_SKIP;

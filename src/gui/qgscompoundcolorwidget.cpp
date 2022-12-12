@@ -255,7 +255,7 @@ QgsCompoundColorWidget::QgsCompoundColorWidget( QWidget *parent, const QColor &c
       mBlueRadio->setChecked( true );
       break;
   }
-  const int currentTab = settings.value( QStringLiteral( "Windows/ColorDialog/activeTab" ), 0 ).toInt();
+  const int currentTab = QgsCompoundColorWidget::settingsWindowsColorDialogActiveTab.value();
   mTabWidget->setCurrentIndex( currentTab );
 
   //setup connections
@@ -661,7 +661,7 @@ void QgsCompoundColorWidget::saveSettings()
   QgsCompoundColorWidget::settingsWindowsColorDialogActiveScheme.setValue( mSchemeComboBox->currentIndex() );
 
   //record current tab
-  settings.setValue( QStringLiteral( "Windows/ColorDialog/activeTab" ), mTabWidget->currentIndex() );
+  QgsCompoundColorWidget::settingsWindowsColorDialogActiveTab.setValue( mTabWidget->currentIndex() );
 
   //record custom colors
   settings.setValue( QStringLiteral( "Windows/ColorDialog/customColor1" ), QVariant( mSwatchButton1->color() ) );

@@ -73,6 +73,7 @@ class GUI_EXPORT QgsStyleManagerDialog : public QDialog, private Ui::QgsStyleMan
 
   public:
 #ifndef SIP_RUN
+    static const inline QgsSettingsEntryInteger settingsWindowsStyleV2ManagerThumbnailSize = QgsSettingsEntryInteger( QStringLiteral( "thumbnailSize" ), QgsSettings::Prefix::GUI_WINDOWS_STYLEV2MANAGER, 0 ) SIP_SKIP;
     static const inline QgsSettingsEntryInteger settingsWindowsStyleV2ManagerLastIconView = QgsSettingsEntryInteger( QStringLiteral( "lastIconView" ), QgsSettings::Prefix::GUI_WINDOWS_STYLEV2MANAGER, 0 ) SIP_SKIP;
 
     /**

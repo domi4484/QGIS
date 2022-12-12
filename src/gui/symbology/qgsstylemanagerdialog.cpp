@@ -453,7 +453,7 @@ void QgsStyleManagerDialog::init()
     QgsSettings().setValue( QStringLiteral( "Windows/StyleV2Manager/treeState" ), mSymbolTreeView->header()->saveState(), QgsSettings::Gui );
   } );
 
-  const int thumbnailSize = settings.value( QStringLiteral( "Windows/StyleV2Manager/thumbnailSize" ), 0, QgsSettings::Gui ).toInt();
+  const int thumbnailSize = QgsStyleManagerDialog::settingsWindowsStyleV2ManagerThumbnailSize.value();
   mSliderIconSize->setValue( thumbnailSize );
   connect( mSliderIconSize, &QSlider::valueChanged, this, &QgsStyleManagerDialog::setThumbnailSize );
   setThumbnailSize( thumbnailSize );
@@ -844,7 +844,7 @@ void QgsStyleManagerDialog::setThumbnailSize( int value )
     mModel->addDesiredIconSize( listItems->iconSize() );
   }
 
-  QgsSettings().setValue( QStringLiteral( "Windows/StyleV2Manager/thumbnailSize" ), value, QgsSettings::Gui );
+  QgsStyleManagerDialog::settingsWindowsStyleV2ManagerThumbnailSize.setValue( value );
 }
 
 int QgsStyleManagerDialog::selectedItemType()

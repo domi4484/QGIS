@@ -51,6 +51,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
+  addSettingsEntry( &QgsStyleManagerDialog::settingsWindowsStyleV2ManagerThumbnailSize );
   addSettingsEntry( &QgsStyleManagerDialog::settingsWindowsStyleV2ManagerLastIconView );
   addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogActiveTab );
   addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogActiveComponent );

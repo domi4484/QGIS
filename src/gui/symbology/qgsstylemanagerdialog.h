@@ -73,6 +73,7 @@ class GUI_EXPORT QgsStyleManagerDialog : public QDialog, private Ui::QgsStyleMan
 
   public:
 #ifndef SIP_RUN
+    static const inline QgsSettingsEntryInteger settingsWindowsStyleV2ManagerLastIconView = QgsSettingsEntryInteger( QStringLiteral( "lastIconView" ), QgsSettings::Prefix::GUI_WINDOWS_STYLEV2MANAGER, 0 ) SIP_SKIP;
 
     /**
      * Last used folder for generic style database actions.

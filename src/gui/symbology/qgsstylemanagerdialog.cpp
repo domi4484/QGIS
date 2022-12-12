@@ -428,19 +428,19 @@ void QgsStyleManagerDialog::init()
     {
       mSymbolViewStackedWidget->setCurrentIndex( 0 );
       // note -- we have to save state here and not in destructor, as new symbol list widgets are created before the previous ones are destroyed
-      QgsSettings().setValue( QStringLiteral( "Windows/StyleV2Manager/lastIconView" ), 0, QgsSettings::Gui );
+      QgsStyleManagerDialog::settingsWindowsStyleV2ManagerLastIconView.setValue( 0 );
     }
   } );
   connect( mButtonListView, &QToolButton::toggled, this, [ = ]( bool active )
   {
     if ( active )
     {
-      QgsSettings().setValue( QStringLiteral( "Windows/StyleV2Manager/lastIconView" ), 1, QgsSettings::Gui );
+      QgsStyleManagerDialog::settingsWindowsStyleV2ManagerLastIconView.setValue( 1 );
       mSymbolViewStackedWidget->setCurrentIndex( 1 );
     }
   } );
   // restore previous view
-  const int currentView = settings.value( QStringLiteral( "Windows/StyleV2Manager/lastIconView" ), 0, QgsSettings::Gui ).toInt();
+  const int currentView = QgsStyleManagerDialog::settingsWindowsStyleV2ManagerLastIconView.value();
   if ( currentView == 0 )
     mButtonIconView->setChecked( true );
   else

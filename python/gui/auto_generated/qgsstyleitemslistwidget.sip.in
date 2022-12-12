@@ -25,6 +25,7 @@ A reusable widget for showing a filtered list of entities from a :py:class:`QgsS
 %End
   public:
 
+
     QgsStyleItemsListWidget( QWidget *parent /TransferThis/ );
 %Docstring
 Constructor for QgsStyleItemsListWidget, with the specified ``parent`` widget.

@@ -17,6 +17,7 @@
 #define QGSSTYLEITEMSLISTWIDGET_H
 
 #include "ui_qgsstyleitemslistwidgetbase.h"
+#include "qgssettingsentryimpl.h"
 
 #include "qgsstylemodel.h"
 #include <QWidget>
@@ -81,6 +82,8 @@ class GUI_EXPORT QgsStyleItemsListWidget : public QWidget, private Ui::QgsStyleI
     Q_OBJECT
 
   public:
+
+    static const inline QgsSettingsEntryInteger settingsUISymbolsListLastIconView = QgsSettingsEntryInteger( QStringLiteral( "lastIconView" ), QgsSettings::Prefix::GUI_UI_SYMBOLSLIST, 0 ) SIP_SKIP;
 
     /**
      * Constructor for QgsStyleItemsListWidget, with the specified \a parent widget.

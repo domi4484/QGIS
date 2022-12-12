@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsstyleitemslistwidget.h"
 #include "qgsdiagramproperties.h"
 #include "qgscompoundcolorwidget.h"
 #include "qgserrordialog.h"
@@ -51,6 +52,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &QgsMapTool::settingsMapSearchRadiusMM );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
+  addSettingsEntry( &QgsStyleItemsListWidget::settingsUISymbolsListLastIconView );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
   addSettingsEntry( &QgsDiagramProperties::settingsWindowsDiagramsTab );
   addSettingsEntry( &QgsStyleManagerDialog::settingsWindowsStyleV2ManagerThumbnailSize );

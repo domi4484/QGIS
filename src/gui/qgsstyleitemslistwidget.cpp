@@ -207,21 +207,21 @@ QgsStyleItemsListWidget::QgsStyleItemsListWidget( QWidget *parent )
     {
       mSymbolViewStackedWidget->setCurrentIndex( 0 );
       // note -- we have to save state here and not in destructor, as new symbol list widgets are created before the previous ones are destroyed
-      QgsSettings().setValue( QStringLiteral( "UI/symbolsList/lastIconView" ), 0, QgsSettings::Gui );
+      QgsStyleItemsListWidget::settingsUISymbolsListLastIconView.setValue( 0 );
     }
   } );
   connect( mButtonListView, &QToolButton::toggled, this, [ = ]( bool active )
   {
     if ( active )
     {
-      QgsSettings().setValue( QStringLiteral( "UI/symbolsList/lastIconView" ), 1, QgsSettings::Gui );
+      QgsStyleItemsListWidget::settingsUISymbolsListLastIconView.setValue( 1 );
       mSymbolViewStackedWidget->setCurrentIndex( 1 );
     }
   } );
 
   // restore previous view
   const QgsSettings settings;
-  const int currentView = settings.value( QStringLiteral( "UI/symbolsList/lastIconView" ), 0, QgsSettings::Gui ).toInt();
+  const int currentView = QgsStyleItemsListWidget::settingsUISymbolsListLastIconView.value();
   if ( currentView == 0 )
     mButtonIconView->setChecked( true );
   else

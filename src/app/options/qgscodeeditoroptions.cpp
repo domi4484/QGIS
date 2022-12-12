@@ -145,7 +145,7 @@ QgsCodeEditorOptionsWidget::QgsCodeEditorOptionsWidget( QWidget *parent )
   const QFont font = QgsCodeEditor::getMonospaceFont();
   mFontComboBox->setCurrentFont( font );
   mSizeSpin->setValue( font.pointSize() );
-  mOverrideFontGroupBox->setChecked( !settings.value( QStringLiteral( "codeEditor/fontfamily" ), QString(), QgsSettings::Gui ).toString().isEmpty() );
+  mOverrideFontGroupBox->setChecked( !QgsCodeEditor::settingsCodeEditorFontfamily.value().isEmpty() );
 
   connect( mFontComboBox, qOverload<int>( &QComboBox::currentIndexChanged ), this, [ = ]
   {
@@ -318,7 +318,7 @@ void QgsCodeEditorOptionsWidget::apply()
 
   if ( mOverrideFontGroupBox->isChecked() )
   {
-    settings.setValue( QStringLiteral( "codeEditor/fontfamily" ), mFontComboBox->currentFont().family(), QgsSettings::Gui );
+    QgsCodeEditor::settingsCodeEditorFontfamily.setValue( mFontComboBox->currentFont().family() );
     QgsCodeEditor::settingsCodeEditorFontsize.setValue( mSizeSpin->value() );
   }
   else

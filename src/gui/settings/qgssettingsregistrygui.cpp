@@ -51,6 +51,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &settingsMessageTimeout );
   addSettingsEntry( &QgsMapCanvas::settingsSegmentationTolerance );
   addSettingsEntry( &QgsHighlight::settingsMapHighlightMinWidth );
+  addSettingsEntry( &QgsCodeEditor::settingsCodeEditorFontfamily );
   addSettingsEntry( &QgsCodeEditor::settingsCodeEditorColorScheme );
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &QgsAuthImportIdentityDialog::settingsLastAuthImportBundleOpenFileDir );

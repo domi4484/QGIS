@@ -232,7 +232,7 @@ QgsOptions::QgsOptions( QWidget *parent, Qt::WindowFlags fl, const QList<QgsOpti
   int highlightAlpha = mSettings->value( QStringLiteral( "/Map/highlight/colorAlpha" ), Qgis::DEFAULT_HIGHLIGHT_COLOR.alpha() ).toInt();
   highlightColor.setAlpha( highlightAlpha );
   mIdentifyHighlightColorButton->setColor( highlightColor );
-  double highlightBuffer = mSettings->value( QStringLiteral( "/Map/highlight/buffer" ), Qgis::DEFAULT_HIGHLIGHT_BUFFER_MM ).toDouble();
+  double highlightBuffer = QgsHighlight::settingsMapHighlightBuffer.value();
   mIdentifyHighlightBufferSpinBox->setClearValue( Qgis::DEFAULT_HIGHLIGHT_BUFFER_MM );
   mIdentifyHighlightBufferSpinBox->setValue( highlightBuffer );
   double highlightMinWidth = mSettings->value( QStringLiteral( "/Map/highlight/minWidth" ), Qgis::DEFAULT_HIGHLIGHT_MIN_WIDTH_MM ).toDouble();
@@ -1554,7 +1554,7 @@ void QgsOptions::saveOptions()
   QgsMapTool::settingsMapSearchRadiusMM.setValue( spinBoxIdentifyValue->value() );
   mSettings->setValue( QStringLiteral( "/Map/highlight/color" ), mIdentifyHighlightColorButton->color().name() );
   mSettings->setValue( QStringLiteral( "/Map/highlight/colorAlpha" ), mIdentifyHighlightColorButton->color().alpha() );
-  mSettings->setValue( QStringLiteral( "/Map/highlight/buffer" ), mIdentifyHighlightBufferSpinBox->value() );
+  QgsHighlight::settingsMapHighlightBuffer.setValue( mIdentifyHighlightBufferSpinBox->value() );
   mSettings->setValue( QStringLiteral( "/Map/highlight/minWidth" ), mIdentifyHighlightMinWidthSpinBox->value() );
 
   bool showLegendClassifiers = mSettings->value( QStringLiteral( "/qgis/showLegendClassifiers" ), false ).toBool();

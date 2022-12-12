@@ -17,6 +17,7 @@
 
 #include "qgis_gui.h"
 #include "qgsfeature.h"
+#include "qgssettingsentryimpl.h"
 #include "qgsrendercontext.h"
 #include "qgsmapcanvasitem.h"
 #include "qgsgeometry.h"
@@ -83,6 +84,7 @@ class GUI_EXPORT QgsHighlight : public QgsMapCanvasItem
 #endif
   public:
 
+    static const inline QgsSettingsEntryDouble settingsMapHighlightBuffer = QgsSettingsEntryDouble( QStringLiteral( "buffer" ), QgsSettings::Prefix::MAP_HIGHLIGHT, Qgis::DEFAULT_HIGHLIGHT_BUFFER_MM ) SIP_SKIP;
     Q_PROPERTY( QColor color READ color WRITE setColor )
     Q_PROPERTY( QColor fillColor READ fillColor WRITE setFillColor )
     Q_PROPERTY( int width READ width WRITE setWidth )

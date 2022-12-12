@@ -233,7 +233,7 @@ QgsCompoundColorWidget::QgsCompoundColorWidget( QWidget *parent, const QColor &c
   }
 
   //restore active component radio button
-  const int activeRadio = settings.value( QStringLiteral( "Windows/ColorDialog/activeComponent" ), 2 ).toInt();
+  const int activeRadio = QgsCompoundColorWidget::settingsWindowsColorDialogActiveComponent.value();
   switch ( activeRadio )
   {
     case 0:
@@ -655,7 +655,7 @@ void QgsCompoundColorWidget::saveSettings()
     activeRadio = 4;
   if ( mBlueRadio->isChecked() )
     activeRadio = 5;
-  settings.setValue( QStringLiteral( "Windows/ColorDialog/activeComponent" ), activeRadio );
+  QgsCompoundColorWidget::settingsWindowsColorDialogActiveComponent.setValue( activeRadio );
 
   //record current scheme
   QgsCompoundColorWidget::settingsWindowsColorDialogActiveScheme.setValue( mSchemeComboBox->currentIndex() );

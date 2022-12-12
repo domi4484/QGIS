@@ -17,6 +17,7 @@
 #ifndef QGSTEXTFORMATWIDGET_H
 #define QGSTEXTFORMATWIDGET_H
 
+#include "qgssettingsentryimpl.h"
 #include "ui_qgstextformatwidgetbase.h"
 #include "qgis_sip.h"
 #include "qgstextformat.h"
@@ -53,6 +54,8 @@ class GUI_EXPORT QgsTextFormatWidget : public QWidget, public QgsExpressionConte
     Q_PROPERTY( QgsTextFormat format READ format )
 
   public:
+
+    static const inline QgsSettingsEntryInteger settingsWindowsLabelingTab = QgsSettingsEntryInteger( QStringLiteral( "Tab" ), QgsSettings::Prefix::WINDOWS_LABELING, 0 ) SIP_SKIP;
 
     /**
      * Constructor for QgsTextFormatWidget.

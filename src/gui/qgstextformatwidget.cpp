@@ -337,7 +337,7 @@ void QgsTextFormatWidget::initWidget()
   mFontPreviewSplitter->restoreState( settings.value( QStringLiteral( "Windows/Labeling/FontPreviewSplitState" ) ).toByteArray() );
   mLabelingOptionsSplitter->restoreState( settings.value( QStringLiteral( "Windows/Labeling/OptionsSplitState" ) ).toByteArray() );
 
-  mLabelingOptionsListWidget->setCurrentRow( settings.value( QStringLiteral( "Windows/Labeling/Tab" ), 0 ).toInt() );
+  mLabelingOptionsListWidget->setCurrentRow( QgsTextFormatWidget::settingsWindowsLabelingTab.value() );
 
   mBufferEffect.reset( QgsPaintEffectRegistry::defaultStack() );
   connect( mBufferEffectWidget, &QgsEffectStackCompactWidget::changed, this, &QgsTextFormatWidget::updatePreview );
@@ -1059,7 +1059,7 @@ QgsTextFormatWidget::~QgsTextFormatWidget()
     }
   }
 
-  settings.setValue( QStringLiteral( "Windows/Labeling/Tab" ), prevIndex );
+  QgsTextFormatWidget::settingsWindowsLabelingTab.setValue( prevIndex );
 }
 
 QgsTextFormat QgsTextFormatWidget::format( bool includeDataDefinedProperties ) const

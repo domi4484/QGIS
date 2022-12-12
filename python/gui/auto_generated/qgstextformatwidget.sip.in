@@ -34,6 +34,7 @@ of Labeling.
 %End
   public:
 
+
     QgsTextFormatWidget( const QgsTextFormat &format = QgsTextFormat(), QgsMapCanvas *mapCanvas = 0, QWidget *parent /TransferThis/ = 0,
                          QgsVectorLayer *layer = 0 );
 %Docstring

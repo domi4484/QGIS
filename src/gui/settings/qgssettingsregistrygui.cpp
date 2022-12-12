@@ -30,6 +30,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
 {
   addSettingsEntry( &QgsModelDesignerDialog::settingsZoomFavor );
   addSettingsEntry( &settingsZoomFactor );
+  addSettingsEntry( &QgsHighlight::settingsMapHighlightMinWidth );
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &QgsHighlight::settingsMapHighlightBuffer );
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );

@@ -312,7 +312,7 @@ void QgsHighlight::applyDefaultStyle()
   QColor color = QColor( settings.value( QStringLiteral( "Map/highlight/color" ), Qgis::DEFAULT_HIGHLIGHT_COLOR.name() ).toString() );
   const int alpha = settings.value( QStringLiteral( "Map/highlight/colorAlpha" ), Qgis::DEFAULT_HIGHLIGHT_COLOR.alpha() ).toInt();
   const double buffer = QgsHighlight::settingsMapHighlightBuffer.value();
-  const double minWidth = settings.value( QStringLiteral( "Map/highlight/minWidth" ), Qgis::DEFAULT_HIGHLIGHT_MIN_WIDTH_MM ).toDouble();
+  const double minWidth = QgsHighlight::settingsMapHighlightMinWidth.value();
 
   setColor( color ); // sets also fill with default alpha
   color.setAlpha( alpha );

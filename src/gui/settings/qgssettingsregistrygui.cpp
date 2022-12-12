@@ -51,6 +51,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );
   addSettingsEntry( &QgsMapTool::settingsMapSearchRadiusMM );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
+  addSettingsEntry( &QgsHighlight::settingsMapHighlightColorAlpha );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleItemsListWidget::settingsUISymbolsListLastIconView );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );

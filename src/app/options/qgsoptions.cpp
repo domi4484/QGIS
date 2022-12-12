@@ -229,7 +229,7 @@ QgsOptions::QgsOptions( QWidget *parent, Qt::WindowFlags fl, const QList<QgsOpti
   spinBoxIdentifyValue->setClearValue( Qgis::DEFAULT_SEARCH_RADIUS_MM );
   spinBoxIdentifyValue->setValue( identifyValue );
   QColor highlightColor = QColor( mSettings->value( QStringLiteral( "/Map/highlight/color" ), Qgis::DEFAULT_HIGHLIGHT_COLOR.name() ).toString() );
-  int highlightAlpha = mSettings->value( QStringLiteral( "/Map/highlight/colorAlpha" ), Qgis::DEFAULT_HIGHLIGHT_COLOR.alpha() ).toInt();
+  int highlightAlpha = QgsHighlight::settingsMapHighlightColorAlpha.value();
   highlightColor.setAlpha( highlightAlpha );
   mIdentifyHighlightColorButton->setColor( highlightColor );
   double highlightBuffer = QgsHighlight::settingsMapHighlightBuffer.value();
@@ -1553,7 +1553,7 @@ void QgsOptions::saveOptions()
   //general settings
   QgsMapTool::settingsMapSearchRadiusMM.setValue( spinBoxIdentifyValue->value() );
   mSettings->setValue( QStringLiteral( "/Map/highlight/color" ), mIdentifyHighlightColorButton->color().name() );
-  mSettings->setValue( QStringLiteral( "/Map/highlight/colorAlpha" ), mIdentifyHighlightColorButton->color().alpha() );
+  QgsHighlight::settingsMapHighlightColorAlpha.setValue( mIdentifyHighlightColorButton->color().alpha() );
   QgsHighlight::settingsMapHighlightBuffer.setValue( mIdentifyHighlightBufferSpinBox->value() );
   QgsHighlight::settingsMapHighlightMinWidth.setValue( mIdentifyHighlightMinWidthSpinBox->value() );
 

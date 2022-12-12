@@ -84,6 +84,7 @@ class GUI_EXPORT QgsHighlight : public QgsMapCanvasItem
 #endif
   public:
 
+    static const inline QgsSettingsEntryInteger settingsMapHighlightColorAlpha = QgsSettingsEntryInteger( QStringLiteral( "colorAlpha" ), QgsSettings::Prefix::MAP_HIGHLIGHT, Qgis::DEFAULT_HIGHLIGHT_COLOR.alpha() ) SIP_SKIP;
     static const inline QgsSettingsEntryDouble settingsMapHighlightMinWidth = QgsSettingsEntryDouble( QStringLiteral( "minWidth" ), QgsSettings::Prefix::MAP_HIGHLIGHT, Qgis::DEFAULT_HIGHLIGHT_MIN_WIDTH_MM ) SIP_SKIP;
     static const inline QgsSettingsEntryDouble settingsMapHighlightBuffer = QgsSettingsEntryDouble( QStringLiteral( "buffer" ), QgsSettings::Prefix::MAP_HIGHLIGHT, Qgis::DEFAULT_HIGHLIGHT_BUFFER_MM ) SIP_SKIP;
     Q_PROPERTY( QColor color READ color WRITE setColor )

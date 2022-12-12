@@ -323,8 +323,8 @@ void QgsCodeEditorOptionsWidget::apply()
   }
   else
   {
-    settings.remove( QStringLiteral( "codeEditor/fontfamily" ), QgsSettings::Gui );
-    settings.remove( QStringLiteral( "codeEditor/fontsize" ), QgsSettings::Gui );
+    QgsCodeEditor::settingsCodeEditorFontfamily.remove();
+    QgsCodeEditor::settingsCodeEditorFontsize.remove();
   }
 }
 

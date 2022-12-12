@@ -72,7 +72,7 @@ void QgsPointCloudLayerSaveAsDialog::setup()
     mFormatComboBox->addItem( getTranslatedNameForFormat( format ), static_cast< int >( format ) );
 
   QgsSettings settings;
-  const int defaultFormat = settings.value( QStringLiteral( "UI/lastPointCloudFormat" ), 0 ).toInt();
+  const int defaultFormat = QgsPointCloudLayerSaveAsDialog::settingsLastPointCloudFormat.value();
   mFormatComboBox->setCurrentIndex( mFormatComboBox->findData( defaultFormat ) );
   mFormatComboBox->blockSignals( false );
   mFormatComboBox_currentIndexChanged( 0 );

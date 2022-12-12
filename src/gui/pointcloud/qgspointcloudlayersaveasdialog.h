@@ -17,6 +17,7 @@
  ***************************************************************************/
 #ifndef QGSPOINTCLOUDLAYERSAVEASDIALOG_H
 #define QGSPOINTCLOUDLAYERSAVEASDIALOG_H
+#include "qgssettingsentryimpl.h"
 
 #include "ui_qgspointcloudlayersaveasdialogbase.h"
 #include <QDialog>
@@ -41,6 +42,8 @@ class GUI_EXPORT QgsPointCloudLayerSaveAsDialog : public QDialog, private Ui::Qg
     Q_OBJECT
 
   public:
+
+    static const inline QgsSettingsEntryInteger settingsLastPointCloudFormat = QgsSettingsEntryInteger( QStringLiteral( "lastPointCloudFormat" ), QgsSettings::Prefix::UI, 0 ) SIP_SKIP;
 
     /**
      * Construct a new QgsPointCloudLayerSaveAsDialog

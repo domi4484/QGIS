@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgscompoundcolorwidget.h"
 #include "qgserrordialog.h"
 #include "qgspointcloudlayersaveasdialog.h"
 #include "qgscodeeditor.h"
@@ -51,6 +52,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
   addSettingsEntry( &QgsMapCanvas::settingsSegmentationToleranceType );
+  addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogActiveScheme );
   addSettingsEntry( &settingsPromptForSublayers );
   addSettingsEntry( &QgsErrorDialog::settingsErrorDialogDetail );
   addSettingsEntry( &settingsLayoutDesignerLastSizeUnit );

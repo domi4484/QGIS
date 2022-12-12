@@ -17,6 +17,7 @@
 #define QGSCOMPOUNDCOLORWIDGET_H
 
 #include "qgis_sip.h"
+#include "qgssettingsentryimpl.h"
 #include "qgspanelwidget.h"
 #include "ui_qgscompoundcolorwidget.h"
 #include "qgis_gui.h"
@@ -38,6 +39,7 @@ class GUI_EXPORT QgsCompoundColorWidget : public QgsPanelWidget, private Ui::Qgs
 
   public:
 
+    static const inline QgsSettingsEntryInteger settingsWindowsColorDialogActiveScheme = QgsSettingsEntryInteger( QStringLiteral( "activeScheme" ), QgsSettings::Prefix::WINDOWS_COLORDIALOG, 0 ) SIP_SKIP;
     //! Widget layout
     enum Layout
     {

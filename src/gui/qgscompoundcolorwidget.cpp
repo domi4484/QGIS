@@ -76,7 +76,7 @@ QgsCompoundColorWidget::QgsCompoundColorWidget( QWidget *parent, const QColor &c
   const QList<QgsColorScheme *> schemeList = QgsApplication::colorSchemeRegistry()->schemes( QgsColorScheme::ShowInColorDialog );
 
   //choose a reasonable starting scheme
-  int activeScheme = settings.value( QStringLiteral( "Windows/ColorDialog/activeScheme" ), 0 ).toInt();
+  int activeScheme = QgsCompoundColorWidget::settingsWindowsColorDialogActiveScheme.value();
   activeScheme = activeScheme >= mSchemeComboBox->count() ? 0 : activeScheme;
 
   mSchemeList->setScheme( schemeList.at( activeScheme ) );
@@ -658,7 +658,7 @@ void QgsCompoundColorWidget::saveSettings()
   settings.setValue( QStringLiteral( "Windows/ColorDialog/activeComponent" ), activeRadio );
 
   //record current scheme
-  settings.setValue( QStringLiteral( "Windows/ColorDialog/activeScheme" ), mSchemeComboBox->currentIndex() );
+  QgsCompoundColorWidget::settingsWindowsColorDialogActiveScheme.setValue( mSchemeComboBox->currentIndex() );
 
   //record current tab
   settings.setValue( QStringLiteral( "Windows/ColorDialog/activeTab" ), mTabWidget->currentIndex() );

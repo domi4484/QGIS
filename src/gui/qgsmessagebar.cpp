@@ -17,6 +17,7 @@
 
 #include "qgsmessagebar.h"
 #include "qgsmessagebaritem.h"
+#include "qgssettingsregistrygui.h"
 #include "qgsapplication.h"
 #include "qgsmessagelog.h"
 #include "qgsmessageviewer.h"
@@ -222,7 +223,7 @@ int QgsMessageBar::defaultMessageTimeout( Qgis::MessageLevel level )
     case Qgis::MessageLevel::NoLevel:
     {
       const QgsSettings settings;
-      return settings.value( QStringLiteral( "qgis/messageTimeout" ), 5 ).toInt();
+      return QgsSettingsRegistryGui::settingsMessageTimeout.value();
     }
 
     case Qgis::MessageLevel::Warning:

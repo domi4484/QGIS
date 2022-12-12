@@ -17,6 +17,7 @@
 #include "qgsauthserverseditor.h"
 #include "ui_qgsauthserverseditor.h"
 #include "qgsauthsslimportdialog.h"
+#include "qgssettingsregistrygui.h"
 
 #include <QMenu>
 #include <QMessageBox>
@@ -421,5 +422,5 @@ QgsMessageBar *QgsAuthServersEditor::messageBar()
 int QgsAuthServersEditor::messageTimeout()
 {
   const QgsSettings settings;
-  return settings.value( QStringLiteral( "qgis/messageTimeout" ), 5 ).toInt();
+  return QgsSettingsRegistryGui::settingsMessageTimeout.value();
 }

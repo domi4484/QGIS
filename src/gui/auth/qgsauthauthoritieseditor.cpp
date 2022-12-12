@@ -17,6 +17,7 @@
 #include "qgsauthauthoritieseditor.h"
 #include "ui_qgsauthauthoritieseditor.h"
 
+#include "qgssettingsregistrygui.h"
 #include <QAction>
 #include <QComboBox>
 #include <QDateTime>
@@ -799,5 +800,5 @@ QgsMessageBar *QgsAuthAuthoritiesEditor::messageBar()
 int QgsAuthAuthoritiesEditor::messageTimeout()
 {
   const QgsSettings settings;
-  return settings.value( QStringLiteral( "qgis/messageTimeout" ), 5 ).toInt();
+  return QgsSettingsRegistryGui::settingsMessageTimeout.value();
 }

@@ -17,6 +17,7 @@
 #include "qgsauthtrustedcasdialog.h"
 #include "ui_qgsauthtrustedcasdialog.h"
 
+#include "qgssettingsregistrygui.h"
 #include <QPushButton>
 
 #include "qgssettings.h"
@@ -329,5 +330,5 @@ QgsMessageBar *QgsAuthTrustedCAsDialog::messageBar()
 int QgsAuthTrustedCAsDialog::messageTimeout()
 {
   const QgsSettings settings;
-  return settings.value( QStringLiteral( "qgis/messageTimeout" ), 5 ).toInt();
+  return QgsSettingsRegistryGui::settingsMessageTimeout.value();
 }

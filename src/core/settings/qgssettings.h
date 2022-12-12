@@ -102,6 +102,7 @@ class CORE_EXPORT QgsSettings : public QObject
         static const inline char *QGIS_DIGITIZING = "qgis/digitizing";
         static const inline char *QGIS_DIGITIZING_SHAPEMAPTOOLS = "qgis/digitizing/shape-map-tools";
         static const inline char *QGIS_NETWORKANDPROXY = "qgis/networkAndProxy";
+        static const inline char *ERROR_DIALOG = "Error/dialog";
         static const inline char *UI = "UI";
         static const inline char *GUI_CODEEDITOR = "gui_codeEditor";
         static const inline char *QGIS_STYLESHEET = "qgis/stylesheet";

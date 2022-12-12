@@ -51,7 +51,7 @@ QgsErrorDialog::QgsErrorDialog( const QgsError &error, const QString &title, QWi
   resize( width(), 150 );
 
   const QgsSettings settings;
-  const Qt::CheckState state = ( Qt::CheckState ) settings.value( QStringLiteral( "Error/dialog/detail" ), 0 ).toInt();
+  const Qt::CheckState state = ( Qt::CheckState ) QgsErrorDialog::settingsErrorDialogDetail.value();
   mDetailCheckBox->setCheckState( state );
   if ( state == Qt::Checked )
     mDetailPushButton_clicked();
@@ -75,6 +75,6 @@ void QgsErrorDialog::mDetailPushButton_clicked()
 void QgsErrorDialog::mDetailCheckBox_stateChanged( int state )
 {
   QgsSettings settings;
-  settings.setValue( QStringLiteral( "Error/dialog/detail" ), state );
+  QgsErrorDialog::settingsErrorDialogDetail.setValue( state );
 }
 

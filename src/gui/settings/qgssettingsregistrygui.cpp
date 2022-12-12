@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgserrordialog.h"
 #include "qgspointcloudlayersaveasdialog.h"
 #include "qgscodeeditor.h"
 #include "qgscodeeditorpython.h"
@@ -51,6 +52,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
   addSettingsEntry( &QgsMapCanvas::settingsSegmentationToleranceType );
   addSettingsEntry( &settingsPromptForSublayers );
+  addSettingsEntry( &QgsErrorDialog::settingsErrorDialogDetail );
   addSettingsEntry( &settingsLayoutDesignerLastSizeUnit );
   addSettingsEntry( &QgsPointCloudLayerSaveAsDialog::settingsLastPointCloudFormat );
   addSettingsEntry( &settingsStyleLastStyleCategories );

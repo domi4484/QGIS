@@ -17,6 +17,7 @@
 #ifndef QGSERRORDIALOG_H
 #define QGSERRORDIALOG_H
 
+#include "qgssettingsentryimpl.h"
 #include <QDialog>
 
 #include "ui_qgserrordialogbase.h"
@@ -33,6 +34,8 @@ class GUI_EXPORT QgsErrorDialog: public QDialog, private Ui::QgsErrorDialogBase
 {
     Q_OBJECT
   public:
+
+    static const inline QgsSettingsEntryInteger settingsErrorDialogDetail = QgsSettingsEntryInteger( QStringLiteral( "detail" ), QgsSettings::Prefix::ERROR_DIALOG, 0 ) SIP_SKIP;
 
     /**
      * Constructor for QgsErrorDialog

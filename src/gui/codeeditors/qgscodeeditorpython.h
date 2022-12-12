@@ -17,6 +17,7 @@
 #define QGSCODEEDITORPYTHON_H
 
 #include "qgscodeeditor.h"
+#include "qgssettingsentryimpl.h"
 #include "qgis_sip.h"
 #include "qgis_gui.h"
 #include <Qsci/qscilexerpython.h>
@@ -50,6 +51,8 @@ class GUI_EXPORT QgsCodeEditorPython : public QgsCodeEditor
     Q_OBJECT
 
   public:
+
+    static const inline QgsSettingsEntryInteger settingsPythonConsoleAutoCompThreshold = QgsSettingsEntryInteger( QStringLiteral( "autoCompThreshold" ), QgsSettings::Prefix::PYTHONCONSOLE, 2 ) SIP_SKIP;
 
     /**
      * Construct a new Python editor.

@@ -161,7 +161,7 @@ void QgsCodeEditorPython::initializeLexer()
   }
   setLexer( pyLexer );
 
-  const int threshold = settings.value( QStringLiteral( "pythonConsole/autoCompThreshold" ), 2 ).toInt();
+  const int threshold = QgsCodeEditorPython::settingsPythonConsoleAutoCompThreshold.value();
   setAutoCompletionThreshold( threshold );
   if ( !settings.value( "pythonConsole/autoCompleteEnabled", true ).toBool() )
   {

@@ -17,6 +17,7 @@
 #ifndef QGSAUTHIMPORTCERTDIALOG_H
 #define QGSAUTHIMPORTCERTDIALOG_H
 
+#include "qgssettingsentryimpl.h"
 #include <QDialog>
 #include "qgis_sip.h"
 #include "ui_qgsauthimportcertdialog.h"
@@ -36,6 +37,7 @@ class GUI_EXPORT QgsAuthImportCertDialog : public QDialog, private Ui::QgsAuthIm
 
   public:
     //! Type of filter to apply to dialog
+    static const inline QgsSettingsEntryString settingsLastAuthImportCertOpenFileDir = QgsSettingsEntryString( QStringLiteral( "lastAuthImportCertOpenFileDir" ), QgsSettings::Prefix::UI, QDir::homePath() ) SIP_SKIP;
     enum CertFilter
     {
       NoFilter = 1,

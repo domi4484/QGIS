@@ -18,6 +18,8 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsauthimportcertdialog.h"
+#include "qgsauthsslimportdialog.h"
 #include "qgsauthguiutils.h"
 #include "qgstextformatwidget.h"
 #include "qgsstyleitemslistwidget.h"
@@ -50,7 +52,9 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &QgsHighlight::settingsMapHighlightMinWidth );
   addSettingsEntry( &settingsRespectScreenDPI );
   addSettingsEntry( &QgsHighlight::settingsMapHighlightBuffer );
+  addSettingsEntry( &QgsAuthImportCertDialog::settingsLastAuthImportCertOpenFileDir );
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );
+  addSettingsEntry( &QgsAuthSslImportDialog::settingsLastAuthImportSslOpenFileDir );
   addSettingsEntry( &QgsMapTool::settingsMapSearchRadiusMM );
   addSettingsEntry( &QgsAuthGuiUtils::settingsLastAuthOpenFileDir );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );

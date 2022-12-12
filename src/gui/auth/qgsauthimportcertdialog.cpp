@@ -243,7 +243,7 @@ void QgsAuthImportCertDialog::chkAllowInvalid_toggled( bool checked )
 QString QgsAuthImportCertDialog::getOpenFileName( const QString &title, const QString &extfilter )
 {
   QgsSettings settings;
-  const QString recentdir = settings.value( QStringLiteral( "UI/lastAuthImportCertOpenFileDir" ), QDir::homePath() ).toString();
+  const QString recentdir = QgsAuthImportCertDialog::settingsLastAuthImportCertOpenFileDir.value();
   QString f = QFileDialog::getOpenFileName( this, title, recentdir, extfilter );
 
   // return dialog focus on Mac

@@ -17,6 +17,7 @@
 /****************************************************************************
 **
 ** Portions of this code were derived from the following...
+#include "qgssettingsentryimpl.h"
 **
 ** qt-everywhere-opensource-src-4.8.6/examples/network/
 **   securesocketclient/certificateinfo.h (and .cpp)
@@ -83,6 +84,8 @@ class GUI_EXPORT QgsAuthSslImportDialog : public QDialog, private Ui::QgsAuthSsl
 {
     Q_OBJECT
   public:
+
+    static const inline QgsSettingsEntryString settingsLastAuthImportSslOpenFileDir = QgsSettingsEntryString( QStringLiteral( "lastAuthImportSslOpenFileDir" ), QgsSettings::Prefix::UI, QDir::homePath() ) SIP_SKIP;
 
     /**
      * Construct dialog for importing certificates

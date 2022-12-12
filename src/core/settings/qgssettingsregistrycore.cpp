@@ -131,6 +131,7 @@ QgsSettingsRegistryCore::QgsSettingsRegistryCore()
   addSettingsEntry( &QgsGpsConnection::settingsGpsTimeStampOffsetFromUtc );
 
   addSettingsEntry( &settingsQgisStylesheetFontPointSize );
+  addSettingsEntry( &settingsLayoutDesignerDefaultFont );
 }
 
 QgsSettingsRegistryCore::~QgsSettingsRegistryCore()

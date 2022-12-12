@@ -252,7 +252,7 @@ QString QgsAuthImportCertDialog::getOpenFileName( const QString &title, const QS
 
   if ( !f.isEmpty() )
   {
-    settings.setValue( QStringLiteral( "UI/lastAuthImportCertOpenFileDir" ), QFileInfo( f ).absoluteDir().path() );
+    QgsAuthImportCertDialog::settingsLastAuthImportCertOpenFileDir.setValue( QFileInfo( f ).absoluteDir().path() );
   }
   return f;
 }

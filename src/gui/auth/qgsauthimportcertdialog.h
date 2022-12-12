@@ -36,8 +36,10 @@ class GUI_EXPORT QgsAuthImportCertDialog : public QDialog, private Ui::QgsAuthIm
     Q_OBJECT
 
   public:
-    //! Type of filter to apply to dialog
+
     static const inline QgsSettingsEntryString settingsLastAuthImportCertOpenFileDir = QgsSettingsEntryString( QStringLiteral( "lastAuthImportCertOpenFileDir" ), QgsSettings::Prefix::UI, QDir::homePath() ) SIP_SKIP;
+
+    //! Type of filter to apply to dialog
     enum CertFilter
     {
       NoFilter = 1,

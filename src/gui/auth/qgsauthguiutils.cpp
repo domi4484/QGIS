@@ -327,7 +327,7 @@ void QgsAuthGuiUtils::fileFound( bool found, QWidget *widget )
 QString QgsAuthGuiUtils::getOpenFileName( QWidget *parent, const QString &title, const QString &extfilter )
 {
   QgsSettings settings;
-  const QString recentdir = settings.value( QStringLiteral( "UI/lastAuthOpenFileDir" ), QDir::homePath() ).toString();
+  const QString recentdir = QgsAuthGuiUtils::settingsLastAuthOpenFileDir.value();
   QString f = QFileDialog::getOpenFileName( parent, title, recentdir, extfilter );
   if ( !f.isEmpty() )
   {

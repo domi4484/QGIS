@@ -17,6 +17,7 @@
 #ifndef QGSAUTHGUIUTILS_H
 #define QGSAUTHGUIUTILS_H
 
+#include "qgssettingsentryimpl.h"
 #include <QColor>
 #include "qgis_gui.h"
 
@@ -35,6 +36,7 @@ class GUI_EXPORT QgsAuthGuiUtils
 {
   public:
 
+    static const inline QgsSettingsEntryString settingsLastAuthOpenFileDir = QgsSettingsEntryString( QStringLiteral( "lastAuthOpenFileDir" ), QgsSettings::Prefix::UI, QDir::homePath() ) SIP_SKIP;
     //! Green color representing valid, trusted, etc. certificate
     static QColor greenColor();
 

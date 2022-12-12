@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsauthguiutils.h"
 #include "qgstextformatwidget.h"
 #include "qgsstyleitemslistwidget.h"
 #include "qgsdiagramproperties.h"
@@ -51,6 +52,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &QgsHighlight::settingsMapHighlightBuffer );
   addSettingsEntry( &::settingsColorWidgetsTextWidgetFormat );
   addSettingsEntry( &QgsMapTool::settingsMapSearchRadiusMM );
+  addSettingsEntry( &QgsAuthGuiUtils::settingsLastAuthOpenFileDir );
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsTextFormatWidget::settingsWindowsLabelingTab );
   addSettingsEntry( &QgsHighlight::settingsMapHighlightColorAlpha );

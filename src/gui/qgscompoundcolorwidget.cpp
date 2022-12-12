@@ -179,7 +179,7 @@ QgsCompoundColorWidget::QgsCompoundColorWidget( QWidget *parent, const QColor &c
   mSwatchButton16->setColor( settings.value( QStringLiteral( "Windows/ColorDialog/customColor16" ), QVariant( QColor() ) ).value<QColor>() );
 
   //restore sample radius
-  mSpinBoxRadius->setValue( settings.value( QStringLiteral( "Windows/ColorDialog/sampleRadius" ), 1 ).toInt() );
+  mSpinBoxRadius->setValue( QgsCompoundColorWidget::settingsWindowsColorDialogSampleRadius.value() );
   mSamplePreview->setColor( QColor() );
 
   // hidpi friendly sizes
@@ -682,7 +682,7 @@ void QgsCompoundColorWidget::saveSettings()
   settings.setValue( QStringLiteral( "Windows/ColorDialog/customColor16" ), QVariant( mSwatchButton16->color() ) );
 
   //sample radius
-  settings.setValue( QStringLiteral( "Windows/ColorDialog/sampleRadius" ), mSpinBoxRadius->value() );
+  QgsCompoundColorWidget::settingsWindowsColorDialogSampleRadius.setValue( mSpinBoxRadius->value() );
 }
 
 void QgsCompoundColorWidget::stopPicking( QPoint eventPos, const bool takeSample )

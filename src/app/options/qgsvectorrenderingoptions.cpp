@@ -47,7 +47,7 @@ QgsVectorRenderingOptionsWidget::QgsVectorRenderingOptionsWidget( QWidget *paren
     mToleranceTypeComboBox->setCurrentIndex( toleranceTypeIndex );
   }
 
-  double tolerance = settings.value( QStringLiteral( "/qgis/segmentationTolerance" ), "0.01745" ).toDouble();
+  double tolerance = QgsMapCanvas::settingsSegmentationTolerance.value();
   if ( toleranceType == QgsAbstractGeometry::MaximumAngle )
   {
     tolerance = tolerance * 180.0 / M_PI; //value shown to the user is degree, not rad
@@ -93,7 +93,7 @@ void QgsVectorRenderingOptionsWidget::apply()
   {
     segmentationTolerance = segmentationTolerance / 180.0 * M_PI; //user sets angle tolerance in degrees, internal classes need value in rad
   }
-  settings.setValue( QStringLiteral( "/qgis/segmentationTolerance" ), segmentationTolerance );
+  QgsMapCanvas::settingsSegmentationTolerance.setValue( segmentationTolerance );
 
 }
 

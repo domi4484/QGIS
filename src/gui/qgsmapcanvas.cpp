@@ -200,7 +200,7 @@ QgsMapCanvas::QgsMapCanvas( QWidget *parent )
 
   //segmentation parameters
   QgsSettings settings;
-  double segmentationTolerance = settings.value( QStringLiteral( "qgis/segmentationTolerance" ), "0.01745" ).toDouble();
+  double segmentationTolerance = QgsMapCanvas::settingsSegmentationTolerance.value();
   QgsAbstractGeometry::SegmentationToleranceType toleranceType = QgsMapCanvas::settingsSegmentationToleranceType.value();
   mSettings.setSegmentationTolerance( segmentationTolerance );
   mSettings.setSegmentationToleranceType( toleranceType );

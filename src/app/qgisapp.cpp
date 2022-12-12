@@ -2691,7 +2691,7 @@ void QgisApp::applyDefaultSettingsToCanvas( QgsMapCanvas *canvas )
   canvas->setCachingEnabled( settings.value( QStringLiteral( "qgis/enable_render_caching" ), true ).toBool() );
   canvas->setParallelRenderingEnabled( settings.value( QStringLiteral( "qgis/parallel_rendering" ), true ).toBool() );
   canvas->setMapUpdateInterval( settings.value( QStringLiteral( "qgis/map_update_interval" ), 250 ).toInt() );
-  canvas->setSegmentationTolerance( settings.value( QStringLiteral( "qgis/segmentationTolerance" ), "0.01745" ).toDouble() );
+  canvas->setSegmentationTolerance( QgsMapCanvas::settingsSegmentationTolerance.value() );
   canvas->setSegmentationToleranceType( QgsAbstractGeometry::SegmentationToleranceType( QgsMapCanvas::settingsSegmentationToleranceType.value() ) );
 }
 

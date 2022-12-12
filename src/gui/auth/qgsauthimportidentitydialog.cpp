@@ -439,7 +439,6 @@ void QgsAuthImportIdentityDialog::fileFound( bool found, QWidget *widget )
 
 QString QgsAuthImportIdentityDialog::getOpenFileName( const QString &title, const QString &extfilter )
 {
-  QgsSettings settings;
   const QString recentdir = QgsAuthImportIdentityDialog::settingsLastAuthImportBundleOpenFileDir.value();
   QString f = QFileDialog::getOpenFileName( this, title, recentdir, extfilter );
 
@@ -449,7 +448,7 @@ QString QgsAuthImportIdentityDialog::getOpenFileName( const QString &title, cons
 
   if ( !f.isEmpty() )
   {
-    settings.setValue( QStringLiteral( "UI/lastAuthImportBundleOpenFileDir" ), QFileInfo( f ).absoluteDir().path() );
+    QgsAuthImportIdentityDialog::settingsLastAuthImportBundleOpenFileDir.setValue( QFileInfo( f ).absoluteDir().path() );
   }
   return f;
 }

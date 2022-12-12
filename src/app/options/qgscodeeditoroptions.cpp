@@ -319,7 +319,7 @@ void QgsCodeEditorOptionsWidget::apply()
   if ( mOverrideFontGroupBox->isChecked() )
   {
     settings.setValue( QStringLiteral( "codeEditor/fontfamily" ), mFontComboBox->currentFont().family(), QgsSettings::Gui );
-    settings.setValue( QStringLiteral( "codeEditor/fontsize" ), mSizeSpin->value(), QgsSettings::Gui );
+    QgsCodeEditor::settingsCodeEditorFontsize.setValue( mSizeSpin->value() );
   }
   else
   {

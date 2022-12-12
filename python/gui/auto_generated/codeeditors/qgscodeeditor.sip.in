@@ -80,6 +80,7 @@ A text editor based on QScintilla2.
 %End
   public:
 
+
     enum class Mode
     {
       ScriptEditor,

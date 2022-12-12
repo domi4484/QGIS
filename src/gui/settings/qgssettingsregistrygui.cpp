@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgscodeeditor.h"
 #include "qgscodeeditorpython.h"
 #include "qgsauthcertificatemanager.h"
 #include "qgsdualview.h"
@@ -31,6 +32,7 @@
 QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   : QgsSettingsRegistry()
 {
+  addSettingsEntry( &QgsCodeEditor::settingsCodeEditorFontsize );
   addSettingsEntry( &QgsCodeEditorPython::settingsPythonConsoleAutoCompThreshold );
   addSettingsEntry( &QgsModelDesignerDialog::settingsZoomFavor );
   addSettingsEntry( &::settingsAuthCertEditorsSelectedTab );

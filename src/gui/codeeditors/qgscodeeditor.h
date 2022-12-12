@@ -17,6 +17,7 @@
 #ifndef QGSCODEEDITOR_H
 #define QGSCODEEDITOR_H
 
+#include "qgssettingsentryimpl.h"
 #include <QString>
 #include "qgscodeeditorcolorscheme.h"
 #include "qgis.h"
@@ -94,6 +95,8 @@ class GUI_EXPORT QgsCodeEditor : public QsciScintilla
     Q_OBJECT
 
   public:
+
+    static const inline QgsSettingsEntryInteger settingsCodeEditorFontsize = QgsSettingsEntryInteger( QStringLiteral( "fontsize" ), QgsSettings::Prefix::GUI_CODEEDITOR, 0 ) SIP_SKIP;
 
     /**
      * Code editor modes.

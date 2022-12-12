@@ -798,7 +798,7 @@ QFont QgsCodeEditor::getMonospaceFont()
   if ( !settings.value( QStringLiteral( "codeEditor/fontfamily" ), QString(), QgsSettings::Gui ).toString().isEmpty() )
     font.setFamily( settings.value( QStringLiteral( "codeEditor/fontfamily" ), QString(), QgsSettings::Gui ).toString() );
 
-  const int fontSize = settings.value( QStringLiteral( "codeEditor/fontsize" ), 0, QgsSettings::Gui ).toInt();
+  const int fontSize = QgsCodeEditor::settingsCodeEditorFontsize.value();
 
 #ifdef Q_OS_MAC
   if ( fontSize > 0 )

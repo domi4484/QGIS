@@ -17,6 +17,7 @@
 #define QGSDUALVIEW_H
 
 #include <QStackedWidget>
+#include "qgssettingsentryimpl.h"
 
 #include "ui_qgsdualviewbase.h"
 
@@ -46,6 +47,8 @@ class GUI_EXPORT QgsDualView : public QStackedWidget, private Ui::QgsDualViewBas
     Q_OBJECT
 
   public:
+
+    static const inline QgsSettingsEntryInteger settingsAttributeTableRowCache = QgsSettingsEntryInteger( QStringLiteral( "attributeTableRowCache" ), QgsSettings::Prefix::QGIS, 10000 ) SIP_SKIP;
 
     /**
      * The view modes, in which this widget can present information.

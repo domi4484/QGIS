@@ -493,7 +493,7 @@ QgsOptions::QgsOptions( QWidget *parent, Qt::WindowFlags fl, const QList<QgsOpti
   mAttrTableViewComboBox->addItem( tr( "Form View" ), QgsDualView::AttributeEditor );
   mAttrTableViewComboBox->setCurrentIndex( mAttrTableViewComboBox->findData( mSettings->value( QStringLiteral( "/qgis/attributeTableView" ), -1 ).toInt() ) );
 
-  spinBoxAttrTableRowCache->setValue( mSettings->value( QStringLiteral( "/qgis/attributeTableRowCache" ), 10000 ).toInt() );
+  spinBoxAttrTableRowCache->setValue( QgsDualView::settingsAttributeTableRowCache.value() );
   spinBoxAttrTableRowCache->setClearValue( 10000 );
   spinBoxAttrTableRowCache->setSpecialValueText( tr( "All" ) );
 
@@ -1567,7 +1567,7 @@ void QgsOptions::saveOptions()
   mSettings->setValue( QStringLiteral( "/qgis/dockAttributeTable" ), cbxAttributeTableDocked->isChecked() );
   mSettings->setEnumValue( QStringLiteral( "/qgis/attributeTableBehavior" ), ( QgsAttributeTableFilterModel::FilterMode )cmbAttrTableBehavior->currentData().toInt() );
   mSettings->setValue( QStringLiteral( "/qgis/attributeTableView" ), mAttrTableViewComboBox->currentData() );
-  mSettings->setValue( QStringLiteral( "/qgis/attributeTableRowCache" ), spinBoxAttrTableRowCache->value() );
+  QgsDualView::settingsAttributeTableRowCache.setValue( spinBoxAttrTableRowCache->value() );
   QgsSettingsRegistryGui::settingsPromptForSublayers.setValue( static_cast< Qgis::SublayerPromptMode >( cmbPromptSublayers->currentData().toInt() ) );
 
   mSettings->setValue( QStringLiteral( "/qgis/scanItemsInBrowser2" ),

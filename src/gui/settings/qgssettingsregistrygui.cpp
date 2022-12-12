@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsdualview.h"
 #include "qgshighlight.h"
 #include "qgsmaptool.h"
 #include "qgsmodeldesignerdialog.h"
@@ -30,6 +31,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
 {
   addSettingsEntry( &QgsModelDesignerDialog::settingsZoomFavor );
   addSettingsEntry( &settingsZoomFactor );
+  addSettingsEntry( &QgsDualView::settingsAttributeTableRowCache );
   addSettingsEntry( &settingsMessageTimeout );
   addSettingsEntry( &QgsMapCanvas::settingsSegmentationTolerance );
   addSettingsEntry( &QgsHighlight::settingsMapHighlightMinWidth );

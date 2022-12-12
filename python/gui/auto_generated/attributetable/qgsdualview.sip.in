@@ -27,6 +27,7 @@ and the attributes for the currently selected feature are shown in a form.
 %End
   public:
 
+
     enum ViewMode
     {
 

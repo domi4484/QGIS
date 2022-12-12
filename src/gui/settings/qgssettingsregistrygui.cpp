@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsdiagramproperties.h"
 #include "qgscompoundcolorwidget.h"
 #include "qgserrordialog.h"
 #include "qgspointcloudlayersaveasdialog.h"
@@ -51,6 +52,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   addSettingsEntry( &settingsAutomaticallyCheckForPluginUpdates );
   addSettingsEntry( &QgsMapToolIdentify::settingsMapIdentifyMode );
   addSettingsEntry( &QgsStyleManagerDialog::settingLastStyleDatabaseFolder );
+  addSettingsEntry( &QgsDiagramProperties::settingsWindowsDiagramsTab );
   addSettingsEntry( &QgsStyleManagerDialog::settingsWindowsStyleV2ManagerThumbnailSize );
   addSettingsEntry( &QgsStyleManagerDialog::settingsWindowsStyleV2ManagerLastIconView );
   addSettingsEntry( &QgsCompoundColorWidget::settingsWindowsColorDialogActiveTab );

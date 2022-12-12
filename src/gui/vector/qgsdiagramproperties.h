@@ -17,6 +17,7 @@
 
 #ifndef QGSDIAGRAMPROPERTIES_H
 #define QGSDIAGRAMPROPERTIES_H
+#include "qgssettingsentryimpl.h"
 
 // We don't want to expose this in the public API
 #define SIP_NO_FILE
@@ -43,6 +44,7 @@ class GUI_EXPORT QgsDiagramProperties : public QWidget, private Ui::QgsDiagramPr
 
   public:
     QgsDiagramProperties( QgsVectorLayer *layer, QWidget *parent, QgsMapCanvas *canvas );
+    static const inline QgsSettingsEntryInteger settingsWindowsDiagramsTab = QgsSettingsEntryInteger( QStringLiteral( "Tab" ), QgsSettings::Prefix::WINDOWS_DIAGRAMS, 0 ) SIP_SKIP;
 
     /**
      * Updates the widget to reflect the layer's current diagram settings.

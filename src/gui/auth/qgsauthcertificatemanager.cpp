@@ -26,13 +26,13 @@ QgsAuthCertEditors::QgsAuthCertEditors( QWidget *parent )
 {
   setupUi( this );
   const QgsSettings settings;
-  tabWidget->setCurrentIndex( settings.value( QStringLiteral( "AuthCertEditorsSelectedTab" ), 0, QgsSettings::Section::Auth ).toInt() );
+  tabWidget->setCurrentIndex( ::settingsAuthCertEditorsSelectedTab.value() );
 }
 
 QgsAuthCertEditors::~QgsAuthCertEditors()
 {
   QgsSettings settings;
-  settings.setValue( QStringLiteral( "AuthCertEditorsSelectedTab" ), tabWidget->currentIndex(), QgsSettings::Section::Auth );
+  ::settingsAuthCertEditorsSelectedTab.setValue( tabWidget->currentIndex() );
 }
 
 

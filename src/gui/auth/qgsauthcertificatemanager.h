@@ -17,6 +17,7 @@
 #ifndef QGSAUTHCERTIFICATEMANAGER_H
 #define QGSAUTHCERTIFICATEMANAGER_H
 
+#include "qgssettingsentryimpl.h"
 #include "ui_qgsauthcertificatemanager.h"
 #include "qgis_sip.h"
 

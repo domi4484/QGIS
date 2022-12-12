@@ -18,6 +18,7 @@
 #include "qgsapplication.h"
 #include "qgssettingsregistrycore.h"
 #include "qgsstylemanagerdialog.h"
+#include "qgsauthcertificatemanager.h"
 #include "qgsdualview.h"
 #include "qgshighlight.h"
 #include "qgsmaptool.h"
@@ -30,6 +31,7 @@ QgsSettingsRegistryGui::QgsSettingsRegistryGui()
   : QgsSettingsRegistry()
 {
   addSettingsEntry( &QgsModelDesignerDialog::settingsZoomFavor );
+  addSettingsEntry( &::settingsAuthCertEditorsSelectedTab );
   addSettingsEntry( &settingsZoomFactor );
   addSettingsEntry( &QgsDualView::settingsAttributeTableRowCache );
   addSettingsEntry( &settingsMessageTimeout );

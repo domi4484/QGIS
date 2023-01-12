@@ -9990,9 +9990,8 @@ void QgisApp::mergeSelectedFeatures()
     return;
   }
 
-  //get selected feature ids (as a QSet<int> )
-  const QgsFeatureIds &featureIdSet = vl->selectedFeatureIds();
-  if ( featureIdSet.size() < 2 )
+  // Check at least two features are selected
+  if ( vl->selectedFeatureIds().size() < 2 )
   {
     visibleMessageBar()->pushMessage(
       tr( "Not enough features selected" ),
@@ -10053,83 +10052,37 @@ void QgisApp::mergeSelectedFeatures()
       }
       return;
     }
+    else if ( !QgsWkbTypes::isMultiType( vl->wkbType() ) )
+    {
+      const QgsGeometryCollection *c = qgsgeometry_cast<const QgsGeometryCollection *>( unionGeom.constGet() );
+      if ( ( c && c->partCount() > 1 ) || !unionGeom.convertToSingleType() )
+      {
+        visibleMessageBar()->pushMessage(
+          tr( "Merge failed" ),
+          tr( "Resulting geometry type (multipart) is incompatible with layer type (singlepart)." ),
+          Qgis::MessageLevel::Critical );
+        return;
+      }
+    }
   }
 
-  vl->beginEditCommand( tr( "Merged features" ) );
-
-  //create new feature
-  QgsFeature newFeature;
-  newFeature.setGeometry( unionGeom );
-
-  QgsAttributes attrs = d.mergedAttributes();
   QString errorMessage;
-  for ( int i = 0; i < attrs.count(); ++i )
+  bool success = vl->mergeSelectedFeatures( d.mergedAttributes(), unionGeom, errorMessage );
+
+  if ( !success )
   {
-    QVariant val = attrs.at( i );
-    bool isDefaultValue = vl->fields().fieldOrigin( i ) == QgsFields::OriginProvider &&
-                          vl->dataProvider() &&
-                          vl->dataProvider()->defaultValueClause( vl->fields().fieldOriginIndex( i ) ) == val;
-    bool isPrimaryKey =  vl->fields().fieldOrigin( i ) == QgsFields::OriginProvider &&
-                         vl->dataProvider() &&
-                         vl->dataProvider()->pkAttributeIndexes().contains( vl->fields().fieldOriginIndex( i ) );
-
-    if ( isPrimaryKey && !isDefaultValue )
-    {
-      QgsFeatureRequest request;
-      request.setFlags( QgsFeatureRequest::Flag::NoGeometry );
-      // Handle multi pks
-      if ( vl->dataProvider()->pkAttributeIndexes().count() > 1 && vl->dataProvider()->pkAttributeIndexes().count() <= attrs.count() )
-      {
-        const auto pkIdxList { vl->dataProvider()->pkAttributeIndexes() };
-        QStringList conditions;
-        QStringList fieldNames;
-        for ( const int &pkIdx : std::as_const( pkIdxList ) )
-        {
-          const QgsField pkField { vl->fields().field( pkIdx ) };
-          conditions.push_back( QgsExpression::createFieldEqualityExpression( pkField.name(), attrs.at( pkIdx ), pkField.type( ) ) );
-          fieldNames.push_back( pkField.name() );
-        }
-        request.setSubsetOfAttributes( fieldNames, vl->fields( ) );
-        request.setFilterExpression( conditions.join( QStringLiteral( " AND " ) ) );
-      }
-      else  // single pk
-      {
-        const QgsField pkField { vl->fields().field( i ) };
-        request.setSubsetOfAttributes( QStringList() << pkField.name(), vl->fields( ) );
-        request.setFilterExpression( QgsExpression::createFieldEqualityExpression( pkField.name(), val, pkField.type( ) ) );
-      }
-
-      QgsFeature f;
-      QgsFeatureIterator featureIterator = vl->getFeatures( request );
-      if ( featureIterator.nextFeature( f ) )
-      {
-        mergeFeatureId = f.id( );
-      }
-    }
-
-    // convert to destination data type
-    if ( !isDefaultValue && !vl->fields().at( i ).convertCompatible( val, &errorMessage ) )
-    {
-      visibleMessageBar()->pushMessage(
-        tr( "Invalid result" ),
-        tr( "Could not store value '%1' in field of type %2: %3" ).arg( attrs.at( i ).toString(), vl->fields().at( i ).typeName(), errorMessage ),
-        Qgis::Warning );
-    }
-    attrs[i] = val;
+    visibleMessageBar()->pushMessage(
+      tr( "Merge failed" ),
+      errorMessage,
+      Qgis::MessageLevel::Critical );
   }
-  newFeature.setAttributes( attrs );
-
-  QgsFeatureIds::const_iterator feature_it = featureIdsAfter.constBegin();
-  for ( ; feature_it != featureIdsAfter.constEnd(); ++feature_it )
+  else if ( success && !errorMessage.isEmpty() )
   {
-    vl->deleteFeature( *feature_it );
+    visibleMessageBar()->pushMessage(
+      tr( "Invalid result" ),
+      errorMessage,
+      Qgis::MessageLevel::Warning );
   }
-
-  vl->addFeature( newFeature );
-
-  vl->endEditCommand();
-
-  vl->triggerRepaint();
 }
 
 void QgisApp::vertexTool()

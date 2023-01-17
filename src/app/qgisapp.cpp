@@ -96,6 +96,18 @@
 
 #include "qgsanalysis.h"
 #include "qgsgeometrycheckregistry.h"
+#include "qgsbrowserwidget.h"
+#include "annotations/qgsannotationitempropertieswidget.h"
+#include "qgsmaptoolmodifyannotation.h"
+#include "qgsannotationlayer.h"
+#include "qgsdockablewidgethelper.h"
+#include "vertextool/qgsvertexeditor.h"
+#include "qgsvectorlayerutils.h"
+#include "qgsvectorlayereditutils.h"
+#include "qgsadvanceddigitizingdockwidget.h"
+#include "qgsabstractdatasourcewidget.h"
+#include "qgsmeshlayer.h"
+#include <geos_c.h>
 
 #include "options/qgscodeeditoroptions.h"
 
@@ -10067,7 +10079,8 @@ void QgisApp::mergeSelectedFeatures()
   }
 
   QString errorMessage;
-  bool success = vl->mergeSelectedFeatures( d.mergedAttributes(), unionGeom, errorMessage );
+  QgsVectorLayerEditUtils vectorLayerEditUtils( vl );
+  bool success = vectorLayerEditUtils.mergeFeatures( vl->selectedFeatureIds(), d.mergedAttributes(), unionGeom, errorMessage );
 
   if ( !success )
   {

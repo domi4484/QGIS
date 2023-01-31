@@ -61,6 +61,47 @@ include_directories(SYSTEM
   ${QCA_INCLUDE_DIR}
   ${QTKEYCHAIN_INCLUDE_DIR}
   ${QSCINTILLA_INCLUDE_DIR}
+
+
+
+set(TESTS
+  testqgisapp.cpp
+  testqgsappbrowserproviders.cpp
+  testqgisappclipboard.cpp
+  testqgisappdockwidgets.cpp
+  testqgsadvanceddigitizing.cpp
+  testqgsattributetable.cpp
+  testqgsapplocatorfilters.cpp
+  testqgsdecorationscalebar.cpp
+  testqgsfieldcalculator.cpp
+  testqgsmaptooleditannotation.cpp
+  testqgsmaptoolidentifyaction.cpp
+  testqgsmaptoollabel.cpp
+  testqgsmaptoolselect.cpp
+  testqgsmaptoolreshape.cpp
+  testqgsmaptoolrotatefeature.cpp
+  testqgsmaptoolscalefeature.cpp
+  testqgsmaptoolcircularstring.cpp
+  testqgsmaptooleditmesh.cpp
+  testqgsmaptoolmovefeature.cpp
+  testqgsmaptoolellipse.cpp
+  testqgsmaptoolcircle.cpp
+  testqgsmaptoolrectangle.cpp
+  testqgsmaptoolregularpolygon.cpp
+  testqgsmaptoolsplitparts.cpp
+  testqgsmaptoolsplitfeatures.cpp
+  testqgsmeasuretool.cpp
+  testqgsmeasurebearingtool.cpp
+  testqgsvertextool.cpp
+  testqgsvectorlayersaveasdialog.cpp
+  testqgsmaptoolreverseline.cpp
+  testqgsmaptooltrimextendfeature.cpp
+  testqgsprojectproperties.cpp
+  testqgsapplayoutvaliditychecks.cpp
+  testqgsmeshcalculatordialog.cpp
+  testqgsgpsintegration.cpp
+  testqgslabelpropertydialog.cpp
+  testqgsmergeattributesdialog.cpp
 )
 
 

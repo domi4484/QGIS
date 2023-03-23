@@ -181,7 +181,7 @@ void QgsRelationReferenceWidget::setRelation( const QgsRelation &relation, bool 
     {
       mReferencedFields << fieldPair.referencedField();
     }
-    if ( mComboBox )
+    if ( mComboBox && mInitialized )
     {
       mComboBox->setAllowNull( mAllowNull );
       mComboBox->setSourceLayer( mReferencedLayer );
@@ -475,13 +475,13 @@ void QgsRelationReferenceWidget::init()
       mFilterContainer->hide();
     }
 
-    mComboBox->setSourceLayer( mReferencedLayer );
-    mComboBox->setDisplayExpression( mReferencedLayer->displayExpression() );
-    mComboBox->setAllowNull( mAllowNull );
-    mComboBox->setIdentifierFields( mReferencedFields );
+//    mComboBox->setSourceLayer( mReferencedLayer );
+//    mComboBox->setDisplayExpression( mReferencedLayer->displayExpression() );
+//    mComboBox->setAllowNull( mAllowNull );
+//    mComboBox->setIdentifierFields( mReferencedFields );
 
-    if ( ! mFilterExpression.isEmpty() )
-      mComboBox->setFilterExpression( mFilterExpression );
+//    if ( ! mFilterExpression.isEmpty() )
+//      mComboBox->setFilterExpression( mFilterExpression );
 
     QVariant nullValue = QgsApplication::nullRepresentation();
 
@@ -499,7 +499,6 @@ void QgsRelationReferenceWidget::init()
     connect( mComboBox, &QgsFeatureListComboBox::currentFeatureChanged, this, &QgsRelationReferenceWidget::comboReferenceChanged );
 
     QApplication::restoreOverrideCursor();
-
     mInitialized = true;
   }
 }
@@ -657,7 +656,7 @@ QgsRelation QgsRelationReferenceWidget::relation() const
 
 void QgsRelationReferenceWidget::featureIdentified( const QgsFeature &feature )
 {
-  mComboBox->setCurrentFeature( feature );
+//  mComboBox->setCurrentFeature( feature );
   mFeature = feature;
 
   mRemoveFKButton->setEnabled( mIsEditable );
@@ -843,7 +842,7 @@ void QgsRelationReferenceWidget::filterChanged()
   filterExpression += qgsMapJoinValues( filters, QLatin1String( " AND " ) );
   filterExpression += filters.isEmpty() ? QString() : QStringLiteral( " ) " );
 
-  mComboBox->setFilterExpression( filterExpression );
+//  mComboBox->setFilterExpression( filterExpression );
 }
 
 void QgsRelationReferenceWidget::addEntry()

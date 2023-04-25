@@ -273,6 +273,7 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>mSourceDrawingFileWidget</tabstop>
   <tabstop>pbImportDrawing</tabstop>
   <tabstop>mCrsSelector</tabstop>
   <tabstop>mDatabaseFileWidget</tabstop>

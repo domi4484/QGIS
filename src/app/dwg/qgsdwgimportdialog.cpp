@@ -20,6 +20,7 @@
 #include <QDialogButtonBox>
 #include <QFileInfo>
 #include <QFileDialog>
+#include <QMessageBox>
 
 #include "qgssettings.h"
 #include "qgisapp.h"
@@ -61,12 +62,12 @@ QgsDwgImportDialog::QgsDwgImportDialog( QWidget *parent, Qt::WindowFlags f )
   cbExpandInserts->setChecked( s.value( QStringLiteral( "/DwgImport/lastExpandInserts" ), true ).toBool() );
   cbMergeLayers->setChecked( s.value( QStringLiteral( "/DwgImport/lastMergeLayers" ), false ).toBool() );
   cbUseCurves->setChecked( s.value( QStringLiteral( "/DwgImport/lastUseCurves" ), true ).toBool() );
-  mDatabaseFileWidget->setDefaultRoot( s.value( QStringLiteral( "/DwgImport/lastDirDatabase" ), QDir::homePath() ).toString() );
-  leDrawing->setFilePath( s.value( QStringLiteral( "/DwgImport/lastDrawingFile" ) ).toString() );
+  mDatabaseFileWidget->setFilePath( s.value( QStringLiteral( "/DwgImport/lastDatabaseFile" ) ).toString() );
+  mSourceDrawingFileWidget->setFilePath( s.value( QStringLiteral( "/DwgImport/lastDrawingFile" ) ).toString() );
 
   connect( buttonBox, &QDialogButtonBox::accepted, this, &QgsDwgImportDialog::buttonBox_accepted );
   connect( mDatabaseFileWidget, &QgsFileWidget::fileChanged, this, &QgsDwgImportDialog::mDatabaseFileWidget_textChanged );
-  connect( leDrawing, &QgsFileWidget::fileChanged, this, &QgsDwgImportDialog::drawingFileWidget_fileChanged );
+  connect( mSourceDrawingFileWidget, &QgsFileWidget::fileChanged, this, &QgsDwgImportDialog::drawingFileWidget_fileChanged );
   connect( pbImportDrawing, &QPushButton::clicked, this, &QgsDwgImportDialog::pbImportDrawing_clicked );
   connect( pbLoadDatabase, &QPushButton::clicked, this, &QgsDwgImportDialog::pbLoadDatabase_clicked );
   connect( pbSelectAll, &QPushButton::clicked, this, &QgsDwgImportDialog::pbSelectAll_clicked );
@@ -122,9 +123,9 @@ void QgsDwgImportDialog::updateUI()
     dbReadable = fi.exists() && fi.isReadable() && fi.isFile();
   }
 
-  if ( !leDrawing->filePath().isEmpty() )
+  if ( !mSourceDrawingFileWidget->filePath().isEmpty() )
   {
-    const QFileInfo fi( leDrawing->filePath() );
+    const QFileInfo fi( mSourceDrawingFileWidget->filePath() );
     dwgReadable = fi.exists() && fi.isReadable();
   }
 
@@ -137,14 +138,24 @@ void QgsDwgImportDialog::updateUI()
 void QgsDwgImportDialog::mDatabaseFileWidget_textChanged( const QString &filename )
 {
   QgsSettings s;
-  s.setValue( QStringLiteral( "/DwgImport/lastDirDatabase" ), QFileInfo( filename ).canonicalPath() );
+  s.setValue( QStringLiteral( "/DwgImport/lastDatabaseFile" ), QFileInfo( filename ).filePath() );
   updateUI();
 }
 
 void QgsDwgImportDialog::drawingFileWidget_fileChanged( const QString &filename )
 {
+  QFileInfo fileInfoSourceDrawing( filename );
+
   QgsSettings s;
-  s.setValue( QStringLiteral( "/DwgImport/lastDrawingFile" ), QFileInfo( filename ).filePath() );
+  s.setValue( QStringLiteral( "/DwgImport/lastDrawingFile" ), fileInfoSourceDrawing.filePath() );
+
+  if ( fileInfoSourceDrawing.exists() )
+  {
+    QFileInfo fileInfoTargetDatabase( fileInfoSourceDrawing.path(),
+                                      QString( "%1.gpkg" ).arg( fileInfoSourceDrawing.baseName() ) );
+    mDatabaseFileWidget->setFilePath( fileInfoTargetDatabase.filePath() );
+  }
+
   updateUI();
 }
 
@@ -175,14 +186,14 @@ void QgsDwgImportDialog::pbLoadDatabase_clicked()
     QgsFeature f;
     if ( d->getFeatures( QgsFeatureRequest().setSubsetOfAttributes( QgsAttributeList() << idxPath << idxLastModified << idxCrs ) ).nextFeature( f ) )
     {
-      leDrawing->setFilePath( f.attribute( idxPath ).toString() );
+      mSourceDrawingFileWidget->setFilePath( f.attribute( idxPath ).toString() );
 
       QgsCoordinateReferenceSystem crs;
       crs.createFromSrsId( f.attribute( idxCrs ).toInt() );
       mCrsSelector->setCrs( crs );
       mCrsSelector->setLayerCrs( crs );
 
-      const QFileInfo fi( leDrawing->filePath() );
+      const QFileInfo fi( mSourceDrawingFileWidget->filePath() );
       if ( fi.exists() )
       {
         if ( fi.lastModified() > f.attribute( idxLastModified ).toDateTime() )
@@ -249,14 +260,24 @@ void QgsDwgImportDialog::pbLoadDatabase_clicked()
 
 void QgsDwgImportDialog::pbImportDrawing_clicked()
 {
+  QFileInfo fileInfoDatabase( mDatabaseFileWidget->filePath() );
+  if ( fileInfoDatabase.exists() )
+  {
+    if ( QMessageBox::question( this,
+                                tr( "Overwrite content" ),
+                                tr( "The database %1 already exists, do you want to replace its content?" ).arg( fileInfoDatabase.filePath() ) )
+         == QMessageBox::No )
+      return;
+  }
+
   const QgsTemporaryCursorOverride waitCursor( Qt::WaitCursor );
 
-  QgsDwgImporter importer( mDatabaseFileWidget->filePath(), mCrsSelector->crs() );
+  QgsDwgImporter importer( fileInfoDatabase.filePath(), mCrsSelector->crs() );
 
   lblMessage->setVisible( true );
 
   QString error;
-  if ( importer.import( leDrawing->filePath(), error, cbExpandInserts->isChecked(), cbUseCurves->isChecked(), lblMessage ) )
+  if ( importer.import( mSourceDrawingFileWidget->filePath(), error, cbExpandInserts->isChecked(), cbUseCurves->isChecked(), lblMessage ) )
   {
     bar->pushMessage( tr( "Drawing import completed." ), Qgis::MessageLevel::Info );
   }

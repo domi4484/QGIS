@@ -545,6 +545,10 @@ void QgsAttributeForm::updateValuesDependenciesDefaultValues( const int originId
        && mMode != QgsAttributeEditorContext::AddFeatureMode )
     return;
 
+  // Default values should not be updated if the layer is not in editing mode
+  if ( !mLayer->isEditable() )
+    return;
+
   // create updated Feature
   QgsFeature updatedFeature = getUpdatedFeature();
 

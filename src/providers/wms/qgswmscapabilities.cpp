@@ -2511,7 +2511,7 @@ QgsWmsCapabilitiesDownload::QgsWmsCapabilitiesDownload( bool forceRefresh, QObje
 {
 }
 
-QgsWmsCapabilitiesDownload::QgsWmsCapabilitiesDownload( const QString &baseUrl, const QgsWmsAuthorization &auth, bool forceRefresh, QObject *parent )
+QgsWmsCapabilitiesDownload::QgsWmsCapabilitiesDownload( const QString &baseUrl, const QgsAuthorizationSettings &auth, bool forceRefresh, QObject *parent )
   : QObject( parent )
   , mBaseUrl( baseUrl )
   , mAuth( auth )
@@ -2535,7 +2535,7 @@ void QgsWmsCapabilitiesDownload::setForceRefresh( bool forceRefresh )
   mForceRefresh = forceRefresh;
 }
 
-bool QgsWmsCapabilitiesDownload::downloadCapabilities( const QString &baseUrl, const QgsWmsAuthorization &auth )
+bool QgsWmsCapabilitiesDownload::downloadCapabilities( const QString &baseUrl, const QgsAuthorizationSettings &auth )
 {
   mBaseUrl = baseUrl;
   mAuth = auth;

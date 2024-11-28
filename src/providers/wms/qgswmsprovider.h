@@ -624,7 +624,7 @@ class QgsWmsImageDownloadHandler : public QObject
 {
     Q_OBJECT
   public:
-    QgsWmsImageDownloadHandler( const QString &providerUri, const QUrl &url, const QgsWmsAuthorization &auth, QImage *image, QgsRasterBlockFeedback *feedback );
+    QgsWmsImageDownloadHandler( const QString &providerUri, const QUrl &url, const QgsAuthorizationSettings &auth, QImage *image, QgsRasterBlockFeedback *feedback );
     ~QgsWmsImageDownloadHandler() override;
 
     void downloadBlocking();
@@ -655,7 +655,7 @@ class QgsWmsTiledImageDownloadHandler : public QObject
   public:
 
     QgsWmsTiledImageDownloadHandler( const QString &providerUri,
-                                     const QgsWmsAuthorization &auth,
+                                     const QgsAuthorizationSettings &auth,
                                      int reqNo,
                                      const QgsWmsProvider::TileRequests &requests,
                                      QImage *image,
@@ -692,7 +692,7 @@ class QgsWmsTiledImageDownloadHandler : public QObject
 
     QString mProviderUri;
     QString mBaseUrl;
-    QgsWmsAuthorization mAuth;
+    QgsAuthorizationSettings mAuth;
 
     QImage *mImage = nullptr;
     QgsRectangle mViewExtent;

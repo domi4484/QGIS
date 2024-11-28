@@ -18,17 +18,19 @@
 
 #include "qgsauthmanager.h"
 #include "qgsapplication.h"
+#include "qgshttpheaders.h"
 
 #include <QString>
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-// TODO: merge with QgsWmsAuthorization?
+
 struct QgsAuthorizationSettings
 {
-  QgsAuthorizationSettings( const QString &userName = QString(), const QString &password = QString(), const QString &authcfg = QString() )
+  QgsAuthorizationSettings( const QString &userName = QString(), const QString &password = QString(), const QgsHttpHeaders &httpHeaders = QgsHttpHeaders(), const QString &authcfg = QString() )
     : mUserName( userName )
     , mPassword( password )
+    , mHttpHeaders( httpHeaders )
     , mAuthCfg( authcfg )
   {}
 
@@ -39,10 +41,13 @@ struct QgsAuthorizationSettings
     {
       return QgsApplication::authManager()->updateNetworkRequest( request, mAuthCfg );
     }
-    else if ( !mUserName.isNull() || !mPassword.isNull() ) // allow empty values
+    else if ( !mUserName.isEmpty() || !mPassword.isEmpty() )
     {
-      request.setRawHeader( "Authorization", "Basic " + QStringLiteral( "%1:%2" ).arg( mUserName, mPassword ).toLatin1().toBase64() );
+      request.setRawHeader( "Authorization", "Basic " + QStringLiteral( "%1:%2" ).arg( mUserName, mPassword ).toUtf8().toBase64() );
     }
+
+    mHttpHeaders.updateNetworkRequest( request );
+
     return true;
   }
 
@@ -61,6 +66,9 @@ struct QgsAuthorizationSettings
 
   //! Password for basic http authentication
   QString mPassword;
+
+  //! headers for http requests
+  QgsHttpHeaders mHttpHeaders;
 
   //! Authentication configuration ID
   QString mAuthCfg;

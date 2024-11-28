@@ -22,6 +22,7 @@ information for an HTTP Server for WMS, etc.
 %End
   public:
 
+
     enum ConnectionType
     {
       ConnectionWfs,

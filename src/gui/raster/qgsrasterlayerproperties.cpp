@@ -99,6 +99,10 @@
 #include <QRegularExpressionValidator>
 #include <QRegularExpression>
 
+#ifdef HAVE_WEBENGINE
+#include <QtWebEngineWidgets/QWebEngineView>
+#endif
+
 QgsRasterLayerProperties::QgsRasterLayerProperties( QgsMapLayer *lyr, QgsMapCanvas *canvas, QWidget *parent, Qt::WindowFlags fl )
   : QgsLayerPropertiesDialog( lyr, canvas, QStringLiteral( "RasterLayerProperties" ), parent, fl )
   // Constant that signals property not used.
@@ -110,7 +114,12 @@ QgsRasterLayerProperties::QgsRasterLayerProperties( QgsMapLayer *lyr, QgsMapCanv
 
   setupUi( this );
 
+#ifdef HAVE_WEBENGINE
+  mMetadataViewer = new QWebEngineView( this );
+#else
   mMetadataViewer = new QgsWebView( this );
+#endif
+
   mOptsPage_Information->layout()->addWidget( mMetadataViewer );
 
   mRasterTransparencyWidget = new QgsRasterTransparencyWidget( mRasterLayer, canvas, this );

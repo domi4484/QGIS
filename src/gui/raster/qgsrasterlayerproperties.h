@@ -35,7 +35,6 @@ class QgsRasterRenderer;
 class QgsRasterRendererWidget;
 class QgsRasterHistogramWidget;
 class QgsRasterLayerTemporalPropertiesWidget;
-class QgsWebView;
 class QgsProviderSourceWidget;
 class QgsMapLayerConfigWidgetFactory;
 class QgsMapLayerConfigWidget;
@@ -44,6 +43,9 @@ class QgsRasterTransparencyWidget;
 class QgsRasterAttributeTableWidget;
 class QgsWebView;
 class QgsRasterLabelingWidget;
+#ifdef HAVE_WEBENGINE
+class QWebEngineView;
+#endif
 
 /**
  * \ingroup gui
@@ -247,7 +249,11 @@ class GUI_EXPORT QgsRasterLayerProperties : public QgsLayerPropertiesDialog, pri
 
     QgsProviderSourceWidget *mSourceWidget = nullptr;
 
+#ifdef HAVE_WEBENGINE
+    QWebEngineView *mMetadataViewer = nullptr;
+#else
     QgsWebView *mMetadataViewer = nullptr;
+#endif
 
     QgsExpressionContext mContext;
 

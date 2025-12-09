@@ -1328,7 +1328,14 @@ void QgsRasterLayerProperties::updateInformationContent()
   const QString myStyle = QgsApplication::reportStyleSheet( QgsApplication::StyleSheetType::WebBrowser );
   // Inject the stylesheet
   const QString html { mRasterLayer->htmlMetadata().replace( QLatin1String( "<head>" ), QStringLiteral( R"raw(<head><style type="text/css">%1</style>)raw" ) ).arg( myStyle ) };
+
+#ifdef HAVE_WEBENGINE
+  mMetadataViewer->setContent( html.toUtf8() );
+#else
   mMetadataViewer->setHtml( html );
+#endif
+
+
   mMetadataFilled = true;
 }
 

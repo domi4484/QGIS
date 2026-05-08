@@ -15,6 +15,8 @@
 
 #include "qgsuserinputwidget.h"
 
+#include "qgis.h"
+
 #include <QFrame>
 #include <QString>
 

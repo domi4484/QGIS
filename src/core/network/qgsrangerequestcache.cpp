@@ -17,6 +17,7 @@
 
 #include "qgsrangerequestcache.h"
 
+#include "qgis.h"
 #include "qgsnetworkdiskcache.h"
 
 #include <QDateTime>

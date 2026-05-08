@@ -16,6 +16,7 @@
 #include "qgsexpressionaddfunctionfiledialog.h"
 
 #include "qgshelp.h"
+#include "qgis.h"
 
 #include <QPushButton>
 #include <QStandardItemModel>

@@ -16,6 +16,7 @@ email                : nyall dot dawson at gmail dot com
 
 #include "qgsprovidersqlquerybuilder.h"
 
+#include "qgis.h"
 #include "qgssqliteutils.h"
 
 #include <QString>

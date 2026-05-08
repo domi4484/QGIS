@@ -2737,10 +2737,19 @@ add_dependencies(qgis_core version)
 
 # because of htonl
 if (WIN32)
-  find_library(SETUPAPI_LIBRARY NAMES setupapi PATHS $ENV{LIB})
-  find_library(VERSION_LIBRARY NAMES version PATHS $ENV{LIB})
-  target_link_libraries(qgis_core wsock32 ${SETUPAPI_LIBRARY} dbghelp ${VERSION_LIBRARY})
+  if (MSVC)
+    # Link Windows SDK libraries directly - MSVC will find correct x64 versions
+    # Note: version.lib not 'version' to avoid conflict with CMake 'version' target
+    target_link_libraries(qgis_core wsock32 setupapi dbghelp version.lib)
+  else()
+    find_library(SETUPAPI_LIBRARY NAMES setupapi PATHS $ENV{LIB})
+    find_library(VERSION_LIBRARY NAMES version PATHS $ENV{LIB})
+    target_link_libraries(qgis_core wsock32 ${SETUPAPI_LIBRARY} dbghelp ${VERSION_LIBRARY})
+  endif()
 endif()
+
+
+
 
 if (APPLE)
   target_link_libraries(qgis_core ${LIBTASN1_LIBRARY})

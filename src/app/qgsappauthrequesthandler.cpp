@@ -90,6 +90,8 @@ void QgsAppAuthRequestHandler::handleAuthRequestOpenBrowser( const QUrl &url )
 
 void QgsAppAuthRequestHandler::handleAuthRequestCloseBrowser()
 {
+  qDebug() << "QgsAppAuthRequestHandler::handleAuthRequestCloseBrowser()";
+
   // Bring focus back to QGIS app
   if ( qApp )
   {

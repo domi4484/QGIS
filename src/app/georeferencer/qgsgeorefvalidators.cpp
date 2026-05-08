@@ -15,6 +15,8 @@
 
 #include "qgsgeorefvalidators.h"
 
+#include "qgis.h"
+
 #include <QRegularExpression>
 #include <QString>
 #include <QStringList>

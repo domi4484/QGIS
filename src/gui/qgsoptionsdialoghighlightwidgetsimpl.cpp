@@ -15,6 +15,8 @@
 
 #include "qgsoptionsdialoghighlightwidgetsimpl.h"
 
+#include "qgis.h"
+
 #include <functional>
 
 #include "qgsoptionsdialoghighlightwidget.h"

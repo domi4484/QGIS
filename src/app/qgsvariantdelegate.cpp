@@ -40,6 +40,8 @@
 
 #include "qgsvariantdelegate.h"
 
+#include "qgis.h"
+
 #include <QComboBox>
 #include <QDateTime>
 #include <QLineEdit>

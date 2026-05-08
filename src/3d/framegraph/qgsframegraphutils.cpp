@@ -15,6 +15,8 @@
 
 #include "qgsframegraphutils.h"
 
+#include "qgis.h"
+
 #include <QMetaEnum>
 #include <QString>
 #include <Qt3DExtras/QTextureMaterial>

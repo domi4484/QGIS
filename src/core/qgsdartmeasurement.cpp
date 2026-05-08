@@ -14,6 +14,7 @@
  ***************************************************************************/
 
 #include "qgsdartmeasurement.h"
+#include "qgis.h"
 
 #include <QString>
 #include <QTextStream>

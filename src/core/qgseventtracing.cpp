@@ -15,6 +15,8 @@
 
 #include "qgseventtracing.h"
 
+#include "qgis.h"
+
 #include <QCoreApplication>
 #include <QFile>
 #include <QString>

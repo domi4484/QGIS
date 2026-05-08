@@ -19,6 +19,7 @@
  ***************************************************************************/
 #include "qgscustomization.h"
 
+#include "qgis.h"
 #include "qgisapp.h"
 #include "qgsapplication.h"
 #include "qgsbrowserdockwidget.h"

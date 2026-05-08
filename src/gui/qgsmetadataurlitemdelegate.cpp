@@ -17,6 +17,8 @@
 
 #include "qgsmetadataurlitemdelegate.h"
 
+#include "qgis.h"
+
 #include <QComboBox>
 #include <QString>
 #include <QStringListModel>

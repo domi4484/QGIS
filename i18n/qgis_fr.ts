@@ -2479,7 +2479,7 @@ Cela est probablement le résultat d&apos;une mise à jour incorrecte de Postgre
     <name>DbManagerDlgSqlWindow</name>
     <message>
         <location filename="../python/plugins/db_manager/ui/DlgSqlWindow.ui"/>
-        <source>Column(s) with 
+        <source>Column(s) with
 unique values</source>
         <translation>Colonne(s) avec
 des valeurs uniques</translation>
@@ -2516,7 +2516,7 @@ des valeurs uniques</translation>
     </message>
     <message>
         <location filename="../python/plugins/db_manager/ui/DlgSqlWindow.ui"/>
-        <source>Retrieve 
+        <source>Retrieve
 columns</source>
         <translation>Récupérer
 Colonnes</translation>
@@ -15191,7 +15191,7 @@ Veuillez vérifier que GRASS est correctement installé et disponible sur votre 
     <message>
         <source>Error creating spatial index:
 {0}</source>
-        <translation>Erreur lors de la création de l&apos;index spatial: 
+        <translation>Erreur lors de la création de l&apos;index spatial:
 {0}</translation>
     </message>
     <message>
@@ -21145,10 +21145,10 @@ Cela peut provoquer des effets inattendus.</translation>
         <translation>Console Python : Enregistrer le fichier</translation>
     </message>
     <message>
-        <source>Unable to restore the file: 
+        <source>Unable to restore the file:
 {0}
 </source>
-        <translation>Impossible de restaurer le fichier : 
+        <translation>Impossible de restaurer le fichier :
 {0}
 </translation>
     </message>
@@ -24990,9 +24990,9 @@ Seulement %1 sur %2 entités ont été écrites.</translation>
     </message>
     <message>
         <location filename="../src/core/qgsvectorfilewriter.cpp" line="1383"/>
-        <source>Whether to start records with the RS=0x1E character (RFC 8142 standard). Defaults to NO: Newline Delimited JSON (geojsonl). 
+        <source>Whether to start records with the RS=0x1E character (RFC 8142 standard). Defaults to NO: Newline Delimited JSON (geojsonl).
 If set to YES:  RFC 8142 standard: GeoJSON Text Sequences  (geojsons).</source>
-        <translation>S&apos;il faut commencer les enregistrements avec le caractère RS=0x1E (norme RFC 8142). La valeur par défaut est NO : Newline Delimited JSON (geojsonl). 
+        <translation>S&apos;il faut commencer les enregistrements avec le caractère RS=0x1E (norme RFC 8142). La valeur par défaut est NO : Newline Delimited JSON (geojsonl).
 S&apos;il est défini à OUI: Norme RFC 8142 : Séquences de texte GeoJSON (geojsons).</translation>
     </message>
     <message>
@@ -25214,7 +25214,7 @@ S&apos;il est défini à OUI: Norme RFC 8142 : Séquences de texte GeoJSON (geoj
     </message>
     <message>
         <location filename="../src/core/vector/qgsvectorlayerexporter.cpp" line="326"/>
-        <source>Creation error for features from #%1 to #%2. Provider errors were: 
+        <source>Creation error for features from #%1 to #%2. Provider errors were:
 %3</source>
         <translation type="unfinished"/>
     </message>
@@ -26984,7 +26984,7 @@ Erreur: %2</translation>
     <message>
         <location filename="../src/providers/oracle/qgsoracleprovider.cpp" line="3236"/>
         <location filename="../src/providers/postgres/qgspostgresprovider.cpp" line="4595"/>
-        <source>Creation of data source %1 failed: 
+        <source>Creation of data source %1 failed:
 %2</source>
         <translation>La création de la source de données %1 a échoué :
 %2</translation>
@@ -27008,21 +27008,21 @@ Erreur: %2</translation>
     </message>
     <message>
         <location filename="../src/providers/oracle/qgsoracledataitems.cpp" line="73"/>
-        <source>Unable to determine number of geometry columns of layer %1.%2: 
+        <source>Unable to determine number of geometry columns of layer %1.%2:
 %3</source>
         <translation>Impossible de déterminer le nombre de colonnes géométries de la couche %1. %2 :
 %3</translation>
     </message>
     <message>
         <location filename="../src/providers/oracle/qgsoracledataitems.cpp" line="106"/>
-        <source>Unable to delete layer %1.%2: 
+        <source>Unable to delete layer %1.%2:
 %3</source>
-        <translation>Impossible de supprimer la couche %1.%2 : 
+        <translation>Impossible de supprimer la couche %1.%2 :
 %3</translation>
     </message>
     <message>
         <location filename="../src/providers/oracle/qgsoracledataitems.cpp" line="116"/>
-        <source>Unable to clean metadata %1.%2: 
+        <source>Unable to clean metadata %1.%2:
 %3</source>
         <translation>Impossible de nettoyer les métadonnées %1. %2 :
 %3</translation>
@@ -27149,16 +27149,16 @@ Erreur dans la base de données : %2</translation>
     <message>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="411"/>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="435"/>
-        <source>Unable to delete layer %1: 
+        <source>Unable to delete layer %1:
 %2</source>
-        <translation>Impossible de supprimer la couche %1 : 
+        <translation>Impossible de supprimer la couche %1 :
 %2</translation>
     </message>
     <message>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="471"/>
-        <source>Unable to delete schema %1: 
+        <source>Unable to delete schema %1:
 %2</source>
-        <translation>Impossible de supprimer le schéma %1: 
+        <translation>Impossible de supprimer le schéma %1:
 %2</translation>
     </message>
     <message>
@@ -27187,9 +27187,9 @@ Erreur dans la base de données : %2</translation>
     </message>
     <message>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="378"/>
-        <source>Unable to delete view %1: 
+        <source>Unable to delete view %1:
 %2</source>
-        <translation>Impossible de supprimer la vue %1 : 
+        <translation>Impossible de supprimer la vue %1 :
 %2</translation>
     </message>
     <message>
@@ -29607,12 +29607,12 @@ L&apos;étendue et la résolution du raster en sortie sont définies par un rast
         <location filename="../src/analysis/processing/qgsalgorithmcellstatistics.cpp" line="417"/>
         <source>This algorithm generates a raster containing the cell-wise percentile value of a stack of input rasters. The percentile to return is determined by the percentile input value (ranges between 0 and 1). At each cell location, the specified percentile is obtained using the respective value from the stack of all overlaid and sorted cell values of the input rasters.
 
-There are three methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Nearest rank&lt;/li&gt;   &lt;li&gt;Inclusive linear interpolation (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linear interpolation (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; While the output value can stay the same for the nearest rank method (obtains the value that is nearest to the specified percentile), the linear interpolation method return unique values for different percentiles. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel. 
+There are three methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Nearest rank&lt;/li&gt;   &lt;li&gt;Inclusive linear interpolation (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linear interpolation (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; While the output value can stay the same for the nearest rank method (obtains the value that is nearest to the specified percentile), the linear interpolation method return unique values for different percentiles. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel.
 
 The output raster&apos;s extent and resolution is defined by a reference raster. If the input raster layers that do not match the cell size of the reference raster layer will be resampled using nearest neighbor resampling. NoData values in any of the input layers will result in a NoData cell output if the Ignore NoData parameter is not set. The output raster data type will be set to the most complex data type present in the input datasets. </source>
         <translation>Cet algorithme génère un raster contenant la valeur du percentile par cellule d&apos;une pile de rasters. Le percentile à retourner est déterminé par la valeur d&apos;entrée du percentile (entre 0 et 1). À chaque emplacement de cellule, le percentile spécifié est obtenu en utilisant la valeur respective de la pile de toutes les valeurs de cellules superposées et triées des raster d&apos;entrée.
 
-Il existe trois méthodes pour le calcul du percentile :&lt;ul&gt;   &lt;li&gt;Rang le plus proche&lt;/li&gt;   &lt;li&gt;Interpolation linéaire inclusive (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Interpolation linéaire exclusive (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; Alors que la valeur de sortie peut rester la même pour la méthode du rang le plus proche (obtient la valeur la plus proche du percentile spécifié), la méthode d&apos;interpolation linéaire renvoie des valeurs uniques pour les différents percentiles. Les deux méthodes d&apos;interpolation suivent leurs homologues implémentées par LibreOffice ou Microsoft Excel. 
+Il existe trois méthodes pour le calcul du percentile :&lt;ul&gt;   &lt;li&gt;Rang le plus proche&lt;/li&gt;   &lt;li&gt;Interpolation linéaire inclusive (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Interpolation linéaire exclusive (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; Alors que la valeur de sortie peut rester la même pour la méthode du rang le plus proche (obtient la valeur la plus proche du percentile spécifié), la méthode d&apos;interpolation linéaire renvoie des valeurs uniques pour les différents percentiles. Les deux méthodes d&apos;interpolation suivent leurs homologues implémentées par LibreOffice ou Microsoft Excel.
 
 L&apos;étendue et la résolution de l&apos;image raster de sortie sont définies par une image raster de référence. Si les couches raster d&apos;entrée ne correspondent pas à la taille de cellule de la couche raster de référence, elles seront rééchantillonnées en utilisant le rééchantillonnage du plus proche voisin. Les valeurs NoData dans l&apos;une des couches d&apos;entrée entraîneront la sortie d&apos;une cellule NoData si le paramètre &apos;Ignorer NoData&apos; n&apos;est pas défini. Le type de données raster de sortie sera défini par le type de données le plus complexe présent dans les jeux de données d&apos;entrée. </translation>
     </message>
@@ -29627,14 +29627,14 @@ L&apos;étendue et la résolution de l&apos;image raster de sortie sont définie
 
 At each cell location, the specified value is ranked among the respective values in the stack of all overlaid and sorted cell values from the input rasters. For values outside of the stack value distribution, the algorithm returns NoData because the value cannot be ranked among the cell values.
 
-There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel. 
+There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel.
 
 The output raster&apos;s extent and resolution is defined by a reference raster. If the input raster layers that do not match the cell size of the reference raster layer will be resampled using nearest neighbor resampling. NoData values in any of the input layers will result in a NoData cell output if the Ignore NoData parameter is not set. The output raster data type will always be Float32.</source>
         <translation>Cet algorithme génère un raster contenant la valeur de rang en pourcentage par cellule d&apos;une pile de rasters sur la base d&apos;une seule valeur d&apos;entrée.
 
 À chaque emplacement de cellule, la valeur spécifiée est classée parmi les valeurs respectives de la pile de toutes les valeurs de cellules superposées et triées des rasters d&apos;entrée. Pour les valeurs en dehors de la distribution des valeurs de la pile, l&apos;algorithme renvoie NoData car la valeur ne peut pas être classée parmi les valeurs des cellules..
 
-Il existe deux méthodes pour le calcul des percentiles:&lt;ul&gt;    &lt;li&gt;Rang en pourcentage interpolé linéairement inclusif (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Rang en pourcentage interpolé linéairement exclusif (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; TLa méthode d&apos;interpolation linéaire renvoie le rang en pourcentage unique pour différentes valeurs. Les deux méthodes d&apos;interpolation suivent leurs homologues implémentées par LibreOffice ou Microsoft Excel. 
+Il existe deux méthodes pour le calcul des percentiles:&lt;ul&gt;    &lt;li&gt;Rang en pourcentage interpolé linéairement inclusif (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Rang en pourcentage interpolé linéairement exclusif (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; TLa méthode d&apos;interpolation linéaire renvoie le rang en pourcentage unique pour différentes valeurs. Les deux méthodes d&apos;interpolation suivent leurs homologues implémentées par LibreOffice ou Microsoft Excel.
 
 L&apos;étendue et la résolution de l&apos;image raster de sortie sont définies par une image raster de référence. Si les couches raster d&apos;entrée ne correspondent pas à la taille de cellule de la couche raster de référence, elles seront rééchantillonnées en utilisant le rééchantillonnage du plus proche voisin. Les valeurs NoData dans l&apos;une des couches d&apos;entrée entraîneront la sortie d&apos;une cellule NoData si le paramètre Ignorer NoData n&apos;est pas défini. Le type de données raster en sortie sera toujours Float32.</translation>
     </message>
@@ -29649,14 +29649,14 @@ L&apos;étendue et la résolution de l&apos;image raster de sortie sont définie
 
 At each cell location, the current value of the value raster is used ranked among the respective values in the stack of all overlaid and sorted cell values of the input rasters. For values outside of the the stack value distribution, the algorithm returns NoData because the value cannot be ranked among the cell values.
 
-There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel. 
+There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel.
 
 The output raster&apos;s extent and resolution is defined by a reference raster. If the input raster layers that do not match the cell size of the reference raster layer will be resampled using nearest neighbor resampling.  NoData values in any of the input layers will result in a NoData cell output if the Ignore NoData parameter is not set. The output raster data type will always be Float32.</source>
         <translation>Cet algorithme génère un raster contenant la valeur de rang en pourcentage par cellule d&apos;une pile de rasters sur la base de valeurs d&apos;entrée d&apos;un raster.
 
 À chaque emplacement de cellule, la valeur actuelle du raster de valeurs est utilisée classée parmi les valeurs respectives de la pile de toutes les valeurs de cellules superposées et triées des rasters d&apos;entrée. Pour les valeurs en dehors de la distribution des valeurs de la pile, l&apos;algorithme renvoie NoData car la valeur ne peut pas être classée parmi les valeurs des cellules.
 
-Il existe deux méthodes pour le calcul des percentiles :&lt;ul&gt;    &lt;li&gt;Rang en pourcentage interpolé linéairement inclusif (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Rang en pourcentage interpolé linéairement exclusif (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; La méthode d&apos;interpolation linéaire renvoie le rang en pourcentage unique pour différentes valeurs. Les deux méthodes d&apos;interpolation suivent leurs homologues implémentées par LibreOffice ou Microsoft Excel.  
+Il existe deux méthodes pour le calcul des percentiles :&lt;ul&gt;    &lt;li&gt;Rang en pourcentage interpolé linéairement inclusif (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Rang en pourcentage interpolé linéairement exclusif (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; La méthode d&apos;interpolation linéaire renvoie le rang en pourcentage unique pour différentes valeurs. Les deux méthodes d&apos;interpolation suivent leurs homologues implémentées par LibreOffice ou Microsoft Excel.
 
 L&apos;étendue et la résolution de l&apos;image raster de sortie sont définies par une image raster de référence. Si les couches raster d&apos;entrée ne correspondent pas à la taille de cellule de la couche raster de référence, elles seront rééchantillonnées en utilisant le rééchantillonnage du plus proche voisin. Les valeurs NoData dans l&apos;une des couches d&apos;entrée entraîneront la sortie d&apos;une cellule NoData si le paramètre Ignorer NoData n&apos;est pas défini. Le type de données raster en sortie sera toujours Float32.</translation>
     </message>
@@ -30721,7 +30721,7 @@ Operation can NOT be undone!
 (Current database will be backed up and new one created.)</source>
         <translation>Êtes-vous sûr de vouloir SUPPRIMER la totalité de la base d&apos;authentification ?
 
-L&apos;opération ne peut pas être annulée ! 
+L&apos;opération ne peut pas être annulée !
 
 (La base de données actuelle sera sauvegardée et une nouvelle sera créée.)</translation>
     </message>
@@ -31619,7 +31619,7 @@ The sort order for features may be specified, if so, then the incremental field 
 
 Ce champ peut être utilisé comme identifiant unique de chaque élément de la couche.  Ce nouvel attribut n&apos;est pas ajouté à la couche en entrée car une nouvelle couche est créée à la place.
 
-Le numéro de départ de la numérotation peut être spécifié. 
+Le numéro de départ de la numérotation peut être spécifié.
 
 Préciser une valeur de module optionnel recommencera le compte au DEBUT  à chaque fois que la valeur du champ atteindra la valeur de module.
 
@@ -33377,7 +33377,7 @@ Determination of which hub goes with each point is based on a match between the 
 If input layers are not point layers, a point on the surface of the geometries will be taken as the connecting location.
 
 Optionally, geodesic lines can be created, which represent the shortest path on the surface of an ellipsoid. When geodesic mode is used, it is possible to split the created lines at the antimeridian (±180 degrees longitude), which can improve rendering of the lines. Additionally, the distance between vertices can be specified. A smaller distance results in a denser, more accurate line.</source>
-        <translation>Cet algorithme crée des diagrammes de concentrateur et de rayon en connectant des lignes de points de la couche Spoke à des points correspondants de la couche Hub. 
+        <translation>Cet algorithme crée des diagrammes de concentrateur et de rayon en connectant des lignes de points de la couche Spoke à des points correspondants de la couche Hub.
 
 La détermination du hub associé à chaque point est basée sur une correspondance entre le champ ID du hub sur les points du hub et le champ ID du rayon sur les points de rayon.
 
@@ -48504,7 +48504,7 @@ By default, the values will be chosen given a mean of 1.0. This can be overridde
     </message>
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrasterfrequencybycomparisonoperator.cpp" line="267"/>
-        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are equal to the value of a value raster. 
+        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are equal to the value of a value raster.
  If multiband rasters are used in the data raster stack, the algorithm will always perform the analysis on the first band of the rasters - use GDAL to use other bands in the analysis. The input value layer serves as reference layer for the sample layers. Any NoData cells in the value raster or the data layer stack will result in a NoData cell in the output raster if the ignore NoData parameter is not checked. The output NoData value can be set manually. The output rasters extent and resolution is defined by the input raster layer and is always of int32 type.</source>
         <translation type="unfinished"/>
     </message>
@@ -48515,7 +48515,7 @@ By default, the values will be chosen given a mean of 1.0. This can be overridde
     </message>
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrasterfrequencybycomparisonoperator.cpp" line="316"/>
-        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are greater than the value of a value raster. 
+        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are greater than the value of a value raster.
  If multiband rasters are used in the data raster stack, the algorithm will always perform the analysis on the first band of the rasters - use GDAL to use other bands in the analysis. The input value layer serves as reference layer for the sample layers. Any NoData cells in the value raster or the data layer stack will result in a NoData cell in the output raster if the ignore NoData parameter is not checked. The output NoData value can be set manually. The output rasters extent and resolution is defined by the input raster layer and is always of int32 type.</source>
         <translation type="unfinished"/>
     </message>
@@ -48526,7 +48526,7 @@ By default, the values will be chosen given a mean of 1.0. This can be overridde
     </message>
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrasterfrequencybycomparisonoperator.cpp" line="365"/>
-        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are less than the value of a value raster. 
+        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are less than the value of a value raster.
  If multiband rasters are used in the data raster stack, the algorithm will always perform the analysis on the first band of the rasters - use GDAL to use other bands in the analysis. The input value layer serves as reference layer for the sample layers. Any NoData cells in the value raster or the data layer stack will result in a NoData cell in the output raster if the ignore NoData parameter is not checked. The output NoData value can be set manually. The output rasters extent and resolution is defined by the input raster layer and is always of int32 type.</source>
         <translation type="unfinished"/>
     </message>
@@ -49488,7 +49488,7 @@ Avant cela, une connexion entre QGIS et la base de données PostgreSQL doit êtr
         <location filename="../src/analysis/processing/qgsalgorithmexporttopostgresql.cpp" line="192"/>
         <source>Error creating spatial index:
 %1</source>
-        <translation>Erreur lors de la création de l&apos;index spatial : 
+        <translation>Erreur lors de la création de l&apos;index spatial :
 %1</translation>
     </message>
     <message>
@@ -50308,9 +50308,9 @@ The created point layer will be in the same spatial reference system as the sele
     </message>
     <message>
         <location filename="../src/app/qgshandlebadlayers.cpp" line="566"/>
-        <source>Searching for file: %1 
+        <source>Searching for file: %1
  [ %2 of %3 ] </source>
-        <translation>Recherche des fichiers: %1 
+        <translation>Recherche des fichiers: %1
 [ %2 of %3 ]</translation>
     </message>
     <message>
@@ -51534,9 +51534,9 @@ Essayez de les supprimer avant d&apos;essayer de supprimer ces composants.</tran
     </message>
     <message>
         <location filename="../src/providers/mssql/qgsmssqlproviderconnection.cpp" line="286"/>
-        <source>SQL error: %1 
+        <source>SQL error: %1
  %2</source>
-        <translation>Erreur SQL: %1 
+        <translation>Erreur SQL: %1
  %2</translation>
     </message>
     <message>
@@ -59269,7 +59269,7 @@ Vous pouvez également créer une nouvelle couche de maillage à partir de celle
 %1
 
 Please cancel these tasks and retry.</source>
-        <translation>Les tâches suivantes sont en cours d&apos;exécution et dépendent de cette couche: 
+        <translation>Les tâches suivantes sont en cours d&apos;exécution et dépendent de cette couche:
 
 %1
 
@@ -60815,7 +60815,7 @@ Merci de les désélectionner (ou de les rendre non requises) et ressayer.</tran
 %1
 
 Please cancel these tasks and retry.</source>
-        <translation>Les tâches suivantes sont en cours d&apos;exécution et dépendent de cette couche: 
+        <translation>Les tâches suivantes sont en cours d&apos;exécution et dépendent de cette couche:
 
 %1
 
@@ -61415,7 +61415,7 @@ Annulez ces tâches et réessayez.</translation>
     <name>Qgs25DRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgs25drendererwidget.cpp" line="35"/>
-        <source>The 2.5D renderer only can be used with polygon layers. 
+        <source>The 2.5D renderer only can be used with polygon layers.
 &apos;%1&apos; is not a polygon layer and cannot be rendered in 2.5D.</source>
         <translation>Le moteur de rendu 2.5D ne peut être utilisé que sur les couches de polygones.
 &apos;%1&apos; n&apos;est pas une couche de polygone et ne peut pas être rendue en 2.5D.</translation>
@@ -67812,7 +67812,7 @@ Une contrainte non renforcée entraîne l&apos;affichage d&apos;un avertissement
     <message>
         <location filename="../src/ui/attributeformconfig/qgsattributetypeedit.ui"/>
         <source>&lt;p&gt;Enforcing the not null constraint prevents committing features which do not meet the constraint.&lt;/p&gt;&lt;p&gt;Unenforced constraints display a warning to users, but do not prevent committing the feature.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Renforcer la contrainte de valeur non nulle empêche la validation d&apos;entités qui ne respectent pas cette contrainte.&lt;/p&gt;&lt;p&gt; 
+        <translation>&lt;p&gt;Renforcer la contrainte de valeur non nulle empêche la validation d&apos;entités qui ne respectent pas cette contrainte.&lt;/p&gt;&lt;p&gt;
 Une contrainte non renforcée entraîne l&apos;affichage d&apos;un avertissement mais n&apos;empêche pas la validation de l&apos;entité.&lt;/p&gt;</translation>
     </message>
     <message>
@@ -68203,8 +68203,8 @@ Une contrainte non renforcée entraîne l&apos;affichage d&apos;un avertissement
     </message>
     <message>
         <location filename="../src/ui/qgsattributesforminitcode.ui"/>
-        <source>The function code of the function can be loaded from the source code entered 
-in this dialog, from an external python file or from the environment (for example 
+        <source>The function code of the function can be loaded from the source code entered
+in this dialog, from an external python file or from the environment (for example
 from a plugin or from startup.py).
 
 An example is:
@@ -68241,8 +68241,8 @@ Référence dans le nom de la fonction: my_form_open
     </message>
     <message>
         <location filename="../src/ui/qgsattributesforminitcode.ui"/>
-        <source>The function code of the function can be loaded from the source code entered 
-in this dialog,  from an external python file or from the environment (for example 
+        <source>The function code of the function can be loaded from the source code entered
+in this dialog,  from an external python file or from the environment (for example
 from a plugin or from startup.py).
 
 An example is:
@@ -68512,7 +68512,7 @@ ouvert.
 
 Utilisez cette fonction pour ajouter une logique supplémentaire à vos formulaires.
 
-Entrez le nom de la fonction dans le champ 
+Entrez le nom de la fonction dans le champ
 &quot;Fonction d&apos;initialisation Python&quot;.
 Voici un exemple:
 &quot;&quot;&quot;
@@ -95947,7 +95947,7 @@ Si represent_value est appelée avec un paramètre, il doit s&apos;agir d&apos;u
         <source>&quot;&quot;&quot;Define a new function using the @qgsfunction decorator.
 
  Besides its normal arguments, the function may specify the following arguments in its signature
- Those will not need to be specified when calling the function, but will be automatically injected 
+ Those will not need to be specified when calling the function, but will be automatically injected
 
  : param feature: The current feature
  : param parent: The QgsExpression object
@@ -95969,13 +95969,13 @@ Si represent_value est appelée avec un paramètre, il doit s&apos;agir d&apos;u
                         feature.geometry(). Defaults to False.
  : param referenced_columns: An array of attribute names that are required to run
                              this function. Defaults to [QgsFeatureRequest.ALL_ATTRIBUTES].
- : param params_as_list : Set this to True to pass the function parameters as a list. Can be used to mimic 
+ : param params_as_list : Set this to True to pass the function parameters as a list. Can be used to mimic
                         behavior before 3.32, when args was not &quot;auto&quot;. Defaults to False.
 &quot;&quot;&quot;</source>
         <translation>&quot;&quot;&quot;Définit une nouvelle fonction en utilisant le décorateur @qgsfunction.
 
 En plus des arguments normaux, la fonction peut spécifier les arguments suivants dans sa signature
-Ceux-ci n&apos;auront pas besoin d&apos;être spécifiés lors de l&apos;appel de la fonction, mais seront automatiquement injectés. 
+Ceux-ci n&apos;auront pas besoin d&apos;être spécifiés lors de l&apos;appel de la fonction, mais seront automatiquement injectés.
 
 : param feature : L&apos;entité courante
 : param parent : L&apos;objet QgsExpression
@@ -95994,7 +95994,7 @@ Ceux-ci n&apos;auront pas besoin d&apos;être spécifiés lors de l&apos;appel d
 : param usesgeometry : Définissez ce paramètre à True si votre fonction nécessite l&apos;accès à la fonction feature.geometry(). La valeur par défaut est False.
 : param referenced_columns : Un tableau de noms d&apos;attributs nécessaires à l&apos;exécution de cette fonction.
 La valeur par défaut est [QgsFeatureRequest.ALL_ATTRIBUTES].
-params_as_list : Définissez cette valeur sur True pour transmettre les paramètres de la fonction sous la forme d&apos;une liste. Peut être utilisé pour imiter 
+params_as_list : Définissez cette valeur sur True pour transmettre les paramètres de la fonction sous la forme d&apos;une liste. Peut être utilisé pour imiter
 le comportement avant la version 3.32, lorsque args n&apos;était pas « auto ». La valeur par défaut est False.
 
 Traduit avec www.DeepL.com/Translator (version gratuite).
@@ -96935,7 +96935,7 @@ Modifier le nom du script et l&apos;enregistrer pour permettre à QGIS de le cha
     <message>
         <location filename="../src/ui/editorwidgets/qgsexternalresourceconfigdlg.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Way of dealing with attachment file&lt;p&gt;&quot;Select existing file&quot; allows you to pick an existing file from the file system or set an existing URL external resource.&lt;/p&gt;&lt;p&gt;Other items allows you to pick a local resource and store it on an external storage system. You cannot use relative path in this mode and you can only pick file and not directory.&lt;/p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Manière de traiter le fichier joint&lt;p&gt;&quot;Sélectionner un fichier existant&quot; vous permet de choisir un fichier existant dans le système de fichiers ou de définir une ressource externe URL existante.&lt;/p&gt;&lt;p&gt;&quot;Copie simple&quot; vous permet de stocker une copie de la ressource sur un disque de destination (qui peut être un système de fichiers local ou partagé sur le réseau) et l&apos;attribut est mis à jour avec le chemin d&apos;accès à la copie. 
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Manière de traiter le fichier joint&lt;p&gt;&quot;Sélectionner un fichier existant&quot; vous permet de choisir un fichier existant dans le système de fichiers ou de définir une ressource externe URL existante.&lt;/p&gt;&lt;p&gt;&quot;Copie simple&quot; vous permet de stocker une copie de la ressource sur un disque de destination (qui peut être un système de fichiers local ou partagé sur le réseau) et l&apos;attribut est mis à jour avec le chemin d&apos;accès à la copie.
 &quot;Stockage WebDAV&quot; : La ressource est poussée vers un serveur HTTP prenant en charge le protocole WebDAV et l&apos;attribut est mis à jour avec son URL.
 Vous ne pouvez pas utiliser de chemin relatif dans ce mode et vous ne pouvez choisir qu&apos;un fichier et non un répertoire.&lt;/p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -100357,7 +100357,7 @@ Vérifiez les autorisations de fichiers et de répertoires sur
         <location filename="../src/plugins/geometry_checker/qgsgeometrycheckersetuptab.cpp" line="396"/>
         <source>Failed to create one or more output layers:
 %1</source>
-        <translation>Échec dans la création d&apos;une ou plusieurs couches en sortie: 
+        <translation>Échec dans la création d&apos;une ou plusieurs couches en sortie:
 %1</translation>
     </message>
     <message>
@@ -100366,7 +100366,7 @@ Vérifiez les autorisations de fichiers et de répertoires sur
 %1
 
 The geometry check can be performed, but it will not be possible to fix any errors. Do you want to continue?</source>
-        <translation>Les couches de sortie suivantes sont dans un format qui ne prend pas en charge les entités en édition: 
+        <translation>Les couches de sortie suivantes sont dans un format qui ne prend pas en charge les entités en édition:
 % 1
 
 La vérification de la géométrie peut être effectuée, mais il ne sera pas possible de corriger les erreurs. Voulez-vous continuer?</translation>
@@ -103556,9 +103556,9 @@ Veuillez sélectionner un fichier valide.</translation>
     </message>
     <message>
         <location filename="../src/ui/qgsgraduatedsymbolrendererwidget.ui"/>
-        <source>Template for the legend text associated with each classification.  
+        <source>Template for the legend text associated with each classification.
 Use &quot;%1&quot; for the lower bound of the classification, and &quot;%2&quot; for the upper bound.</source>
-        <translation>Format de légende associé à chaque classe.  
+        <translation>Format de légende associé à chaque classe.
 Utilisez &quot;%1&quot; pour la limite inférieure de chaque classe et &quot;%2&quot; pour la limite supérieure.</translation>
     </message>
     <message>
@@ -103821,7 +103821,7 @@ Appuyez sur Annuler pour annuler le calcul ou sur OK pour continuer.</translatio
         <location filename="../src/providers/grass/qgsgrass.cpp" line="2242"/>
         <source>Cannot query raster
 %1</source>
-        <translation>Impossible d&apos;interroger le raster 
+        <translation>Impossible d&apos;interroger le raster
 %1</translation>
     </message>
     <message>
@@ -107347,7 +107347,7 @@ b) Utilisez l&apos;onglet Configuration pour ajouter vos informations d&apos;ide
     <name>QgsHeatmapRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgsheatmaprendererwidget.cpp" line="77"/>
-        <source>The heatmap renderer only applies to point and multipoint layers. 
+        <source>The heatmap renderer only applies to point and multipoint layers.
 &apos;%1&apos; is not a point layer and cannot be rendered as a heatmap.</source>
         <translation>Le mode de rendu de carte de chaleur ne s&apos;applique qu&apos;aux couches de type points ou multi-points.
 &apos;%1&apos; n&apos;est pas de ce type et ne peut donc être affiché en tant que carte de chaleur.</translation>
@@ -108316,7 +108316,7 @@ p, li { white-space: pre-wrap; }
     <name>QgsInvertedPolygonRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgsinvertedpolygonrendererwidget.cpp" line="43"/>
-        <source>The inverted polygon renderer only applies to polygon and multipolygon layers. 
+        <source>The inverted polygon renderer only applies to polygon and multipolygon layers.
 &apos;%1&apos; is not a polygon layer and then cannot be displayed</source>
         <translation>Le mode de rendu de polygone inversé ne s&apos;applique qu&apos;aux couches de type polygone ou multipolygone.
 &apos;%1&apos; n&apos;est pas de ce type et ne peut donc être affiché</translation>
@@ -125483,7 +125483,7 @@ Il est recommandé de rasteriser la carte pour avoir un rendu correct.</translat
     <name>QgsMergedFeatureRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgsmergedfeaturerendererwidget.cpp" line="43"/>
-        <source>The merged feature renderer only applies to line and polygon layers. 
+        <source>The merged feature renderer only applies to line and polygon layers.
 &apos;%1&apos; is not a line or polygon layer and then cannot be displayed</source>
         <translation>Le mode de rendu d&apos;entité fusionnée ne s&apos;applique qu&apos;aux couches de type ligne ou polygone.
 &apos;%1&apos; n&apos;est pas une couche de polygone ou ligne et ne peut donc être affiché</translation>
@@ -129759,7 +129759,7 @@ Vérifiez le fichier journal pour plus d&apos;information.</translation>
         <source>HEADS UP: You have opted to save your password. It will be stored in plain text in your project files and in your home directory on Unix-like systems, or in your user profile on Windows
 
 Untick save if you don&apos;t wish to be the case.</source>
-        <translation>ATTENTION : Vous avez choisi d&apos;enregistrer votre mot de passe. Il sera stocké en clair dans le fichier de votre projet, et dans votre dossier utilisateur sur un système Unix/Linux, ou dans votre profil utilisateur Windows. 
+        <translation>ATTENTION : Vous avez choisi d&apos;enregistrer votre mot de passe. Il sera stocké en clair dans le fichier de votre projet, et dans votre dossier utilisateur sur un système Unix/Linux, ou dans votre profil utilisateur Windows.
 
 Si vous ne voulez pas que ça arrive, décochez la case correspondante.</translation>
     </message>
@@ -132143,19 +132143,14 @@ Message d&apos;erreur : %1</translation>
 <context>
     <name>QgsO2</name>
     <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="173"/>
-        <source>QGIS OAuth2 verification has finished</source>
+        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="175"/>
+        <source>%1 OAuth2 verification has finished.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="174"/>
-        <source>If you have not been returned to QGIS, bring the application to the forefront.</source>
-        <translation>Si vous n&apos;avez pas été renvoyé vers QGIS, mettez l&apos;application au premier plan.</translation>
-    </message>
-    <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="175"/>
-        <source>Close window</source>
-        <translation>Fermer la fenêtre</translation>
+        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="176"/>
+        <source>You can close this window and return to %1.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -136984,7 +136979,7 @@ Error : %2</translation>
 SQL: %2
 Error: %3</source>
         <translation>La suppression de la table %1 a échoué.
-SQL : %2 
+SQL : %2
 Erreur : %3</translation>
     </message>
     <message>
@@ -137044,7 +137039,7 @@ SQL: %3</source>
         <location filename="../src/providers/oracle/qgsoracleprovider.cpp" line="2761"/>
         <source>Could not retrieve extents: %1
 SQL: %2</source>
-        <translation>Impossible de récupérer l&apos;emprise : %1 
+        <translation>Impossible de récupérer l&apos;emprise : %1
 SQL : %2</translation>
     </message>
     <message>
@@ -137076,7 +137071,7 @@ The error message from the database was:
 %2.
 SQL: %3</source>
         <translation>Impossible de déterminer le champ SRID de la table %1.
-Le message d&apos;erreur de la base de données est : 
+Le message d&apos;erreur de la base de données est :
 %2.
 SQL : %3</translation>
     </message>
@@ -141361,7 +141356,7 @@ du contraste</translation>
     </message>
     <message>
         <location filename="../src/gui/symbology/qgspointclusterrendererwidget.cpp" line="238"/>
-        <source>The point cluster renderer only applies to (single) point layers. 
+        <source>The point cluster renderer only applies to (single) point layers.
 &apos;%1&apos; is not a (single) point layer and cannot be displayed by the point cluster renderer.</source>
         <translation>Le mode de rendu groupe de points ne s&apos;applique qu&apos;aux couches de points (unique).
 &apos;%1&apos; n&apos;est pas de ce type et ne peut donc être affiché avec le le rendu groupe de points.</translation>
@@ -141437,7 +141432,7 @@ du contraste</translation>
     </message>
     <message>
         <location filename="../src/gui/symbology/qgspointdisplacementrendererwidget.cpp" line="432"/>
-        <source>The point displacement renderer only applies to (single) point layers. 
+        <source>The point displacement renderer only applies to (single) point layers.
 &apos;%1&apos; is not a (single) point layer and cannot be displayed by the point displacement renderer.</source>
         <translation>Le déplacement de points ne s&apos;applique qu&apos;aux couches de point uniques et non multiples.
 &apos;%1&apos; n&apos;est pas de ce type et ne peut donc être affiché avec le déplacement de points</translation>
@@ -156495,11 +156490,11 @@ features are found</source>
     </message>
     <message>
         <location filename="../src/gui/qgssqlcomposerdialog.cpp" line="777"/>
-        <source>This is the SQL query editor. The SQL statement can select data from several tables, 
-but it must compulsory include the main typename %1 in the selected tables, 
+        <source>This is the SQL query editor. The SQL statement can select data from several tables,
+but it must compulsory include the main typename %1 in the selected tables,
 and only the geometry column of the main typename can be used as the geometry column of the resulting layer.</source>
-        <translation>Ceci est l&apos;éditeur de requêtes SQL. L&apos;instruction SQL peut sélectionner des données dans plusieurs tables, 
-mais elle doit obligatoirement inclure le nom de type principal %1 dans les tables sélectionnées, 
+        <translation>Ceci est l&apos;éditeur de requêtes SQL. L&apos;instruction SQL peut sélectionner des données dans plusieurs tables,
+mais elle doit obligatoirement inclure le nom de type principal %1 dans les tables sélectionnées,
 et seule la colonne géométrique du type principal peut être utilisée comme colonne de géométrie de la couche résultante.</translation>
     </message>
 </context>
@@ -159160,7 +159155,7 @@ merci d&apos;indiquer un nouveau nom:</translation>
         <source>Failure getting table metadata. Is %1 really a SpatiaLite database?
 
 %2</source>
-        <translation>Echec de récupération des métadonnées de la table. Etes vous sûr que %1 est bien une base de données SpatiaLite? 
+        <translation>Echec de récupération des métadonnées de la table. Etes vous sûr que %1 est bien une base de données SpatiaLite?
 
 %2</translation>
     </message>
@@ -169778,7 +169773,7 @@ On peut ainsi enregistrer une couche virtuelle avec des couches embarquées dans
     <message>
         <location filename="../src/providers/virtual/qgsvirtuallayersourceselectbase.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the SQL query editor. You can edit here an SQL query referring to any existing vector layers or embedded layers.&lt;/p&gt;&lt;p&gt;Virtual layers rely on SQLite and SpatiaLite. Any functions from SQLite or SpatiaLite can then be used in the query. To add or access geometries of a table, you can use &quot;tablename.geometry&quot;, regardless of original geometry column&apos;s name.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Special comments:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Because it is not always possible to autodetect the data type of each column in a query, special comments can be used in the query to force a specific type.&lt;/p&gt;&lt;p&gt;Special comments must be placed on the right of a column name and have the form &lt;tt&gt;/*:type*/&lt;/tt&gt; where type can be any of &lt;span style=&quot; font-style:italic;&quot;&gt;int&lt;/span&gt;, &lt;span style=&quot; font-style:italic;&quot;&gt;real&lt;/span&gt; or &lt;span style=&quot; font-style:italic;&quot;&gt;text&lt;/span&gt;. They can also be used to specify the type and SRID of the geometry column with the following syntax: &lt;tt&gt;/*:gtype:srid*/&lt;/tt&gt; where &lt;span style=&quot; font-style:italic;&quot;&gt;gtype&lt;/span&gt; can be &lt;span style=&quot; font-style:italic;&quot;&gt;point&lt;/span&gt;, &lt;span style=&quot; font-style:italic;&quot;&gt;linestring&lt;/span&gt; or &lt;span style=&quot; font-style:italic;&quot;&gt;polygon&lt;/span&gt; (with an optional &lt;span style=&quot; font-style:italic;&quot;&gt;multi&lt;/span&gt; prefix) and &lt;span style=&quot; font-style:italic;&quot;&gt;srid&lt;/span&gt; is an integer identifier.&lt;/p&gt;&lt;p&gt;Example:&lt;/p&gt;&lt;p&gt;&lt;tt&gt;SELECT id + 1 as id /*:int*/, ST_Centroid(geometry) as geom /*:point:4326*/ FROM tab&lt;/tt&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Il s&apos;agit de l&apos;éditeur de requêtes SQL. Vous pouvez éditer ici une requête SQL faisant référence à des couches vectorielles existantes ou à des couches intégrées.&lt;/p&gt;&lt;/p&gt; Les couches virtuelles s&apos;appuient sur SQLite et SpatiaLite. Toutes les fonctions de SQLite ou SpatiaLite peuvent ensuite être utilisées dans la requête. Pour ajouter ou accéder aux géométries d&apos;une table, vous pouvez utiliser &quot;tablename.geometry&quot;, quel que soit le nom de la colonne géométrique d&apos;origine.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Commentaires spéciaux:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Parce qu&apos;il n&apos;est pas toujours possible d&apos;auto-détecter le type de données de chaque colonne dans une requête, des commentaires spéciaux peuvent être utilisés dans la requête pour forcer un type spécifique.&lt;/p&gt;&lt;p&gt;Les commentaires spéciaux doivent être placés à droite d&apos;un nom de colonne et ont le formulaire &lt;tt&gt;/*:type*/&lt;/tt&gt; 
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Il s&apos;agit de l&apos;éditeur de requêtes SQL. Vous pouvez éditer ici une requête SQL faisant référence à des couches vectorielles existantes ou à des couches intégrées.&lt;/p&gt;&lt;/p&gt; Les couches virtuelles s&apos;appuient sur SQLite et SpatiaLite. Toutes les fonctions de SQLite ou SpatiaLite peuvent ensuite être utilisées dans la requête. Pour ajouter ou accéder aux géométries d&apos;une table, vous pouvez utiliser &quot;tablename.geometry&quot;, quel que soit le nom de la colonne géométrique d&apos;origine.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Commentaires spéciaux:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Parce qu&apos;il n&apos;est pas toujours possible d&apos;auto-détecter le type de données de chaque colonne dans une requête, des commentaires spéciaux peuvent être utilisés dans la requête pour forcer un type spécifique.&lt;/p&gt;&lt;p&gt;Les commentaires spéciaux doivent être placés à droite d&apos;un nom de colonne et ont le formulaire &lt;tt&gt;/*:type*/&lt;/tt&gt;
 où type peut être n&apos;importe lequel &lt;span style=&quot; font-style:italic;&quot;&gt;entier&lt;/span&gt;, &lt;span style=&quot; font-style:italic;&quot;&gt;réel&lt;/span&gt; ou &lt;span style=&quot; font-style:italic;&quot;&gt;texte&lt;/span&gt;. Ils peuvent également être utilisés pour spécifier le type et le SRID de la colonne géométrique avec la syntaxe suivante: &lt;tt&gt;/*:gtype:srid*/&lt;/tt&gt; où &lt;span style=&quot; font-style:italic;&quot;&gt;gtype&lt;/span&gt; peut être &lt;span style=&quot; font-style:italic;&quot;&gt;point&lt;/span&gt;, &lt;span style=&quot; font-style:italic;&quot;&gt;ligne de texte&lt;/span&gt; ou &lt;span style=&quot; font-style:italic;&quot;&gt;polygone &lt;/span&gt; (avec un optionnel &lt;span style=&quot; font-style:italic;&quot;&gt;multi&lt;/span&gt; préfixe) et &lt;span style=&quot; font-style:italic;&quot;&gt;srid&lt;/span&gt;est un identifiant entier.&lt;/p&gt;&lt;p&gt;Example:&lt;/p&gt;&lt;p&gt;&lt;tt&gt;SELECT id + 1 as id /*:int*/, ST_Centroid(geometry) as geom /*:point:4326*/ FROM tab&lt;/tt&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -170577,7 +170572,7 @@ où type peut être n&apos;importe lequel &lt;span style=&quot; font-style:itali
         <source>Instead of the capabilities string that was expected, the following response has been received:
 
 %1</source>
-        <translation>A la place des capacités qui étaient attendues, la réponse suivante a été reçue : 
+        <translation>A la place des capacités qui étaient attendues, la réponse suivante a été reçue :
 
 %1</translation>
     </message>

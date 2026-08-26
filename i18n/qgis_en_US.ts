@@ -132422,19 +132422,14 @@ Error message: %1</translation>
 <context>
     <name>QgsO2</name>
     <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="173"/>
-        <source>QGIS OAuth2 verification has finished</source>
-        <translation>QGIS OAuth2 verification has finished</translation>
-    </message>
-    <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="174"/>
-        <source>If you have not been returned to QGIS, bring the application to the forefront.</source>
-        <translation>If you have not been returned to QGIS, bring the application to the forefront.</translation>
-    </message>
-    <message>
         <location filename="../src/auth/oauth2/core/qgso2.cpp" line="175"/>
-        <source>Close window</source>
-        <translation>Close window</translation>
+        <source>%1 OAuth2 verification has finished.</source>
+        <translation>%1 OAuth2 verification has finished.</translation>
+    </message>
+    <message>
+        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="176"/>
+        <source>You can close this window and return to %1.</source>
+        <translation>You can close this window and return to %1.</translation>
     </message>
 </context>
 <context>

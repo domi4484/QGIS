@@ -2479,7 +2479,7 @@ This is probably a result of incorrect PostgreSQL upgrade.</source>
     <name>DbManagerDlgSqlWindow</name>
     <message>
         <location filename="../python/plugins/db_manager/ui/DlgSqlWindow.ui"/>
-        <source>Column(s) with 
+        <source>Column(s) with
 unique values</source>
         <translation>Spalte(n) mit
 eindeutigen Werten</translation>
@@ -2516,9 +2516,9 @@ eindeutigen Werten</translation>
     </message>
     <message>
         <location filename="../python/plugins/db_manager/ui/DlgSqlWindow.ui"/>
-        <source>Retrieve 
+        <source>Retrieve
 columns</source>
-        <translation>Spalten 
+        <translation>Spalten
 laden</translation>
     </message>
     <message>
@@ -21153,10 +21153,10 @@ Dies kann zu unerwarteten Ergebnissen führen.</translation>
         <translation>Python-Konsole: Datei speichern</translation>
     </message>
     <message>
-        <source>Unable to restore the file: 
+        <source>Unable to restore the file:
 {0}
 </source>
-        <translation>Konnte Datei nicht wiederherstellen: 
+        <translation>Konnte Datei nicht wiederherstellen:
 {0}
 </translation>
     </message>
@@ -25032,7 +25032,7 @@ Nur %1 von %2 Objekten geschrieben.</translation>
     </message>
     <message>
         <location filename="../src/core/qgsvectorfilewriter.cpp" line="1383"/>
-        <source>Whether to start records with the RS=0x1E character (RFC 8142 standard). Defaults to NO: Newline Delimited JSON (geojsonl). 
+        <source>Whether to start records with the RS=0x1E character (RFC 8142 standard). Defaults to NO: Newline Delimited JSON (geojsonl).
 If set to YES:  RFC 8142 standard: GeoJSON Text Sequences  (geojsons).</source>
         <translation>Ob die Datensätze mit dem RS=0x1E-Zeichen (RFC8142-Standard) beginnen.
 Vorgabe Nein: Umbruchgetrenntes JSON (geojsonl).
@@ -25257,7 +25257,7 @@ Bei Ja: RFC8142-Standard: GeoJSON-Textsequenzen (geojsons)</translation>
     </message>
     <message>
         <location filename="../src/core/vector/qgsvectorlayerexporter.cpp" line="326"/>
-        <source>Creation error for features from #%1 to #%2. Provider errors were: 
+        <source>Creation error for features from #%1 to #%2. Provider errors were:
 %3</source>
         <translation>Objekterzeugungsfehler von #%1 bis #%2. Fehler des Datenanbieters waren: %3</translation>
     </message>
@@ -27043,9 +27043,9 @@ Fehler: %2</translation>
     <message>
         <location filename="../src/providers/oracle/qgsoracleprovider.cpp" line="3236"/>
         <location filename="../src/providers/postgres/qgspostgresprovider.cpp" line="4595"/>
-        <source>Creation of data source %1 failed: 
+        <source>Creation of data source %1 failed:
 %2</source>
-        <translation>Erzeugung der Datenquelle %1 gescheitert: 
+        <translation>Erzeugung der Datenquelle %1 gescheitert:
 %2</translation>
     </message>
     <message>
@@ -27067,23 +27067,23 @@ Fehler: %2</translation>
     </message>
     <message>
         <location filename="../src/providers/oracle/qgsoracledataitems.cpp" line="73"/>
-        <source>Unable to determine number of geometry columns of layer %1.%2: 
+        <source>Unable to determine number of geometry columns of layer %1.%2:
 %3</source>
-        <translation>Konnte die Geometriespaltenanzahl des Layer %1.%2 nicht feststellen: 
+        <translation>Konnte die Geometriespaltenanzahl des Layer %1.%2 nicht feststellen:
 %3</translation>
     </message>
     <message>
         <location filename="../src/providers/oracle/qgsoracledataitems.cpp" line="106"/>
-        <source>Unable to delete layer %1.%2: 
+        <source>Unable to delete layer %1.%2:
 %3</source>
-        <translation>Konnte Layer %1.%2 nicht löschen: 
+        <translation>Konnte Layer %1.%2 nicht löschen:
 %3</translation>
     </message>
     <message>
         <location filename="../src/providers/oracle/qgsoracledataitems.cpp" line="116"/>
-        <source>Unable to clean metadata %1.%2: 
+        <source>Unable to clean metadata %1.%2:
 %3</source>
-        <translation>Konnte Metadaten %1.%2 nicht löschen: 
+        <translation>Konnte Metadaten %1.%2 nicht löschen:
 %3</translation>
     </message>
     <message>
@@ -27208,16 +27208,16 @@ Datenbankfehler: %2</translation>
     <message>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="411"/>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="435"/>
-        <source>Unable to delete layer %1: 
+        <source>Unable to delete layer %1:
 %2</source>
-        <translation>Konnte Ebene %1 nicht löschen: 
+        <translation>Konnte Ebene %1 nicht löschen:
 %2</translation>
     </message>
     <message>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="471"/>
-        <source>Unable to delete schema %1: 
+        <source>Unable to delete schema %1:
 %2</source>
-        <translation>Konnte Schema %1 nicht löschen: 
+        <translation>Konnte Schema %1 nicht löschen:
 %2</translation>
     </message>
     <message>
@@ -27246,9 +27246,9 @@ Datenbankfehler: %2</translation>
     </message>
     <message>
         <location filename="../src/providers/postgres/qgspostgresutils.cpp" line="378"/>
-        <source>Unable to delete view %1: 
+        <source>Unable to delete view %1:
 %2</source>
-        <translation>Konnte Sicht %1 nicht löschen: 
+        <translation>Konnte Sicht %1 nicht löschen:
 %2</translation>
     </message>
     <message>
@@ -29673,12 +29673,12 @@ Die Ausmaße und Auflösung des Ausgaberaster wird durch ein Referenzraster fest
         <location filename="../src/analysis/processing/qgsalgorithmcellstatistics.cpp" line="417"/>
         <source>This algorithm generates a raster containing the cell-wise percentile value of a stack of input rasters. The percentile to return is determined by the percentile input value (ranges between 0 and 1). At each cell location, the specified percentile is obtained using the respective value from the stack of all overlaid and sorted cell values of the input rasters.
 
-There are three methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Nearest rank&lt;/li&gt;   &lt;li&gt;Inclusive linear interpolation (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linear interpolation (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; While the output value can stay the same for the nearest rank method (obtains the value that is nearest to the specified percentile), the linear interpolation method return unique values for different percentiles. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel. 
+There are three methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Nearest rank&lt;/li&gt;   &lt;li&gt;Inclusive linear interpolation (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linear interpolation (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; While the output value can stay the same for the nearest rank method (obtains the value that is nearest to the specified percentile), the linear interpolation method return unique values for different percentiles. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel.
 
 The output raster&apos;s extent and resolution is defined by a reference raster. If the input raster layers that do not match the cell size of the reference raster layer will be resampled using nearest neighbor resampling. NoData values in any of the input layers will result in a NoData cell output if the Ignore NoData parameter is not set. The output raster data type will be set to the most complex data type present in the input datasets. </source>
         <translation>Dieser Algorithmus liefert Raster mi zellenweisen Perzentielwerten aus einem Eingaberastern. Die gelieferte Perzentiele wird durch die Perzentileingabewerte bestimmt (bewegt sich zwischen 0 und 1). Für jede Zellposition wird die angegebenene Perzentile unter Verwendung der jeweiligen Werte aus dem Stapel von allen überlagerten und sortierten Zellwerten der Eingabelayer bestimmt.
 
-Es gibt drei Methoden für Perzentilberechnung:&lt;ul&gt;    &lt;li&gt;Nächster Rang&lt;/li&gt;   &lt;li&gt;Inklusive lineare Interpolation (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Exklusive lineare Interpolation (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; Während der Ausgabewert bei der Methode &quot;nächster Rang&quot; gleich bleiben kann (bestimmt den Wert der am nächsten zum angegebenen Perzentil ist), liefert die lineare Interpolationsmethode eindeutige Werte für verschiedene Perzentiele. Beide Interpolationsmethoden folgen den vergleichbaren Methoden in LibreOffice oder Microsoft Excel. 
+Es gibt drei Methoden für Perzentilberechnung:&lt;ul&gt;    &lt;li&gt;Nächster Rang&lt;/li&gt;   &lt;li&gt;Inklusive lineare Interpolation (PERCENTILE.INC)&lt;/li&gt;   &lt;li&gt;Exklusive lineare Interpolation (PERCENTILE.EXC)&lt;/li&gt;&lt;/ul&gt; Während der Ausgabewert bei der Methode &quot;nächster Rang&quot; gleich bleiben kann (bestimmt den Wert der am nächsten zum angegebenen Perzentil ist), liefert die lineare Interpolationsmethode eindeutige Werte für verschiedene Perzentiele. Beide Interpolationsmethoden folgen den vergleichbaren Methoden in LibreOffice oder Microsoft Excel.
 
 Die Ausmaße und Auflösung des Ausgaberaster wird durch ein Referenzraster festgelegt. Wenn der Rastereingabelayer nicht zur Zellgröße des Referenzrasterlayer passt, wird der Layer mit der Methode &quot;nächster Nachbar&quot; resampled. Leerwerte in mindestens einem der Eingabelayer führen zur einen Leerwert in der Ausgabe, wenn der Parameter &quot;Leerwerte ignorieren&quot; nicht gesetzt ist. Der Ausgaberasterdatentyp wird auf den komplexesten Datentyp der Eingabelayer gesetzt.</translation>
     </message>
@@ -29693,14 +29693,14 @@ Die Ausmaße und Auflösung des Ausgaberaster wird durch ein Referenzraster fest
 
 At each cell location, the specified value is ranked among the respective values in the stack of all overlaid and sorted cell values from the input rasters. For values outside of the stack value distribution, the algorithm returns NoData because the value cannot be ranked among the cell values.
 
-There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel. 
+There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel.
 
 The output raster&apos;s extent and resolution is defined by a reference raster. If the input raster layers that do not match the cell size of the reference raster layer will be resampled using nearest neighbor resampling. NoData values in any of the input layers will result in a NoData cell output if the Ignore NoData parameter is not set. The output raster data type will always be Float32.</source>
-        <translation>Dieser Algorithmus generiert Raster mit  zellenweise Prozentrangwerten aus einem Stapel von Eingaberastern basierend auf einem Einzeleingabewert und schreibt sie in ein Ausgaberaster. 
+        <translation>Dieser Algorithmus generiert Raster mit  zellenweise Prozentrangwerten aus einem Stapel von Eingaberastern basierend auf einem Einzeleingabewert und schreibt sie in ein Ausgaberaster.
 
 Für jede Zellposition wird die angegebenene Perzentile unter Verwendung der jeweiligen Werte aus dem Stapel von allen überlagerten und sortierten Zellwerten der Eingabelayer bestimmt.
 
-Es gibt zwei Methoden für Perzentilberechnung:&lt;ul&gt;    &lt;li&gt;Inklusive lineare Interpolation (PERCENTRANK.INC)&lt;/li&gt; &lt;li&gt;Exklusive lineare Interpolation (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt;Die lineare Interpolationsmethode liefert einen eindeutigen Prozentrang für verschiedene Werte. Beide Interpolationsmethoden folgen den vergleichbaren Methoden in LibreOffice oder Microsoft Excel. 
+Es gibt zwei Methoden für Perzentilberechnung:&lt;ul&gt;    &lt;li&gt;Inklusive lineare Interpolation (PERCENTRANK.INC)&lt;/li&gt; &lt;li&gt;Exklusive lineare Interpolation (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt;Die lineare Interpolationsmethode liefert einen eindeutigen Prozentrang für verschiedene Werte. Beide Interpolationsmethoden folgen den vergleichbaren Methoden in LibreOffice oder Microsoft Excel.
 
 Die Ausmaße und Auflösung des Ausgaberaster wird durch ein Referenzraster festgelegt. Wenn der Rastereingabelayer nicht zur Zellgröße des Referenzrasterlayer passt, wird der Layer mit der Methode &quot;nächster Nachbar&quot; resampled. Leerwerte in mindestens einem der Eingabelayer führen zur einen Leerwert in der Ausgabe, wenn der Parameter &quot;Leerwerte ignorieren&quot; nicht gesetzt ist. Der Ausgaberasterdatentyp ist immer Float32.</translation>
     </message>
@@ -29715,14 +29715,14 @@ Die Ausmaße und Auflösung des Ausgaberaster wird durch ein Referenzraster fest
 
 At each cell location, the current value of the value raster is used ranked among the respective values in the stack of all overlaid and sorted cell values of the input rasters. For values outside of the the stack value distribution, the algorithm returns NoData because the value cannot be ranked among the cell values.
 
-There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel. 
+There are two methods for percentile calculation:&lt;ul&gt;    &lt;li&gt;Inclusive linearly interpolated percent rank (PERCENTRANK.INC)&lt;/li&gt;   &lt;li&gt;Exclusive linearly interpolated percent rank (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt; The linear interpolation method return the unique percent rank for different values. Both interpolation methods follow their counterpart methods implemented by LibreOffice or Microsoft Excel.
 
 The output raster&apos;s extent and resolution is defined by a reference raster. If the input raster layers that do not match the cell size of the reference raster layer will be resampled using nearest neighbor resampling.  NoData values in any of the input layers will result in a NoData cell output if the Ignore NoData parameter is not set. The output raster data type will always be Float32.</source>
-        <translation>Dieser Algorithmus generiert Raster mit  zellenweise Prozentrangwerten aus einem Einzelraster basierend auf einem Einzeleingabewert und schreibt sie in ein Ausgaberaster. 
+        <translation>Dieser Algorithmus generiert Raster mit  zellenweise Prozentrangwerten aus einem Einzelraster basierend auf einem Einzeleingabewert und schreibt sie in ein Ausgaberaster.
 
 Für jede Zellposition wird der angegebenene Perzentile unter Verwendung der jeweiligen Werte aus dem Stapel von allen überlagerten und sortierten Zellwerten der Eingabelayer bestimmt.
 
-Es gibt zwei Methoden für Perzentilberechnung:&lt;ul&gt;    &lt;li&gt;Inklusive lineare Interpolation (PERCENTRANK.INC)&lt;/li&gt; &lt;li&gt;Exklusive lineare Interpolation (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt;Die lineare Interpolationsmethode liefert einen eindeutigen Prozentrang für verschiedene Werte. Beide Interpolationsmethoden folgen den vergleichbaren Methoden in LibreOffice oder Microsoft Excel. 
+Es gibt zwei Methoden für Perzentilberechnung:&lt;ul&gt;    &lt;li&gt;Inklusive lineare Interpolation (PERCENTRANK.INC)&lt;/li&gt; &lt;li&gt;Exklusive lineare Interpolation (PERCENTRANK.EXC)&lt;/li&gt;&lt;/ul&gt;Die lineare Interpolationsmethode liefert einen eindeutigen Prozentrang für verschiedene Werte. Beide Interpolationsmethoden folgen den vergleichbaren Methoden in LibreOffice oder Microsoft Excel.
 
 Die Ausmaße und Auflösung des Ausgaberaster wird durch ein Referenzraster festgelegt. Wenn der Rastereingabelayer nicht zur Zellgröße des Referenzrasterlayer passt, wird der Layer mit der Methode &quot;nächster Nachbar&quot; resampled. Leerwerte in mindestens einem der Eingabelayer führen zur einen Leerwert in der Ausgabe, wenn der Parameter &quot;Leerwerte ignorieren&quot; nicht gesetzt ist. Der Ausgaberasterdatentyp ist immer Float32.</translation>
     </message>
@@ -31866,7 +31866,7 @@ Die Sortierreihenfolge der Objekte kann auch angegeben werden.  In dem Fall wird
         <source>This algorithm assigns a new projection to a vector layer. It creates a new layer with the exact same features and geometries as the input one, but assigned to a new CRS. E.g. the geometries are not reprojected, they are just assigned to a different CRS. This algorithm can be used to repair layers which have been assigned an incorrect projection.
 
 Attributes are not modified by this algorithm.</source>
-        <translation>Dieser Algorithmus weist einem Vektor-Layer eine neue Projektion zu. Er erzeugt einen neuen Layer mit genau den gleichen Eigenschaften und Geometrien wie der Eingabelayer, aber mit einem neuen Koordinatensystem. Das heißt, die Geometrien werden nicht reprojiziert, sie bekommen nur ein anderes Koordinatensystem zugewiesen. Dieser Algorithmus kann zur Reparatur von Layern mit einer falsch zugewiesenen Projektion benutzt werden. 
+        <translation>Dieser Algorithmus weist einem Vektor-Layer eine neue Projektion zu. Er erzeugt einen neuen Layer mit genau den gleichen Eigenschaften und Geometrien wie der Eingabelayer, aber mit einem neuen Koordinatensystem. Das heißt, die Geometrien werden nicht reprojiziert, sie bekommen nur ein anderes Koordinatensystem zugewiesen. Dieser Algorithmus kann zur Reparatur von Layern mit einer falsch zugewiesenen Projektion benutzt werden.
 
 Attribute werden dabei nicht verändert.</translation>
     </message>
@@ -33628,7 +33628,7 @@ An attribute can be specified as containing weights to be applied to each featur
 If an attribute is selected in the &lt;Unique ID field&gt; parameter, features will be grouped according to values in this field. Instead of a single point with the center of mass of the whole layer, the output layer will contain a center of mass for the features in each category.</source>
         <translation>Dieser Algorithmus berechnet einen Punktlayer mit dem Masseschwerpunkt der Geometrien eines Eingabelayers.
 
-Ein Attribut, dass die Gewichtung für jedes Objekt bei der Berechnung festlegt, kann angegeben werden. 
+Ein Attribut, dass die Gewichtung für jedes Objekt bei der Berechnung festlegt, kann angegeben werden.
 
 In ein Attribut im Parameter &lt;Unique ID field&gt; angegeben ist, werden die Objekte nach diesem Wert gruppiert. Statt einem einzelnen Punkt mit dem Massenzentrum des gesamten Layers enthält der Ausgabelayer dann eine Massezentrum für jede Kategorie von Objekten.</translation>
     </message>
@@ -48361,7 +48361,7 @@ Die Untermenge wird zufällig durch einen Prozentsatz oder eine Anzahl bestimmt,
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrandompointsinpolygons.cpp" line="100"/>
         <source>&lt;p&gt;This algorithm creates a point layer, with points placed randomly in the polygons of the &lt;i&gt;&lt;b&gt;Input polygon layer&lt;/b&gt;&lt;/i&gt;.&lt;/p&gt; &lt;ul&gt;&lt;li&gt;For each feature in the &lt;i&gt;&lt;b&gt;Input polygon layer&lt;/b&gt;&lt;/i&gt;, the algorithm attempts to add the specified &lt;i&gt;&lt;b&gt;Number of points for each feature&lt;/b&gt;&lt;/i&gt; to the output layer.&lt;/li&gt; &lt;li&gt;A &lt;i&gt;&lt;b&gt;Minimum distance between points&lt;/b&gt;&lt;/i&gt; and a &lt;i&gt;&lt;b&gt;Global minimum distance between points&lt;/b&gt;&lt;/i&gt; can be specified.&lt;br&gt; A point will not be added if there is an already generated point within this (Euclidean) distance from the generated location. With &lt;i&gt;Minimum distance between points&lt;/i&gt;, only points in the same polygon feature are considered, while for &lt;i&gt;Global minimum distance between points&lt;/i&gt; all previously generated points are considered. If the &lt;i&gt;Global minimum distance between points&lt;/i&gt; is set equal to or larger than the (local) &lt;i&gt;Minimum distance between points&lt;/i&gt;, the latter has no effect.&lt;br&gt; If the &lt;i&gt;Minimum distance between points&lt;/i&gt; is too large, it may not be possible to generate the specified &lt;i&gt;Number of points for each feature&lt;/i&gt;, but all the generated points are returned.&lt;/li&gt; &lt;li&gt;The &lt;i&gt;&lt;b&gt;Maximum number of attempts per point&lt;/b&gt;&lt;/i&gt; can be specified.&lt;/li&gt; &lt;li&gt;The seed for the random generator can be provided (&lt;b&gt;&lt;i&gt;Random seed&lt;/i&gt;&lt;/b&gt; - integer, greater than 0).&lt;/li&gt; &lt;li&gt;The user can choose not to &lt;i&gt;&lt;b&gt;Include polygon feature attributes&lt;/b&gt;&lt;/i&gt; in the attributes of the generated point features.&lt;/li&gt; &lt;/ul&gt; The total number of points will be&lt;br&gt; &lt;b&gt;&apos;number of input features&apos;&lt;/b&gt; * &lt;i&gt;&lt;b&gt;Number of points for each feature&lt;/b&gt;&lt;/i&gt;&lt;br&gt; if there are no misses. The &lt;i&gt;Number of points for each feature&lt;/i&gt;, &lt;i&gt;Minimum distance between points&lt;/i&gt; and &lt;i&gt;Maximum number of attempts per point&lt;/i&gt; can be data defined. &lt;p&gt;Output from the algorithm:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; The number of features with an empty or no geometry (&lt;code&gt;FEATURES_WITH_EMPTY_OR_NO_GEOMETRY&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; A point layer containing the random points (&lt;code&gt;OUTPUT&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; The number of generated features (&lt;code&gt;OUTPUT_POINTS&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; The number of missed points (&lt;code&gt;POINTS_MISSED&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; The number of features with non-empty geometry and missing points (&lt;code&gt;POLYGONS_WITH_MISSED_POINTS&lt;/code&gt;).&lt;/li&gt; &lt;/ul&gt;</source>
-        <translation>&lt;p&gt;Dieser Algorithmus erzeugt einen Punktlayer das Punkte zufällig auf Polygonen des  &lt;i&gt;&lt;b&gt;Eingabelayer&lt;/b&gt;&lt;/i&gt; platziert werden. 
+        <translation>&lt;p&gt;Dieser Algorithmus erzeugt einen Punktlayer das Punkte zufällig auf Polygonen des  &lt;i&gt;&lt;b&gt;Eingabelayer&lt;/b&gt;&lt;/i&gt; platziert werden.
 &lt;/p&gt;&lt;ul&gt;&lt;li&gt;Für jedes Objekt des Eingabepolygonlayers versucht der Algorithmus die gegebene &lt;i&gt;&lt;b&gt;Anzahl von Punkte je Objekt &lt;/b&gt;&lt;/i&gt; dem Ausgabelayer hinzuzufügen.&lt;/li&gt; &lt;li&gt;Ein &lt;i&gt;&lt;b&gt;Minimalabstand zwischen Punkte &lt;/b&gt;&lt;/i&gt; und ein &lt;i&gt;&lt;b&gt;globaler Mindestabstand zwischen Punkten&lt;/i&gt;&lt;/b&gt; kann angegeben werden.&lt;br&gt; Ein Punkt wird nicht erzeugt, wenn es bereits einen anderen generierten Punkt (auf irgendeinem Polygon) im (euklid&apos;schen) Abstand davon gibt. Mit &lt;i&gt;&lt;b&gt;Minimalabstand zwischen den Punkten&lt;/b&gt;&lt;/i&gt; werden nur Punkte auf dem gleichen Polyonobjekt betrachtet, während für &lt;i&gt;globalem Minimalabstand zwischen Punkte&lt;/i&gt; alle zuvor erzeugten Punkte einbezogen werden. Wenn der &lt;i&gt;&lt;i&gt;globale &lt;b&gt;Minimalabstand zwischen Punkten&lt;/i&gt; größer als der (lokale) &lt;i&gt;Mindestabstand zwischen Punkten&lt;/i&gt; hat letzterer keinen Einfluss. &lt;br&gt;Wenn der&lt;i&gt;&lt;b&gt;Minimalabstand zwischen den Punkte&lt;/b&gt;&lt;/i&gt; zu groß ist, kann möglicherweise nicht  die&lt;i&gt;&lt;b&gt;Anzahl von Punkten je Objekt&lt;/b&gt;&lt;/i&gt; erzeugt werden.&lt;/li&gt; &lt;li&gt;Die &lt;i&gt;&lt;b&gt;Maximale Versuchsanzahl je Punkt&lt;/i&gt;&lt;/i&gt; ist nur relevant, wenn der  &lt;i&gt;&lt;br&gt;minimaler Abstand zwischen den Punkten&lt;/b&gt;&lt;/i&gt; or &lt;/i&gt;&lt;i&gt;globale Minimalabstand zwischen Punkten&lt;/i&gt; größer als 0 ist. Die Gesamtanzahl der Punkten ist  &lt;br&gt; &lt;li&gt;&apos;Anzahl von Eingabeobjekten&apos;&lt;/li&gt; * &lt;i&gt;&lt;i&gt;Anzahl der Punkte je Objekt&lt;/i&gt;&lt;/li&gt;&lt;i&gt; wenn keine Fehler gibt.&lt;/li&gt; &lt;li&gt;Die Saat für den Zufallsgenerator kann angegeben werden (&lt;i&gt;Zufallssaat&lt;/i&gt; - Ganze Zahl größe 0).&lt;/li&gt; &lt;li&gt;Der Benutzer kann wählen, dass  &lt;b&gt;&lt;p&gt;Objektlinienattribute &lt;/i&gt;&lt;/b&gt; nicht in den Attributen der generierten Punktobjekte eingeschlossen werden sollen.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Algorithmusausgaben:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; Ein Punktlayer mit den zufälligen Punkten (&lt;code&gt;OUTPUT&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; Die Anzahl der erzeugten Objekte (&lt;code&gt;POINTS_GENERATED&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; Die Anzahl der verpassten Punkte (&lt;code&gt;POINTS_MISSED&lt;/code&gt;).&lt;/li&gt; &lt;li&gt; Die Anzahl der Objekte mit nicht leeren oder fehlenden Punkten (&lt;code&gt;POLYGONS_WITH_MISSED_POINTS&lt;/code&gt;).&lt;/li&gt;</translation>
     </message>
     <message>
@@ -48651,7 +48651,7 @@ Per Vorgabe werden die Werte mit einem Mittel von 1.0 gewählt. Dies kann mit de
     </message>
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrasterfrequencybycomparisonoperator.cpp" line="267"/>
-        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are equal to the value of a value raster. 
+        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are equal to the value of a value raster.
  If multiband rasters are used in the data raster stack, the algorithm will always perform the analysis on the first band of the rasters - use GDAL to use other bands in the analysis. The input value layer serves as reference layer for the sample layers. Any NoData cells in the value raster or the data layer stack will result in a NoData cell in the output raster if the ignore NoData parameter is not checked. The output NoData value can be set manually. The output rasters extent and resolution is defined by the input raster layer and is always of int32 type.</source>
         <translation>Dieser Algorithmus prüft Zelle für Zelle, ob die Wertfrequenz (Anzahl von Vorkommen) eines Rastereingabestapels gleich dem Wert eines Wertrasters ist.
 Wenn Mehrkanalraster im Datenrasterstapel verwendet werden, führt der Algorithmus immer den ersten Kanal des Rasters aus - GDAL kann für andere Kanäle verwendet werden. Der Eingabewertlayer dient als Referenzlayer für Abtastlayer. Leerwertzellen im Wertraster oder Datenlayerstapel führen zu Leerwerten im Ausgaberaster, wenn der Parameter zum Ignorieren von Leerwerten nicht aktiv ist. Der Ausgabeleerwert kann manuell gesetzt werden. Die Ausmaße des Ausgaberasters wird durch den Eingaberasterlayer festgelegt und ist immer vom Typ int32.</translation>
@@ -48663,7 +48663,7 @@ Wenn Mehrkanalraster im Datenrasterstapel verwendet werden, führt der Algorithm
     </message>
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrasterfrequencybycomparisonoperator.cpp" line="316"/>
-        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are greater than the value of a value raster. 
+        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are greater than the value of a value raster.
  If multiband rasters are used in the data raster stack, the algorithm will always perform the analysis on the first band of the rasters - use GDAL to use other bands in the analysis. The input value layer serves as reference layer for the sample layers. Any NoData cells in the value raster or the data layer stack will result in a NoData cell in the output raster if the ignore NoData parameter is not checked. The output NoData value can be set manually. The output rasters extent and resolution is defined by the input raster layer and is always of int32 type.</source>
         <translation>Dieser Algorithmus prüft Zelle für Zelle, ob die Wertfrequenz (Anzahl von Vorkommen) eines Rastereingabestapels größer als der Wert eines Wertrasters ist.
 Wenn Mehrkanalraster im Datenrasterstapel verwendet werden, führt der Algorithmus immer den ersten Kanal des Rasters aus - GDAL kann für andere Kanäle verwendet werden. Der Eingabewertlayer dient als Referenzlayer für Abtastlayer. Leerwertzellen im Wertraster oder Datenlayerstapel führen zu Leerwerten im Ausgaberaster, wenn der Parameter zum Ignorieren von Leerwerten nicht aktiv ist. Der Ausgabeleerwert kann manuell gesetzt werden. Die Ausmaße des Ausgaberasters wird durch den Eingaberasterlayer festgelegt und ist immer vom Typ int32.</translation>
@@ -48675,7 +48675,7 @@ Wenn Mehrkanalraster im Datenrasterstapel verwendet werden, führt der Algorithm
     </message>
     <message>
         <location filename="../src/analysis/processing/qgsalgorithmrasterfrequencybycomparisonoperator.cpp" line="365"/>
-        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are less than the value of a value raster. 
+        <source>This algorithm evaluates on a cell-by-cell basis the frequency (number of times) the values of an input stack of rasters are less than the value of a value raster.
  If multiband rasters are used in the data raster stack, the algorithm will always perform the analysis on the first band of the rasters - use GDAL to use other bands in the analysis. The input value layer serves as reference layer for the sample layers. Any NoData cells in the value raster or the data layer stack will result in a NoData cell in the output raster if the ignore NoData parameter is not checked. The output NoData value can be set manually. The output rasters extent and resolution is defined by the input raster layer and is always of int32 type.</source>
         <translation>Dieser Algorithmus prüft Zelle für Zelle, ob die Wertfrequenz (Anzahl von Vorkommen) eines Rastereingabestapels kleiner als der Wert eines Wertrasters ist.
 Wenn Mehrkanalraster im Datenrasterstapel verwendet werden, führt der Algorithmus immer den ersten Kanal des Rasters aus - GDAL kann für andere Kanäle verwendet werden. Der Eingabewertlayer dient als Referenzlayer für Abtastlayer. Leerwertzellen im Wertraster oder Datenlayerstapel führen zu Leerwerten im Ausgaberaster, wenn der Parameter zum Ignorieren von Leerwerten nicht aktiv ist. Der Ausgabeleerwert kann manuell gesetzt werden. Die Ausmaße des Ausgaberasters wird durch den Eingaberasterlayer festgelegt und ist immer vom Typ int32.</translation>
@@ -50471,7 +50471,7 @@ Der erzeugte Punktlayer ist im selben räumlichen Bezugssystem wie die gewählte
     </message>
     <message>
         <location filename="../src/app/qgshandlebadlayers.cpp" line="566"/>
-        <source>Searching for file: %1 
+        <source>Searching for file: %1
  [ %2 of %3 ] </source>
         <translation>Suche nach Dateien: %1
 [ %2 von %3 ]</translation>
@@ -51699,7 +51699,7 @@ Bitte vor dem Löschen dieser Komponenten entfernen.</translation>
     </message>
     <message>
         <location filename="../src/providers/mssql/qgsmssqlproviderconnection.cpp" line="286"/>
-        <source>SQL error: %1 
+        <source>SQL error: %1
  %2</source>
         <translation>SQL-Fehler: %1
 %2</translation>
@@ -61656,7 +61656,7 @@ Bitte abbrechen und noch einmal versuchen.</translation>
     <name>Qgs25DRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgs25drendererwidget.cpp" line="35"/>
-        <source>The 2.5D renderer only can be used with polygon layers. 
+        <source>The 2.5D renderer only can be used with polygon layers.
 &apos;%1&apos; is not a polygon layer and cannot be rendered in 2.5D.</source>
         <translation>Die 2.5D-Darstellung kann nur mit Polygonlayern genutzt werden.
 &apos;%1&apos; ist kein Polygonlayer und kann nicht in 2.5D dargestellt werden.</translation>
@@ -68458,8 +68458,8 @@ Diese Objekte löschen?</translation>
     </message>
     <message>
         <location filename="../src/ui/qgsattributesforminitcode.ui"/>
-        <source>The function code of the function can be loaded from the source code entered 
-in this dialog, from an external python file or from the environment (for example 
+        <source>The function code of the function can be loaded from the source code entered
+in this dialog, from an external python file or from the environment (for example
 from a plugin or from startup.py).
 
 An example is:
@@ -68492,8 +68492,8 @@ Referenz im Funktionsnamen: my_form_open
     </message>
     <message>
         <location filename="../src/ui/qgsattributesforminitcode.ui"/>
-        <source>The function code of the function can be loaded from the source code entered 
-in this dialog,  from an external python file or from the environment (for example 
+        <source>The function code of the function can be loaded from the source code entered
+in this dialog,  from an external python file or from the environment (for example
 from a plugin or from startup.py).
 
 An example is:
@@ -87940,7 +87940,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>String template used to format the string. &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Expression&lt;/th&gt;&lt;th&gt;Output&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;d&lt;/td&gt;&lt;td&gt;the day as number without a leading zero (1 to 31)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;dd&lt;/td&gt;&lt;td&gt;the day as number with a leading zero (01 to 31)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ddd&lt;/td&gt;&lt;td&gt;the abbreviated localized day name (e.g. &apos;Mon&apos; to &apos;Sun&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;the long localized day name (e.g. &apos;Monday&apos; to &apos;Sunday&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;the month as number without a leading zero (1-12)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;MM&lt;/td&gt;&lt;td&gt;the month as number with a leading zero (01-12)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;MMM&lt;/td&gt;&lt;td&gt;the abbreviated localized month name (e.g. &apos;Jan&apos; to &apos;Dec&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;MMMM&lt;/td&gt;&lt;td&gt;the long localized month name (e.g. &apos;January&apos; to &apos;December&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;yy&lt;/td&gt;&lt;td&gt;the year as two digit number (00-99)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;yyyy&lt;/td&gt;&lt;td&gt;the year as four digit number&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;These expressions may be used for the time part of the format string:&lt;/p&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Expression&lt;/th&gt;&lt;th&gt;Output&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;h&lt;/td&gt;&lt;td&gt;the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;hh&lt;/td&gt;&lt;td&gt;the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;H&lt;/td&gt;&lt;td&gt;the hour without a leading zero (0 to 23, even with AM/PM display)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;HH&lt;/td&gt;&lt;td&gt;the hour with a leading zero (00 to 23, even with AM/PM display)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;m&lt;/td&gt;&lt;td&gt;the minute without a leading zero (0 to 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;mm&lt;/td&gt;&lt;td&gt;the minute with a leading zero (00 to 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;s&lt;/td&gt;&lt;td&gt;the second without a leading zero (0 to 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ss&lt;/td&gt;&lt;td&gt;the second with a leading zero (00 to 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;z&lt;/td&gt;&lt;td&gt;the milliseconds without trailing zeroes (0 to 999)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;zzz&lt;/td&gt;&lt;td&gt;the milliseconds with trailing zeroes (000 to 999)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;AP or A&lt;/td&gt;&lt;td&gt;interpret as an AM/PM time. &lt;i&gt;AP&lt;/i&gt; must be either &apos;AM&apos; or &apos;PM&apos;.&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ap or a&lt;/td&gt;&lt;td&gt;Interpret as an AM/PM time. &lt;i&gt;ap&lt;/i&gt; must be either &apos;am&apos; or &apos;pm&apos;.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
-        <translation>Zeichenkettenvorlagen zur Formatierung. &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Ausdruck&lt;/th&gt;&lt;th&gt;Ausgabe&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;d&lt;/td&gt;&lt;td&gt;der Tag als Zahl ohne führende Null (1 to 31)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;dd&lt;/td&gt;&lt;td&gt;der Tag als Zahl mit führender Null (01 to 31)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ddd&lt;/td&gt;&lt;td&gt;der abgekürzte lokale Wochentagsname (z.B. &apos;Mon&apos; bis &apos;Son&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr  
+        <translation>Zeichenkettenvorlagen zur Formatierung. &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Ausdruck&lt;/th&gt;&lt;th&gt;Ausgabe&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;d&lt;/td&gt;&lt;td&gt;der Tag als Zahl ohne führende Null (1 to 31)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;dd&lt;/td&gt;&lt;td&gt;der Tag als Zahl mit führender Null (01 to 31)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ddd&lt;/td&gt;&lt;td&gt;der abgekürzte lokale Wochentagsname (z.B. &apos;Mon&apos; bis &apos;Son&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr
 valign=&quot;top&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;der lange lokale Wochentagsname (z.B. &apos;Montag&apos; bis &apos;Sonntag&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;der Monat als Zahl ohne führende Null (1-12)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;MM&lt;/td&gt;&lt;td&gt;der Monat als Zahl mit führender Null (01-12)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;MMM&lt;/td&gt;&lt;td&gt;der abgekürzte lokale Monatsname (z.B. &apos;Jan&apos; bis &apos;Dez&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;MMMM&lt;/td&gt;&lt;td&gt;der lange lokale Monatsname (z.B. &apos;Januar&apos; bis &apos;Dezember&apos;)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;yy&lt;/td&gt;&lt;td&gt;das Jahr als zweistellige Zahl (00-99)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;yyyy&lt;/td&gt;&lt;td&gt;das Jahr als vierstellige Zahl&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Diese Ausdrücke können Teil einer Formatzeichenkette sein:&lt;/p&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Ausdruck&lt;/th&gt;&lt;th&gt;Ausgabe&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;h&lt;/td&gt;&lt;td&gt;die Stunde ohne führende Null (0 bis 23 oder 1 bis 12, bei AM/PM-Anzeige)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;hh&lt;/td&gt;&lt;td&gt;die Stunde mit führender Null (00 bis 23 oder 01 bis 12 bei AM/PM-Anzeige)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;H&lt;/td&gt;&lt;td&gt;fir Stunde ohne führende Null (0 bis 23, auch bei AM/PM-Anzeige)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;HH&lt;/td&gt;&lt;td&gt;die Stunde mit führender Null (00 bis 23, auch bei AM/PM-Anzeige)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;m&lt;/td&gt;&lt;td&gt;die Minute ohne führende Null (0 bis 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;mm&lt;/td&gt;&lt;td&gt;die Minute mit führender Null (00 to 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;s&lt;/td&gt;&lt;td&gt;die Sekunde ohne führender Null (0 bis 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ss&lt;/td&gt;&lt;td&gt;die Sekunde mit führender Null (00 bis 59)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;z&lt;/td&gt;&lt;td&gt;die Millisekunden ohne führende Nullen (0 bis 999)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;zzz&lt;/td&gt;&lt;td&gt;die Millisekunden mit führenden Nullen (000 bis 999)&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;AP oder A&lt;/td&gt;&lt;td&gt;interpretieren als eine AM/PM-Zeit. &lt;i&gt;AP&lt;/i&gt; muss entweder &amp;quot;AM&amp;quot; oder &amp;quot;PM&amp;quot;.&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;ap oder a&lt;/td&gt;&lt;td&gt;Interpretieren als ein AM/PM-Zeit. &lt;i&gt;ap&lt;/i&gt; muss entweder &amp;quot;am&amp;quot; oder &amp;quot;pm&amp;quot;.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
@@ -96204,7 +96204,7 @@ valign=&quot;top&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;der lange lokale Wo
         <source>&quot;&quot;&quot;Define a new function using the @qgsfunction decorator.
 
  Besides its normal arguments, the function may specify the following arguments in its signature
- Those will not need to be specified when calling the function, but will be automatically injected 
+ Those will not need to be specified when calling the function, but will be automatically injected
 
  : param feature: The current feature
  : param parent: The QgsExpression object
@@ -96226,7 +96226,7 @@ valign=&quot;top&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;der lange lokale Wo
                         feature.geometry(). Defaults to False.
  : param referenced_columns: An array of attribute names that are required to run
                              this function. Defaults to [QgsFeatureRequest.ALL_ATTRIBUTES].
- : param params_as_list : Set this to True to pass the function parameters as a list. Can be used to mimic 
+ : param params_as_list : Set this to True to pass the function parameters as a list. Can be used to mimic
                         behavior before 3.32, when args was not &quot;auto&quot;. Defaults to False.
 &quot;&quot;&quot;</source>
         <translation>&quot;&quot;&quot;Definiert eine neue Funktion mit demr @qgsfunction-Dekoration.
@@ -96249,7 +96249,7 @@ valign=&quot;top&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;der lange lokale Wo
  : param handlesnull: Dies auf True setzen, die Funktion eine besondere Behandlung von NULL-Werten hat.
                      Wenn False, ist das Ergebnis immer NULL sobald einer der Parameter NULL ist.
                      Vorgabe ist False.
- : param usesgeometry : Dies auf True setzen, wenn die Function auf 
+ : param usesgeometry : Dies auf True setzen, wenn die Function auf
                         feature.geometry() zugreift. Vorgabe: False.
  : param referenced_columns: Ein Array von Attributnamen die zur Ausführung der Funktion nötig sind
                              Vorgabe: [QgsFeatureRequest.ALL_ATTRIBUTES].
@@ -103812,7 +103812,7 @@ Bitte eine gültige Datei wählen.</translation>
     </message>
     <message>
         <location filename="../src/ui/qgsgraduatedsymbolrendererwidget.ui"/>
-        <source>Template for the legend text associated with each classification.  
+        <source>Template for the legend text associated with each classification.
 Use &quot;%1&quot; for the lower bound of the classification, and &quot;%2&quot; for the upper bound.</source>
         <translation>Vorlage für den mit jeder Klassifizierungen verbundenen Legendentext.
 &quot;%1&quot; für die untere Grenze und &quot;%2&quot; für die obere Grenzen angeben.</translation>
@@ -107604,7 +107604,7 @@ b) verwenden Sie den Konfigurationsreiter und fügen Sie die Zugangsdaten als ei
     <name>QgsHeatmapRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgsheatmaprendererwidget.cpp" line="77"/>
-        <source>The heatmap renderer only applies to point and multipoint layers. 
+        <source>The heatmap renderer only applies to point and multipoint layers.
 &apos;%1&apos; is not a point layer and cannot be rendered as a heatmap.</source>
         <translation>Die Darstellung als Heatmap ist nur auf Punkt- und Mehrpunktlayer anwendbar.
 &apos;%1&apos; ist kein Punktlayer und kann nicht als Heatmap dargestellt werden.</translation>
@@ -108573,9 +108573,9 @@ p, li { white-space: pre-wrap; }
     <name>QgsInvertedPolygonRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgsinvertedpolygonrendererwidget.cpp" line="43"/>
-        <source>The inverted polygon renderer only applies to polygon and multipolygon layers. 
+        <source>The inverted polygon renderer only applies to polygon and multipolygon layers.
 &apos;%1&apos; is not a polygon layer and then cannot be displayed</source>
-        <translation>Die umgekehrte Polygondarstellung ist nur für Polygon- und Multipolygonlayer geeignet. 
+        <translation>Die umgekehrte Polygondarstellung ist nur für Polygon- und Multipolygonlayer geeignet.
 &apos;%1&apos; ist kein Polygonlayer und kann daher nicht angezeigt werden</translation>
     </message>
 </context>
@@ -125736,7 +125736,7 @@ Drucken als Raster wird zur richtigen Darstellung empfohlen.</translation>
     <name>QgsMergedFeatureRendererWidget</name>
     <message>
         <location filename="../src/gui/symbology/qgsmergedfeaturerendererwidget.cpp" line="43"/>
-        <source>The merged feature renderer only applies to line and polygon layers. 
+        <source>The merged feature renderer only applies to line and polygon layers.
 &apos;%1&apos; is not a line or polygon layer and then cannot be displayed</source>
         <translation>Die Objektverschmelzungsdarstellung passt nur zu Linien- und Polygonlayern.
 &apos;%1&apos; ist weder Linien- noch Polygonlayer und kann nicht angezeigt werden</translation>
@@ -132400,19 +132400,14 @@ Fehlermeldung: %1</translation>
 <context>
     <name>QgsO2</name>
     <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="173"/>
-        <source>QGIS OAuth2 verification has finished</source>
-        <translation>QGIS-OAuth2-Verifikation abgeschlossen</translation>
-    </message>
-    <message>
-        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="174"/>
-        <source>If you have not been returned to QGIS, bring the application to the forefront.</source>
-        <translation>QGIS wieder in den Vordergrund bringen, falls das nicht geschehen ist.</translation>
-    </message>
-    <message>
         <location filename="../src/auth/oauth2/core/qgso2.cpp" line="175"/>
-        <source>Close window</source>
-        <translation>Fenster schließen</translation>
+        <source>%1 OAuth2 verification has finished.</source>
+        <translation>%1-OAuth2-Verifikation abgeschlossen.</translation>
+    </message>
+    <message>
+        <location filename="../src/auth/oauth2/core/qgso2.cpp" line="176"/>
+        <source>You can close this window and return to %1.</source>
+        <translation>Das Fenster kann geschlossen und zu %1 zurückgekehrt werden.</translation>
     </message>
 </context>
 <context>
@@ -141626,9 +141621,9 @@ verbesserung</translation>
     </message>
     <message>
         <location filename="../src/gui/symbology/qgspointclusterrendererwidget.cpp" line="238"/>
-        <source>The point cluster renderer only applies to (single) point layers. 
+        <source>The point cluster renderer only applies to (single) point layers.
 &apos;%1&apos; is not a (single) point layer and cannot be displayed by the point cluster renderer.</source>
-        <translation>Die Punkthäufungsdarstellung eignet sich nur für Layer mit (Einzel-)Punkten. 
+        <translation>Die Punkthäufungsdarstellung eignet sich nur für Layer mit (Einzel-)Punkten.
 &apos;%1&apos; ist kein (Einzel-)Punktlayer und daher für diese Darstellung ungeeignet.</translation>
     </message>
 </context>
@@ -141702,9 +141697,9 @@ verbesserung</translation>
     </message>
     <message>
         <location filename="../src/gui/symbology/qgspointdisplacementrendererwidget.cpp" line="432"/>
-        <source>The point displacement renderer only applies to (single) point layers. 
+        <source>The point displacement renderer only applies to (single) point layers.
 &apos;%1&apos; is not a (single) point layer and cannot be displayed by the point displacement renderer.</source>
-        <translation>Die Punktverschiebungsdarstellung eignet sich nur für Layer mit (Einzel-)Punkten. 
+        <translation>Die Punktverschiebungsdarstellung eignet sich nur für Layer mit (Einzel-)Punkten.
 &apos;%1&apos; ist kein (Einzel-)Punktlayer und daher für diese Darstellung ungeeignet.</translation>
     </message>
 </context>
@@ -156775,8 +156770,8 @@ Objekte gefunden wurden</translation>
     </message>
     <message>
         <location filename="../src/gui/qgssqlcomposerdialog.cpp" line="777"/>
-        <source>This is the SQL query editor. The SQL statement can select data from several tables, 
-but it must compulsory include the main typename %1 in the selected tables, 
+        <source>This is the SQL query editor. The SQL statement can select data from several tables,
+but it must compulsory include the main typename %1 in the selected tables,
 and only the geometry column of the main typename can be used as the geometry column of the resulting layer.</source>
         <translation>Dies ist die SQL-Abfrage-Editor. Die SQL-Anweisung können Daten aus mehreren Tabellen auswählen,
 muss aber zwingend den Haupttypnamen %1 in den gewählten Tabellen enthalten,

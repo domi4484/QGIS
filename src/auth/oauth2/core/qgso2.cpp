@@ -172,8 +172,8 @@ void QgsO2::setVerificationResponseContent()
   {
     setReplyContent(
       QString::fromUtf8( verhtml.readAll() )
-        .replace( "{{ H2_TITLE }}"_L1, tr( "%1 OAuth2 verification has finished." ).arg( QCoreApplication::applicationName() ) )
-        .replace( "{{ H3_TITLE }}"_L1, tr( "You can close this window and return to %1." ).arg( QCoreApplication::applicationName() ) )
+        .replace( QLatin1String( "{{ H2_TITLE }}" ), tr( "%1 OAuth2 verification has finished." ).arg( QCoreApplication::applicationName() ) )
+        .replace( QLatin1String( "{{ H3_TITLE }}" ), tr( "You can close this window and return to %1." ).arg( QCoreApplication::applicationName() ) )
         .toUtf8()
     );
   }

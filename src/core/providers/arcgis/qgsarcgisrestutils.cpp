@@ -863,12 +863,8 @@ std::unique_ptr< QgsFeatureRenderer > QgsArcGisRestUtils::convertRenderer( const
       attribute = field1;
     }
 
-    const QVariantList categories = rendererData.value( u"uniqueValueInfos"_s ).toList();
     QgsCategoryList categoryList;
-    for ( const QVariant &category : categories )
-    {
-      const QVariantMap categoryData = category.toMap();
-      const QString value = categoryData.value( u"value"_s ).toString();
+    auto addCategory = [&]( const QVariantMap &categoryData, const QVariant &value ) {
       const QString label = categoryData.value( u"label"_s ).toString();
       std::unique_ptr< QgsSymbol > symbol( QgsArcGisRestUtils::convertSymbol( categoryData.value( u"symbol"_s ).toMap(), context ) );
       if ( symbol )
@@ -877,6 +873,48 @@ std::unique_ptr< QgsFeatureRenderer > QgsArcGisRestUtils::convertRenderer( const
         applyVisualVariables( rendererData, symbol.get(), context );
 
         categoryList.append( QgsRendererCategory( value, symbol.release(), label ) );
+      }
+    };
+
+    const QVariantList categories = rendererData.value( u"uniqueValueInfos"_s ).toList();
+    for ( const QVariant &category : categories )
+    {
+      const QVariantMap categoryData = category.toMap();
+      addCategory( categoryData, categoryData.value( u"value"_s ).toString() );
+    }
+
+    if ( categoryList.empty() )
+    {
+      // Newer, authored renderers (e.g. those produced by ArcGIS Pro) may store their classes
+      // grouped under "uniqueValueGroups" instead of a flat "uniqueValueInfos" list, with each
+      // class carrying a "values" list of value tuples (one entry per active field) rather than
+      // a single flat "value" string.
+      const QString delimiter = rendererData.value( u"fieldDelimiter"_s ).toString();
+      const QVariantList groups = rendererData.value( u"uniqueValueGroups"_s ).toList();
+      for ( const QVariant &group : groups )
+      {
+        const QVariantList classes = group.toMap().value( u"classes"_s ).toList();
+        for ( const QVariant &classVariant : classes )
+        {
+          const QVariantMap classData = classVariant.toMap();
+          const QVariantList valueTuples = classData.value( u"values"_s ).toList();
+          if ( valueTuples.empty() )
+          {
+            addCategory( classData, classData.value( u"value"_s ).toString() );
+            continue;
+          }
+
+          for ( const QVariant &valueTuple : valueTuples )
+          {
+            QStringList valueParts;
+            const QVariantList tupleParts = valueTuple.toList();
+            valueParts.reserve( tupleParts.size() );
+            for ( const QVariant &part : tupleParts )
+              valueParts.append( part.toString() );
+
+            addCategory( classData, valueParts.join( delimiter ) );
+          }
+        }
       }
     }
 

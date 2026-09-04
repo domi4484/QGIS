@@ -68,6 +68,7 @@ class TestQgsArcGisRestUtils : public QObject
     void testParsePictureFillSymbolNullOutline();
     void testParseRendererSimple();
     void testParseRendererCategorized();
+    void testParseRendererCategorizedNullValue();
     void testRendererTransparency();
     void testVisualVariableRotationGeographic();
     void testVisualVariableRotationArithmetic();
@@ -732,6 +733,69 @@ void TestQgsArcGisRestUtils::testParseRendererCategorized()
   QCOMPARE( catRenderer->categories().at( 1 ).value().toString(), u"Canada"_s );
   QCOMPARE( catRenderer->categories().at( 1 ).label(), u"Canada"_s );
   QVERIFY( catRenderer->categories().at( 1 ).symbol() );
+}
+
+void TestQgsArcGisRestUtils::testParseRendererCategorizedNullValue()
+{
+  // ArcGIS represents a NULL field value in a unique value renderer using the literal
+  // string "<Null>" as the category's value -- this should be converted to a real NULL
+  // match rather than being treated as the literal text "<Null>"
+  const QVariantMap map = jsonStringToMap(
+    "{"
+    "\"type\": \"uniqueValue\","
+    "\"field1\": \"zone\","
+    "\"uniqueValueInfos\": ["
+    "{"
+    "\"value\": \"1\","
+    "\"symbol\": {"
+    "\"color\": [255, 0, 0, 255],"
+    "\"type\": \"esriSFS\","
+    "\"style\": \"esriSFSSolid\""
+    "},"
+    "\"label\": \"Zone 1\""
+    "},"
+    "{"
+    "\"value\": \"<Null>\","
+    "\"symbol\": {"
+    "\"color\": [0, 0, 0, 255],"
+    "\"type\": \"esriSFS\","
+    "\"style\": \"esriSFSBackwardDiagonal\""
+    "},"
+    "\"label\": \"PSI/ZWILAG\""
+    "}"
+    "]"
+    "}"
+  );
+  QgsReadWriteContext rwContext;
+  QgsSymbolConverterContext context( rwContext );
+  const std::unique_ptr<QgsFeatureRenderer> renderer( QgsArcGisRestUtils::convertRenderer( map, context ) );
+  QgsCategorizedSymbolRenderer *catRenderer = dynamic_cast<QgsCategorizedSymbolRenderer *>( renderer.get() );
+  QVERIFY( catRenderer );
+  QCOMPARE( catRenderer->categories().count(), 2 );
+  QCOMPARE( catRenderer->categories().at( 0 ).value().toString(), u"1"_s );
+  QCOMPARE( catRenderer->categories().at( 0 ).label(), u"Zone 1"_s );
+  QVERIFY( catRenderer->categories().at( 0 ).symbol() );
+
+  // the "<Null>" category value must be stored as an invalid (NULL) QVariant, not the literal string "<Null>"
+  QVERIFY( !catRenderer->categories().at( 1 ).value().isValid() );
+  QCOMPARE( catRenderer->categories().at( 1 ).label(), u"PSI/ZWILAG"_s );
+  QVERIFY( catRenderer->categories().at( 1 ).symbol() );
+
+  // a NULL attribute value should resolve to the NULL category's symbol...
+  QgsRenderContext rc; // dummy render context, just used to trigger rebuilding of the internal value hash
+  catRenderer->startRender( rc, QgsFields() );
+
+  bool foundMatch = false;
+  QgsSymbol *nullSymbol = catRenderer->symbolForValue( QVariant(), foundMatch );
+  QVERIFY( foundMatch );
+  QCOMPARE( nullSymbol, catRenderer->categories().at( 1 ).symbol() );
+
+  // ...while the literal string "<Null>" must not be treated as a NULL match
+  foundMatch = false;
+  catRenderer->symbolForValue( u"<Null>"_s, foundMatch );
+  QVERIFY( !foundMatch );
+
+  catRenderer->stopRender( rc );
 }
 
 void TestQgsArcGisRestUtils::testRendererTransparency()
